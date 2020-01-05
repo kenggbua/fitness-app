@@ -11,6 +11,7 @@ import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
 import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
+import { RegistrierenComponent } from './registrieren/registrieren.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/tr
     AndereUserComponent,
     ProfilComponent,
     EinstellungenComponent,
-    TrainingszusammenfassungComponent
+    TrainingszusammenfassungComponent,
+    RegistrierenComponent
   ],
   imports: [
     BrowserModule,

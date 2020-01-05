@@ -8,8 +8,7 @@ import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
 import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
-
-
+import { RegistrierenComponent } from './registrieren/registrieren.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,6 +19,7 @@ const routes: Routes = [
   {path: 'profil', component: ProfilComponent},
   {path: 'einstellungen', component: EinstellungenComponent},
   {path: 'trainingszusammenfassung', component: TrainingszusammenfassungComponent},
+  {path: 'registrieren', component: RegistrierenComponent},
   {path: '', redirectTo: '/startseite', pathMatch: 'full' },
 ];
 
