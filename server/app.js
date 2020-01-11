@@ -1,17 +1,17 @@
-let express = require('express');	
+let express = require('express');
 let cors = require('cors');
 const bodyParser = require('body-parser');
 
 
 
-//Config reinholen port etc. 
-let cfg = require('./config.json');	
+//Config reinholen port etc.
+let cfg = require('./config.json');
 
-//DB Verbindung 
+//DB Verbindung
 const db = require('./queries');
 
 const app = express();
-app.use(cors()); 					
+app.use(cors());
 
 app.use(bodyParser.json())
 app.use(
@@ -20,10 +20,12 @@ app.use(
   })
 )
 
+app.use("/login", require('./routes/login'));
+
 //muss noch nach routes verschoben werden
-app.get('/', function (req, res) { 
-  
-  res.send('Hello World!');  
+app.get('/', function (req, res) {
+
+  res.send('Hello World!');
 });
 
 app.get('/users',function(req,res){ db.getDb().query({
@@ -51,4 +53,3 @@ db.initDb.then(() => {
       console.log("Listening on port " + cfg.server.port + "...");
   });
 }, () => {console.log("Failed to connect to DB!")});
-

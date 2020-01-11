@@ -1,11 +1,24 @@
-<form action="index.html" method="post">
-  <p><label for="email">Email</label><br>
-  <input type="text" name="email" value=""></p>
-  <p><label for="username">Username</label><br>
-  <input type="text" name="username" value=""></p>
-  <p><label for="password">Passwort</label><br>
-  <input type="password" name="password" value=""></p>
-  <p><label for="password2">Passwort wiederholen</label><br>
-  <input type="password" name="password2" value=""></p>
-  <p><a routerLink = "/startseite"><input type="button" value="registrieren"></a></p>
+<form>
+  <p><label>Email</label><br>
+  <input type="email" id="email" value=""
+    required
+    oninvalid="this.setCustomValidity('Geben Sie eine gültige Email Adresse ein!')"
+    oninput="this.setCustomValidity('')"></p>
+  <p><label>Username</label><br>
+  <input type="text" id="username" value=""
+    pattern = "[A-Za-z0-9_ÄäÖöÜü]{5,20}"
+    required
+    oninvalid="this.setCustomValidity('Ein Username muss zwischen 5 & 20 Zeichen lang sein und besteht nur aus Buchstaben und _.')"
+    oninput="this.setCustomValidity('')"></p>
+  <p><label>Passwort</label><br>
+  <input type="password" id="password" value=""
+    pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$§%^°&*_=|<>+-.:,;~?']).{8,20}$"
+    required
+    oninvalid = "this.setCustomValidity('Das Passwort muss zwischen 8 & 20 Zeichen lang sein, mindestens 1 Groß- und Kleinbuchstaben sowie ein Sonderzeichen enthalten.')"
+    oninput="this.setCustomValidity('')"></p>
+  <p><label>Passwort wiederholen</label><br>
+  <input type="password" id="password2" value=""
+    required
+    oninput="this.setCustomValidity('')"></p>
+  <p><input type="submit" value="registrieren" (click) = "checkRegistration()"></p>
 </form>
