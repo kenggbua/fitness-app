@@ -21,7 +21,6 @@ router.post('/', (req, res) => {
 
     // no results
     if (!resultUser) {
-      console.log("login failed");
         res.status(401).json({
           "message": "login failed"
         });
@@ -30,7 +29,6 @@ router.post('/', (req, res) => {
 
     // everything ok
     const token = jwt.sign({data: user, expiresIn: cfg.auth.expiration}, cfg.auth.jwt_key);
-    console.log("login sucsessful");
     res.status(200).json({
         token: token
     });
@@ -39,12 +37,24 @@ router.post('/', (req, res) => {
   .catch(error => {
             // error accessing db
             if (error) {
-              console.log("error occured");
                 res.status(400).json({
                     "message": "error ocurred"
                 });
             }
         });
+});
+
+router.get('/tok', (req, res) => {
+  try {
+    req.username = jwt.verify(req.headers.authorization, cfg.auth.jwt_key).data;
+    res.status(200).json({
+        token: req.headers.authorization
+    });
+  } catch (err) {
+    return res.status(401).json({
+      message: "Authentication failed"
+    });
+  }
 });
 
 module.exports = router;

@@ -15,6 +15,12 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.dataservice.checkCookie().subscribe((data) => {
+      console.log(data);
+      if(data == true) {
+        this.router.navigate(['/startseite']);
+      }
+    });
   }
 
   checkLogin() {
@@ -22,17 +28,13 @@ export class LoginComponent implements OnInit {
     let password = <HTMLInputElement>document.getElementById("password").value;
 
     this.dataservice.loginUser(username, password).subscribe((data) => {
-      if(data == false) {
-        document.getElementById("out").style.display = "block";
-      } else {
+      console.log(data);
+      if(data == true) {
         this.router.navigate(['/startseite']);
+      } else {
+        document.getElementById("out").style.display = "block";
       }
-    })
-    // if(this.dataservice.loginUser(username, password)) {
-    //   this.router.navigate(['/startseite']);
-    // } else {
-    //   document.getElementById("out").style.display = "block";
-    // }
+    });
   }
 
 }
