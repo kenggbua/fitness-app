@@ -18,13 +18,14 @@ app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-)
+);
 
-app.use("/login", require('./routes/login'));
+const loginRoutes = require('./routes/login');
+app.use("/login", loginRoutes);
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {
-
+console.log("hello");
   res.send('Hello World!');
 });
 
