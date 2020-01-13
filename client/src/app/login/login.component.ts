@@ -18,14 +18,21 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
-    let username = <HTMLInputElement>document.getElementById("username");
-    let password = <HTMLInputElement>document.getElementById("password");
+    let username = <HTMLInputElement>document.getElementById("username").value;
+    let password = <HTMLInputElement>document.getElementById("password").value;
 
-    if(this.dataservice.loginUser(username, password)) {
-      this.router.navigate(['/startseite']);
-    } else {
-      document.getElementById("out").style.display = "block";
-    }
+    this.dataservice.loginUser(username, password).subscribe((data) => {
+      if(data == false) {
+        document.getElementById("out").style.display = "block";
+      } else {
+        this.router.navigate(['/startseite']);
+      }
+    })
+    // if(this.dataservice.loginUser(username, password)) {
+    //   this.router.navigate(['/startseite']);
+    // } else {
+    //   document.getElementById("out").style.display = "block";
+    // }
   }
 
 }
