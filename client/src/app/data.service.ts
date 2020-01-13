@@ -22,7 +22,7 @@ export class DataService {
       map((data) => {
         if(data && data.token) {
           document.cookie = data.token;
-          httpOptions.headers = httpOptions.headers.set('Authorization', data);
+          this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
           return true;
         }
         return false;
@@ -33,7 +33,7 @@ export class DataService {
   checkCookie(): any{
     let data = document.cookie;
     console.log(data);
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', JSON.parse(data));
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
 
     return this.http.get<any>(this.loginURL+"/tok", this.httpOptions)
     .pipe(map((data) => {
@@ -42,6 +42,11 @@ export class DataService {
       }
       return false;
     }), catchError(this.handleError<boolean>(false)));
+  }
+
+  deleteCookie(): void{
+    document.cookie = '';
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', '');
   }
 
   private handleError<T> (result?: T) {
