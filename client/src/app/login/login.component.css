@@ -19,7 +19,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 800px;
-  height: 450px;
+  height: 500px;
   text-align: center;
   display: flex;
   color: white;
@@ -54,6 +54,12 @@ p {
   transition: .2s;
 }
 
+/* einkommentieren wenn mit Selenes Branch gemerged
+#out{
+  background: rgba(20, 20, 20, .2);
+  //transition: .2s;
+}
+*/
 
 .inputFields {
   margin: 15px 0;
@@ -90,8 +96,8 @@ p {
   background: rgba(20, 20, 20, .6);
   font-size: 18px;
   color: white;
-  margin-top: 20px;
-  padding: 10px 50px;
+  margin-top: 15px;
+  padding: 10px 30px;
   cursor: pointer;
   transition: .4s;
 }

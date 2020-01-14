@@ -1,8 +1,18 @@
-<form action="index.html" method="post">
-  <p><label for="username">Username</label><br>
-  <input type="text" name="username" value=""></p>
-  <p><label for="password">Password</label><br>
-  <input type="password" name="password" value=""></p>
-  <p><a routerLink = "/startseite"><input type="button" value="login"></a></p>
-  <p><a routerLink = "/registrieren"><input type="button" value="registrieren"></a></p>
-</form>
+<div class="signupSection">
+  <div class="info">
+    <h2>Our new Fitness App</h2>
+    <!--<i class="icon" aria-hidden="true"></i>-->
+    <p>Push your Power!</p>
+  </div>
+
+  <form method="post" class = "signupForm">
+    <ul class = noBullet>
+      <p><label>Username</label><br>
+        <input type="text" class = "inputFields" name="username" value=""></p>
+      <p><label>Password</label><br>
+        <input type="password" class = "inputFields" name="password" value=""></p>
+      <p><a routerLink = "/startseite"><input type="button" id = "login-btn" value="login"></a></p>
+      <p><a routerLink = "/registrieren"><input type="button" id = "reg-btn" value="registrieren"></a></p>
+    </ul>
+  </form>
+</div>
