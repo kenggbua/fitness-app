@@ -20,8 +20,8 @@ app.use(
   })
 );
 
-const loginRoutes = require('./routes/login');
-app.use("/login", loginRoutes);
+app.use("/register", require('./routes/register'));
+app.use("/login", require('./routes/login'));
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {

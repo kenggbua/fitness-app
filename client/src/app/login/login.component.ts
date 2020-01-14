@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.dataservice.checkCookie().subscribe((data) => {
-      console.log(data);
       if(data == true) {
         this.router.navigate(['/startseite']);
       }
@@ -24,14 +23,14 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
-    let username = <HTMLInputElement>document.getElementById("username").value;
-    let password = <HTMLInputElement>document.getElementById("password").value;
+    let username = <HTMLInputElement>document.getElementById("username");
+    let password = <HTMLInputElement>document.getElementById("password");
 
-    this.dataservice.loginUser(username, password).subscribe((data) => {
-      console.log(data);
+    this.dataservice.loginUser(username.value, password.value).subscribe((data) => {
       if(data == true) {
         this.router.navigate(['/startseite']);
       } else {
+        password.value = '';
         document.getElementById("out").style.display = "block";
       }
     });
