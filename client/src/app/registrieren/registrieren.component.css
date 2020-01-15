@@ -41,12 +41,10 @@ p {
   transition: .2s;
 }
 
-/* einkommentieren wenn mit Selenes Branch gemerged
 #out{
   background: rgba(20, 20, 20, .2);
   //transition: .2s;
 }
-*/
 
 .inputFields {
   margin: 10px 0;
@@ -97,4 +95,3 @@ p {
    cursor: pointer;
    transition: .4s;
  }
-
