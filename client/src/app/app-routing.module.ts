@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'einstellungen', component: EinstellungenComponent},
   {path: 'trainingszusammenfassung', component: TrainingszusammenfassungComponent},
   {path: 'registrieren', component: RegistrierenComponent},
-  {path: '', redirectTo: '/startseite', pathMatch: 'full' },
+  {path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
