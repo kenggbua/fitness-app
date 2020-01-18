@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
+// tslint:disable-next-line:max-line-length
+import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,15 @@ import { RegistrierenComponent } from './registrieren/registrieren.component';
     ProfilComponent,
     EinstellungenComponent,
     TrainingszusammenfassungComponent,
-    RegistrierenComponent
+    RegistrierenComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ScheduleModule, RecurrenceEditorModule
   ],
-  providers: [],
+  providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
