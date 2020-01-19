@@ -1,4 +1,8 @@
+#planner{
+  display: flex;
+}
+
+
 ejs-schedule{
-  height: 850px;
-  width: 70%;
+float: right;
 }
