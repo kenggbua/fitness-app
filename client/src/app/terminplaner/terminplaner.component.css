@@ -1,8 +1,7 @@
-#planner{
+#plannerDiv{
   display: flex;
 }
-
-
-ejs-schedule{
-float: right;
+#schedule{
+  width: 70%;
+  height: 80%;
 }

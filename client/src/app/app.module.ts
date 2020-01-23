@@ -27,13 +27,14 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     ProfilComponent,
     EinstellungenComponent,
     TrainingszusammenfassungComponent,
-    RegistrierenComponent,
+    RegistrierenComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ScheduleModule, RecurrenceEditorModule
+    ScheduleModule,
+    RecurrenceEditorModule
   ],
   providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]
