@@ -1,24 +1,82 @@
-.windowSection {
+.homepage{
+  width: 80%;
+  height: 80%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width:1200px;
-  height: 500px;
-  text-align: center;
-  display: flex;
-  color: cadetblue;
-  box-shadow: lightgrey;
-}
-.windowForm {
-  width: 70%;
-  background: whitesmoke;
-  transition: .2s;
+  background: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
+  background-repeat: no-repeat;
 }
 
-.menu{
-  background-color: cadetblue;
+.header{
+  display: flex;
+  align-items: center;
+  background-color: lightblue;
+  transition: 5s;
   width: 100%;
   height: 80px;
-  display: flex;
 }
+
+ .searchSection{
+   flex: 1;
+ }
+
+.container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 40, 40, .8);
+  transition: .2s;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.homeSection, .historySection{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 500px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#planner_btn{
+  width: 80px;
+  height: 80px;
+}
+
+#startWorkout_btn{
+  width: 80px;
+  height: 80px;
+}
+
+table{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+table thead tr{
+  background-color: lightblue;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+table thead tr:first-child{
+  flex-basis: 10%;
+}
+
+table thead tr:first-child + tr{
+  flex-basis: 90%;
+}
+
+table tr{
+  border-radius: 3px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+}
+
+

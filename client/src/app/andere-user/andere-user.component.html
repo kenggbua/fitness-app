@@ -1,1 +1,33 @@
-<p>andere-user works!</p>
+<!-- the user overview should contain:
+a list of users who are using the app
+possibility to add user to may friends
+-->
+<html class="userOverview">
+<header class="header">
+  <div class = "BackSection">
+    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+    </a>
+  </div>
+  <div class = "searchSection">
+    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/cotton/64/000000/search--v2.png">
+    </a>
+  </div>
+  <div class = "profileSection">
+    <a routerLink="profil"><img type = "button" id = "profile_btn" src="https://img.icons8.com/cotton/64/000000/name--v2.png">
+    </a>
+  </div>
+</header>
+<body>
+
+<!-- section with list of users-->
+<div class="container">
+  <div class = "listElement">
+    <img id = "profile_img" src="https://img.icons8.com/ultraviolet/80/000000/user.png">
+    <p id = "userName">username</p>
+    <!-- add user to my friends-->
+    <img type = "button" id = "add_btn" src="https://img.icons8.com/dusk/64/000000/friends.png" (click)="addFriend();">
+  </div>
+
+</div>
+</body>
+</html>

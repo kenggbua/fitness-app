@@ -1,12 +1,48 @@
-<div class = "windowSection">
-  <form class = "windowForm">
-    <div class = "menu">
-      <a routerLink = "/login" (click) = "logout();">Logout</a><br>
-      <a routerLink = "/profil">Profil</a><br>
-      <a routerLink= "/terminplaner">Terminplaner</a><br>
-      <a routerLink= "/trainingsansicht">Trainingsansicht</a><br>
-      <a routerLink= "/andere-user">Andere User</a><br>
-    </div>
-  </form>
-
+<!-- the homepage should contain:
+possibility to visit profile, search for other users and logout in the header
+possibility to visit workout page where several workouts are stored in main section
+and possibility to visit planner for creating a workout appointment
+at the end of the page should be a table with past 3 workout results
+-->
+<html class="homepage">
+<header class="header">
+  <div class = "logoutSection">
+    <a routerLink="/login" (click)="logout();"><img type = "button" id = "logout_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+    </a>
+  </div>
+  <div class = "searchSection">
+    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/cotton/64/000000/search--v2.png">
+    </a>
+  </div>
+  <div class = "profileSection">
+   <a routerLink="/profil"><img type = "button" id = "profile_btn" src="https://img.icons8.com/cotton/64/000000/name--v2.png">
+   </a>
+  </div>
+</header>
+<body>
+<!-- section with buttons for planner and choosing workout-->
+<div class="container">
+<div class = "homeSection">
+      <a routerLink= "/terminplaner"><img type = "button" id ="planner_btn" src="https://img.icons8.com/cotton/64/000000/health-calendar.png"></a><br>
+      <a routerLink= "/trainingsansicht"><img type = "button" id ="startWorkout_btn" src="https://img.icons8.com/cotton/64/000000/weight-1--v2.png"></a><br>
 </div>
+
+
+<!--table with past 3 workout results -->
+<div class = "historySection">
+  <table>
+    <thead><tr><th>Datum</th><th>Gesamtgewicht</th></tr></thead>
+    <tr>
+      <td>datum1</td><td>test1</td>
+    </tr>
+    <tr>
+      <td>datum2</td><td>test2</td>
+    </tr>
+    <tr>
+      <td>datum3</td><td>test3</td>
+    </tr>
+  </table>
+</div>
+</div>
+</body>
+</html>
