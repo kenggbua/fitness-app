@@ -1,0 +1,7 @@
+#plannerDiv{
+  display: flex;
+}
+#schedule{
+  width: 70%;
+  height: 80%;
+}
