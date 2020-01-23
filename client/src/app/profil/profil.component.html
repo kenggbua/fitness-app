@@ -1,2 +1,33 @@
-<p>profil works!</p>
-<a routerLink = "/einstellungen">Einstellungen</a>
+<!-- the profile should contain:
+the username
+the height and wheight of the user
+a possibility to change these data
+-->
+<html class="profile">
+<header class="header">
+  <div class = "BackSection">
+    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+    </a>
+  </div>
+  <div class = "searchSection">
+    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/cotton/64/000000/search--v2.png">
+    </a>
+  </div>
+  <div class = "profileSection">
+    <a routerLink = "/einstellungen"><img type = "button" id = "settings_btn" src="https://img.icons8.com/ultraviolet/40/000000/settings.png">
+    </a>
+  </div>
+</header>
+
+<!-- section with user data-->
+<h2>Benutzerprofil</h2>
+<div class="card">
+  <img id = "profile_img" src="https://img.icons8.com/ultraviolet/80/000000/user.png">
+  <h1>Username</h1>
+  <p class="height">Größe: </p>
+  <p class = "wheight">Gewicht: </p>
+</div>
+<body>
+</body>
+</html>
+
