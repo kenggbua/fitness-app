@@ -30,7 +30,6 @@ export class DataService {
         }
         return data.message;
       }), catchError((error) => {
-        console.log(error);
         console.log(error.error.message);
         return of(error.error.message);
       })
@@ -53,7 +52,7 @@ export class DataService {
 
   checkCookie(): any {
     let data = document.cookie;
-    console.log(data);
+    if(data === '') return of(false);
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
 
     return this.http.get<any>(this.loginURL + "/tok", this.httpOptions).pipe(

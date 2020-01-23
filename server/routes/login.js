@@ -9,8 +9,6 @@ router.post('/', (req, res) => {
 
   let user = req.body.user;
   let pass = req.body.pass;
-  console.log(user);
-  console.log(pass);
 
   db.query({
     text: `SELECT * FROM public.users WHERE u_name = $1 AND u_encrypted_password = $2;`,
@@ -21,6 +19,7 @@ router.post('/', (req, res) => {
 
     // no results
     if (!resultUser) {
+        console.log(user + " wrong username or password");
         res.status(401).json({
           "message": "login failed"
         });
@@ -29,6 +28,7 @@ router.post('/', (req, res) => {
 
     // everything ok
     const token = jwt.sign({data: user, expiresIn: cfg.auth.expiration}, cfg.auth.jwt_key);
+      console.log(user + " login successful");
     res.status(200).json({
         token: token
     });
@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
   .catch(error => {
             // error accessing db
             if (error) {
+                console.log(user + " login. Error occures");
                 res.status(400).json({
                     "message": "error ocurred"
                 });
@@ -47,10 +48,12 @@ router.post('/', (req, res) => {
 router.get('/tok', (req, res) => {
   try {
     req.username = jwt.verify(req.headers.authorization, cfg.auth.jwt_key).data;
+      console.log(req.username + " automatic login success");
     res.status(200).json({
         token: req.headers.authorization
     });
   } catch (err) {
+      console.log(req.username + " automatic login fail");
     return res.status(401).json({
       message: "Authentication failed"
     });

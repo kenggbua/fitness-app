@@ -16,7 +16,6 @@ export class RegistrierenComponent implements OnInit {
 
   ngOnInit() {
     this.dataservice.checkCookie().subscribe((data) => {
-      console.log(data);
       if (data == true) {
         this.router.navigate(['/startseite']);
       }
