@@ -12,4 +12,7 @@ export class AndereUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  addFriend(): void{
+    //add user as friend
+  }
 }
