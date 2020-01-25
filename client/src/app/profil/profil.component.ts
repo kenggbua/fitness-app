@@ -12,4 +12,7 @@ export class ProfilComponent implements OnInit {
   ngOnInit() {
   }
 
+  settings(): void{
+    //make data editable
+  }
 }

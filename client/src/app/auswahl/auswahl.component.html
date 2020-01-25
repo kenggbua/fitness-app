@@ -1,8 +1,8 @@
-<!-- the user overview should contain:
-a list of users who are using the app
-possibility to add user to may friends
+<!-- the workout overview should contain:
+possibility to visit profile, search for other users and logout in the header
+list of prepared workouts to choose from
 -->
-<html class="userOverview">
+<html class="workoutOverview">
 <header class="header">
   <div class = "BackSection">
     <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
@@ -19,13 +19,12 @@ possibility to add user to may friends
 </header>
 <body>
 
-<!-- section with list of users-->
+
+<!-- section with list of workouts-->
 <div class="container">
-  <div class = "listElement">
-    <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png">
-    <p id = "userName">username</p>
-    <!-- add user to my friends-->
-    <img type = "button" id = "add_btn" src="https://img.icons8.com/doodle/48/000000/handshake--v1.png" (click)="addFriend();">
+<div routerLink="/trainingsansicht" class = "listElement" >
+    <img src="https://img.icons8.com/doodle/64/000000/barbell.png">
+      <p class = "label" id = "WorkoutName">Workoutname</p>
   </div>
 
 </div>
