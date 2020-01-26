@@ -22,6 +22,9 @@ app.use(
 
 app.use("/register", require('./routes/register'));
 app.use("/login", require('./routes/login'));
+app.use("/plans",require('./routes/getPlans'));
+app.use("/workout",require('./routes/getWorkout'));
+app.use("/saveLogEntry",require('./routes/saveLogEntry'));
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WorkoutService} from '../service/workout.service';
 
 @Component({
   selector: 'app-auswahl',
@@ -7,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuswahlComponent implements OnInit {
 
-  constructor() {
+  private db : any[];
+
+
+  constructor(  private workout: WorkoutService) {
+
   }
 
   ngOnInit() {
+
+
+    this.workout.getWorkouts().subscribe((data) => {
+      this.db = data;
+    });
+
   }
 
 }

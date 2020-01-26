@@ -19,11 +19,10 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-
     "@syncfusion/ej2-angular-schedule": "^17.4.43",
-    "@syncfusion/ej2-material-theme": "~17.4.41",
-
+    "@syncfusion/ej2-material-theme": "^17.4.44",
     "rxjs": "~6.4.0",
+    "ts-stopwatch": "0.0.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
