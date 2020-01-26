@@ -9,6 +9,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
+import {AuswahlComponent} from './auswahl/auswahl.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'einstellungen', component: EinstellungenComponent},
   {path: 'trainingszusammenfassung', component: TrainingszusammenfassungComponent},
   {path: 'registrieren', component: RegistrierenComponent},
+  {path: 'auswahl', component: AuswahlComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 

@@ -56,7 +56,7 @@ export class DataService {
     console.log(data);
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
 
-    return this.http.get<any>(this.loginURL + "/tok", this.httpOptions).pipe(
+    return this.http.get<any>(this.loginURL + '/tok', this.httpOptions).pipe(
       map((data) => {
         if (data && data.token) {
           return true;
