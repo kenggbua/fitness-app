@@ -15,6 +15,7 @@ import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/tr
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 // tslint:disable-next-line:max-line-length
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import {AuswahlComponent} from './auswahl/auswahl.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     ProfilComponent,
     EinstellungenComponent,
     TrainingszusammenfassungComponent,
-    RegistrierenComponent
+    RegistrierenComponent,
+    AuswahlComponent
   ],
   imports: [
     BrowserModule,
