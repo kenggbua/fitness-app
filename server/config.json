@@ -2,7 +2,7 @@
     "database": {
         "host": "192.168.99.100",
         "user": "postgres",
-        "password": "",
+        "password": "post12",
         "db": "postgres",
         "port":5432
     },
