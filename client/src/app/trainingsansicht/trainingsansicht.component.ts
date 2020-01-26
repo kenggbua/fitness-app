@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-trainingsansicht',
   templateUrl: './trainingsansicht.component.html',
@@ -19,7 +20,7 @@ export class TrainingsansichtComponent implements OnInit {
     //visibility von timer und play button ändern
 }
 
-  startWorkout(): void{
+  startWorkout(): void {
   //@Kevin deine STopwatch einbauen"
 }
 }
