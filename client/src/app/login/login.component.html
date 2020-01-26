@@ -5,14 +5,14 @@
     <p>Push your Power!</p>
   </div>
 
-  <form method="post" class = "signupForm">
+  <form class = "signupForm">
     <ul class = noBullet>
       <p><label>Username</label><br>
         <input type="text" class = "inputFields" id="username" value=""></p>
       <p><label>Password</label><br>
         <input type="password" class = "inputFields" id="password" value=""></p>
       <p><input type="button" id = "login-btn" (click) = "checkLogin()" value="login"></p>
-      <p><a routerLink = "/registrieren"><input type="button" id = "reg-btn" value="registrieren"></a></p>
+      <p><input type="button" id = "reg-btn" (click) = "this.router.navigate(['/registrieren']);" value="registrieren"></p>
       <p><textarea id="out" style="display:none;" rows="1" cols="40">Username oder Passwort stimmen nicht!</textarea></p>
     </ul>
   </form>
