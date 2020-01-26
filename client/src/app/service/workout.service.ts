@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import {Observable, of, throwError} from 'rxjs';
-import {Workout} from '../helper/workout';
+
 
 
 
@@ -24,7 +24,6 @@ export class WorkoutService {
     })
   };
 
-  entries: Workout[];
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -41,25 +40,12 @@ export class WorkoutService {
 
 
   getWorkouts(): any {
-    this.entries = [];
-    const getallUrl = `http://${this.serverURL}/plans`;
+    const getallUrl = `http://localhost:3000/plans`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    this.http.get(getallUrl, httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      ).subscribe((data: any) => {
-      Object.keys(data).forEach(
-        (key) => {
-          let entry = new Workout (
-            data[key].id,
-            data[key].name)
-          this.entries.push(entry);
-        }
-      );
-    });
+    return this.http.get(getallUrl, httpOptions).pipe(catchError(this.handleError));
   }
 }
