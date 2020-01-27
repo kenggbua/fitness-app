@@ -10,6 +10,7 @@ export class DataService {
   private serverURL = 'http://localhost:3000/';
   private loginURL = this.serverURL + "login";
   private registerURL = this.serverURL + "register";
+  private userURL = this.serverURL + "user";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -49,6 +50,14 @@ export class DataService {
         return false;
       }), catchError((error) => { return of(false); })
     );
+  }
+
+  getUserData() {
+    let data = document.cookie;
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+    return this.http.get<any>(this.userURL, this.httpOptions).pipe(
+      catchError((error) => { return of(undefined); })
+    )
   }
 
   checkCookie(): any {

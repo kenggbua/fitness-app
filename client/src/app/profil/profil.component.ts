@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-profil',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataservice: DataService) { }
 
   ngOnInit() {
-
+    this.loadUserData();
   }
 
   settings(): void {
@@ -37,5 +38,11 @@ export class ProfilComponent implements OnInit {
     height.setAttribute('disabled', String(true));
     const weight = document.getElementById('weight');
     weight.setAttribute('disabled', String(true));
+  }
+
+  loadUserData() {
+    this.dataservice.getUserData().subscribe((data) => {
+
+    })
   }
 }
