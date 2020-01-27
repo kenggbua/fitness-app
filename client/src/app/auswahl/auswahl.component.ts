@@ -19,7 +19,6 @@ export class AuswahlComponent implements OnInit {
 
 
     this.workout.getWorkouts().subscribe((data) => {
-      console.log(data)
       this.db = data;
     });
 

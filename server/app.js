@@ -1,8 +1,18 @@
 let express = require('express');
 let cors = require('cors');
+let webpush = require('web-push');
+let path = require('path');
 const bodyParser = require('body-parser');
 
+//generate VAPID keys to identify who sends push notification
+const publicVapidKey = 'BFCMlOq1RWyZvCMu8XAJEQCi4_gClv-U_UJpxXSB_HyRdYwVpAP_8f_-IPaLIwLdI3Ca_ZS0t3odUe-8hO6w5vE';
+const privateVapidKey = 'TaDVAIHlDk7xCzuBbv_HBNuW4sxVnSIalKrzqRy5ag0';
 
+webpush.setVapidDetails(
+    'mailto:example@yourdomain.org',
+    publicVapidKey,
+    privateVapidKey
+);
 
 //Config reinholen port etc.
 let cfg = require('./config.json');
@@ -25,6 +35,7 @@ app.use("/login", require('./routes/login'));
 app.use("/plans",require('./routes/getPlans'));
 app.use("/workout",require('./routes/getWorkout'));
 app.use("/saveLogEntry",require('./routes/saveLogEntry'));
+app.use("/user", require('./routes/user'));
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {
@@ -57,3 +68,19 @@ db.initDb.then(() => {
       console.log("Listening on port " + cfg.server.port + "...");
   });
 }, () => {console.log("Failed to connect to DB!")});
+
+
+//subscribe route
+app.post('/subscribe', (req, res)=>{
+    //Get push subscription object
+    const subsciption = req.body;
+
+    //Send 201 status when resource was created successfully
+    res.status(201).jsonp({});
+
+    //create payload
+    const payload = JSON.stringify({title: 'Kalender Push Notification'})
+
+    //Pass object into sendNotification
+    webpush.sendNotification(subsciption,payload).catch(err => console.error(err));
+});
