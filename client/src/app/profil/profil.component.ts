@@ -33,9 +33,9 @@ export class ProfilComponent implements OnInit {
     save.style.visibility = 'hidden';
 
     // make text non editable
-    const height = document.getElementById('height');
+    const height =<HTMLInputElement> document.getElementById('height');
     height.setAttribute('disabled', String(true));
-    const weight = document.getElementById('weight');
+    const weight = <HTMLInputElement>document.getElementById('weight');
     weight.setAttribute('disabled', String(true));
 
     this.userdata.weight = weight.value;
