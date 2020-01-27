@@ -6,16 +6,16 @@ const cfg = require('../config.json');
 
 //gets the workout with the id in the params
 
-router.get("/",(req,res)=>{
+router.get("/:id",(req,res)=>{
     const db = getDb();
 
-    let id = req.query.id; //holt sich die params id
+    let id = req.params.id; //holt sich die params id
 
     console.log("id: "+ id);
 
     
     db.query({
-        text: `Select * from ex_wo_junction where workout_id = $1;`,
+        text: `Select * from ex_wo_junction where workout_id = $1 order by position;`,
         values: [id]},(error,results)=>{
     if(error){
         res.status(500).json({message: "an error occured"});

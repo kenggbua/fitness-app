@@ -41,11 +41,10 @@ export class WorkoutService {
 
   getWorkouts(): any {
     const getallUrl = `http://localhost:3000/plans`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    return this.http.get(getallUrl, httpOptions).pipe(catchError(this.handleError));
+    return this.http.get(getallUrl, this.httpOptions).pipe(catchError(this.handleError));
+  }
+  getSets(id: number): any {
+    const getallUrl = `http://localhost:3000/workout` + id;
+    return this.http.get(getallUrl, this.httpOptions).pipe(catchError(this.handleError));
   }
 }

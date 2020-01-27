@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Stopwatch } from "ts-stopwatch";
+import {WorkoutService} from '../service/workout.service';
 
 @Injectable()
 export class ConfigService {
@@ -21,13 +22,14 @@ export class TrainingsansichtComponent implements OnInit {
 
 
 
-  constructor() { }
-
+  constructor(private workout: WorkoutService) { }
+  private sets :any[];
 
   ngOnInit() {
 
     this.stopwatch = new Stopwatch();
     this.timer = document.getElementById("timer");
+    this.displaySets();
 
   }
 
@@ -40,11 +42,13 @@ export class TrainingsansichtComponent implements OnInit {
 
   startWorkout(): void{
     let interval;
-
+    const icon = document.getElementById('play_btn');
     if(!this.stopwatch.isRunning()){
+      icon.setAttribute('src', 'https://img.icons8.com/doodle/48/000000/circled-pause.png');
       this.stopwatch.start();
        interval = setInterval(() => {this.startTimer()}, 10);
     }else{
+      icon.setAttribute('src', 'https://img.icons8.com/doodle/48/000000/circled-play.png');
       this.stopwatch.stop();
       clearInterval(interval);
     }
@@ -59,4 +63,33 @@ export class TrainingsansichtComponent implements OnInit {
   }
 
 
+  displaySets() {
+    let id = 1;
+    this.workout.getSets(id).subscribe((data) => {
+
+
+
+
+
+     this.sets= [];
+
+      for (let exercises of data) {
+
+        let element = exercises.sets;
+        console.log(exercises);
+
+        for (let i=1; i<=element;i++)
+        this.sets.push({"exercise_name" : exercises.exercise_name,
+                        "setnumber" : i
+
+        })
+
+
+      }
+      console.log(this.sets);
+
+
+
+    });
+  }
 }
