@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Stopwatch } from "ts-stopwatch";
+import {WorkoutService} from '../service/workout.service';
 
 @Injectable()
 export class ConfigService {
@@ -21,13 +22,14 @@ export class TrainingsansichtComponent implements OnInit {
 
 
 
-  constructor() { }
-
+  constructor(private workout: WorkoutService) { }
+  private sets :any[];
 
   ngOnInit() {
 
     this.stopwatch = new Stopwatch();
     this.timer = document.getElementById("timer");
+    this.displaySets();
 
   }
 
@@ -59,4 +61,33 @@ export class TrainingsansichtComponent implements OnInit {
   }
 
 
+  displaySets() {
+    let id = 1;
+    this.workout.getSets(id).subscribe((data) => {
+
+      
+    
+     
+
+     this.sets= [];
+
+      for (let exercises of data) {
+         
+        let element = exercises.sets;
+        console.log(exercises);
+
+        for (let i=1; i<=element;i++)
+        this.sets.push({"exercise_name" : exercises.exercise_name,
+                        "setnumber" : i
+
+        }) 
+                
+        
+      }
+      console.log(this.sets);
+      
+
+    
+    });
+  }
 }
