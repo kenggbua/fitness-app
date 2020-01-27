@@ -7,6 +7,7 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
+  private userdata;
 
   constructor(private dataservice: DataService) { }
 
@@ -27,8 +28,6 @@ export class ProfilComponent implements OnInit {
   }
 
   saveSettings(): void {
-    // TODO: send data to DB
-
     // hide button
     const save = document.getElementById('save-btn');
     save.style.visibility = 'hidden';
@@ -38,11 +37,25 @@ export class ProfilComponent implements OnInit {
     height.setAttribute('disabled', String(true));
     const weight = document.getElementById('weight');
     weight.setAttribute('disabled', String(true));
+
+    this.userdata.weight = weight.value;
+    this.userdata.height = height.value;
+
+    this.dataservice.saveUserData(this.userdata).subscribe((data) => {
+      if(data) {
+        console.log("saving data succeeded");
+      } else {
+        console.log("saving data failed");
+
+      }
+
+    });
   }
 
   loadUserData() {
     this.dataservice.getUserData().subscribe((data) => {
-
+      this.userdata = data.data;
+      console.log(this.userdata);
     })
   }
 }

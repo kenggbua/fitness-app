@@ -39,8 +39,8 @@ export class DataService {
   }
 
   loginUser(username, password): any {
-    let data = { user: username, pass: password };
-    return this.http.post<any>(this.loginURL, data, this.httpOptions).pipe(
+    let body = { user: username, pass: password };
+    return this.http.post<any>(this.loginURL, body, this.httpOptions).pipe(
       map((data) => {
         if (data && data.token) {
           document.cookie = data.token;
@@ -57,7 +57,16 @@ export class DataService {
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
     return this.http.get<any>(this.userURL, this.httpOptions).pipe(
       catchError((error) => { return of(undefined); })
-    )
+    );
+  }
+
+  saveUserData(user) {
+    let data = document.cookie;
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+    let url = this.userURL + "/" + user.u_name;
+    return this.http.patch<any>(url, user, this.httpOptions).pipe(
+      catchError((error) => { return of(undefined); })
+    );
   }
 
   checkCookie(): any {

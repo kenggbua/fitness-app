@@ -24,12 +24,11 @@ a possibility to change these data
 <h2>Benutzerprofil</h2>
 <div class="card">
   <img id = "profile_img" src="https://img.icons8.com/doodle/96/000000/name.png">
-  <h1>Username</h1>
-  <p class="height">Größe: <input type="height" class = "inputFields" id="height" value="" disabled ></p>
-  <p class = "wheight">Gewicht: <input type="weight" class = "inputFields" id="weight" value="" disabled></p>
+  <h1>{{userdata.u_name}}</h1>
+  <p class="height">Größe: <input type="height" class = "inputFields" id="height" value="{{userdata.height}}" disabled ></p>
+  <p class = "wheight">Gewicht: <input type="weight" class = "inputFields" id="weight" value="{{userdata.weight}}" disabled></p>
 </div>
   <p><input type="button" id = "save-btn" (click) = "saveSettings()" value="Speichern"></p>
 </div>
 </body>
 </html>
-
