@@ -22,13 +22,14 @@ list of prepared workouts to choose from
 
 <!-- section with list of workouts-->
 <div class="container">
-<div routerLink="/trainingsansicht" class = "listElement" *ngFor="let workout of db" >
+  <div class = "list">
+  <div routerLink="/trainingsansicht" class = "listElement" *ngFor="let workout of db" >
     <img src="https://img.icons8.com/doodle/64/000000/barbell.png">
   <div >
     <p class = "label" id = "{{workout.id}}">{{workout.name}}</p>
   </div>
   </div>
-
+  </div>
 </div>
 </body>
 </html>

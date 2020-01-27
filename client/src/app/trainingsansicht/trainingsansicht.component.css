@@ -20,6 +20,7 @@ body{
   display: flex;
   align-items: center;
   background-color: black;
+  border: 1px solid rgba(10, 180, 180, 1);
   transition: 5s;
   width: 100%;
   height: 80px;
@@ -30,17 +31,36 @@ body{
 }
 
 .container{
+  margin: 0;
   width: 100%;
   height: 100%;
+  background: rgba(20, 40, 40, .8);
+  transition: .2s;
+  display: flex;
+
+}
+
+.list{
+  margin: 0;
+  width: 70%;
+  height:80%;
   background: rgba(20, 40, 40, .8);
   transition: .2s;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   overflow: auto;
+  flex-wrap: wrap;
+}
+
+.timeSettings{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 #timer{
+
   background-color: white;
   width: 80px;
   height: 30px;
@@ -50,6 +70,7 @@ body{
   text-align: center;
   font-size: 18px;
 }
+
 .listElement{
   width: 300px;
   height: 80px;
@@ -73,7 +94,8 @@ body{
 }
 
 #play_btn{
-  margin-left: auto;
+  cursor: pointer;
+  margin: auto;
 }
 
 
