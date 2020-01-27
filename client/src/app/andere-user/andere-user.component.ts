@@ -13,6 +13,8 @@ export class AndereUserComponent implements OnInit {
   }
 
   addFriend(): void{
-    //add user as friend
+    //TODO: add user to friendlist in DB
+    const icon = document.getElementById('add_btn');
+    icon.style.visibility = 'hidden';
   }
 }
