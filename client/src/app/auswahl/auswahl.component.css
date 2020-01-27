@@ -43,8 +43,7 @@ body{
 .list{
   margin: auto;
   width: 70%;
-  height:70%;
-  background: rgba(20, 40, 40, .8);
+  height: 300px;
   transition: .2s;
   display: flex;
   justify-content: space-between;
@@ -64,4 +63,3 @@ body{
   display: flex;
   flex-direction: row;
 }
-

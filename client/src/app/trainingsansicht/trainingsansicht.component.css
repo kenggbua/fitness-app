@@ -8,6 +8,7 @@
   height: 100%;
   position: absolute;
   background: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
+    background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -43,8 +44,7 @@ body{
 .list{
   margin: 0;
   width: 70%;
-  height:80%;
-  background: rgba(20, 40, 40, .8);
+  height:300px;
   transition: .2s;
   display: flex;
   justify-content: space-between;
@@ -97,5 +97,3 @@ body{
   cursor: pointer;
   margin: auto;
 }
-
-

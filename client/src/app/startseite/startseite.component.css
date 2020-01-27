@@ -9,6 +9,7 @@
   position: absolute;
   margin: 0;
   background: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
+    background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -95,5 +96,3 @@ table tr{
   background-color: #ffffff;
   box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
 }
-
-
