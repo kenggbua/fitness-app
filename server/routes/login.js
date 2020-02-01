@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
     }
 
     // everything ok
-    const token = jwt.sign({data: user, expiresIn: cfg.auth.expiration}, cfg.auth.jwt_key);
+    const token = jwt.sign({data: user}, cfg.auth.jwt_key, {expiresIn: cfg.auth.expiration});
     console.log(user + " login successful");
     res.status(200).json({
         token: token

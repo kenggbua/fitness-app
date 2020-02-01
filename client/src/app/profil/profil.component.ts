@@ -55,7 +55,6 @@ export class ProfilComponent implements OnInit {
   loadUserData() {
     this.dataservice.getUserData().subscribe((data) => {
       this.userdata = data.data;
-      console.log(this.userdata);
     })
   }
 }
