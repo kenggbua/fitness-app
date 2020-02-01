@@ -16,6 +16,7 @@ import { RegistrierenComponent } from './registrieren/registrieren.component';
 // tslint:disable-next-line:max-line-length
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import {AuswahlComponent} from './auswahl/auswahl.component';
+import {AuthGuard} from './service/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,14 @@ import {AuswahlComponent} from './auswahl/auswahl.component';
     ScheduleModule,
     RecurrenceEditorModule
   ],
-  providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
+  providers: [
+    AuthGuard,
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    MonthAgendaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

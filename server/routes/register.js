@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
 
   .then(result => {
     //insert succsessful
-    const token = jwt.sign({data: user, expiresIn: cfg.auth.expiration}, cfg.auth.jwt_key);
+    const token = jwt.sign({data: user}, cfg.auth.jwt_key, {expiresIn: cfg.auth.expiration});
     console.log(req.body.user + " added to db");
     res.status(200).json({
         token: token
