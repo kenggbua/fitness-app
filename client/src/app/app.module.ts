@@ -19,6 +19,7 @@ import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
 import { MaxRepComponent } from './max-rep/max-rep.component';
 import { OtherProfileComponent } from './other-profile/other-profile.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { OtherProfileComponent } from './other-profile/other-profile.component';
     RegistrierenComponent,
     AuswahlComponent,
     MaxRepComponent,
-    OtherProfileComponent
+    OtherProfileComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,

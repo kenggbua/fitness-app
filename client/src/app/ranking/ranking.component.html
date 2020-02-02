@@ -1,0 +1,39 @@
+<!-- the ranking page should contain:
+an overview of the best 20 public users
+ranking depending on their max-rep value
+best user gets on first place
+-->
+<html class="ranking">
+<header class="header">
+  <div class = "logoutSection">
+    <a routerLink="/startseite"><img type = "button" id = "logout_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+    </a>
+  </div>
+  <div class = "searchSection">
+    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
+    </a>
+  </div>
+  <div class = "profileSection">
+    <a routerLink="/profil"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
+    </a>
+  </div>
+</header>
+<body>
+
+  <!--table with the ranking of the best 20 public users depending on their maxrep Value -->
+  <div class = "rankingSection">
+    <table>
+      <thead><tr><th>Ranking</th></tr><tr><th>Benutzername</th><th>Max-rep</th></tr></thead>
+      <tr>
+        <td>#</td><td>01.01.2020</td><td>3840 kg</td>
+      </tr>
+      <tr>
+        <td>#</td><td>10.01.2020</td><td>3900 kg</td>
+      </tr>
+      <tr>
+        <td>#</td><td>18.01.2020</td><td>3950 kg</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
