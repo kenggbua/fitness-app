@@ -27,6 +27,19 @@ a possibility to change these data
   <h1>{{userdata.u_name}}</h1>
   <p class="height">Größe: <input type="height" class = "inputFields" id="height" value="{{userdata.height}}" disabled ></p>
   <p class = "wheight">Gewicht: <input type="weight" class = "inputFields" id="weight" value="{{userdata.weight}}" disabled></p>
+
+  <div class="visibility">
+  <form>
+    <p>Wählen Sie die Sichtbarkeit Ihres Profils:</p>
+    <fieldset>
+      <input type="radio" id="private" name="Sichtbarkeit" value="Privat">
+      <label for="private"> Privat</label>
+      <input type="radio" id="public" name="Sichtbarkeit" value="Public">
+      <label for="public"> Öffentlich</label>
+    </fieldset>
+  </form>
+  </div>
+
 </div>
   <a routerLink="/max-rep"><input type="button" id = "maxRep-btn" value="Meine Auswertungen"></a>
   <p><input type="button" id = "save-btn" (click) = "saveSettings()" value="Speichern"></p>
