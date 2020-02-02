@@ -48,7 +48,7 @@ app.get('/users',function(req,res){ db.getDb().query({
 }).then(results => {res.send(results.rows)})
 });
 
-app.get('/workout1',function(req,res){ db.getDb().query({
+app.get('/workout',function(req,res){ db.getDb().query({
   text: `SELECT * from ex_wo_junction where workout_id = 1;`
 }).then(results => {res.send(results.rows)})
 });

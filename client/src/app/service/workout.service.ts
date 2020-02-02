@@ -44,7 +44,7 @@ export class WorkoutService {
     return this.http.get(getallUrl, this.httpOptions).pipe(catchError(this.handleError));
   }
   getSets(id: number): any {
-    const getallUrl = `http://localhost:3000/workout` + id;
+    const getallUrl = `http://localhost:3000/workout/` + id;
     return this.http.get(getallUrl, this.httpOptions).pipe(catchError(this.handleError));
   }
 }
