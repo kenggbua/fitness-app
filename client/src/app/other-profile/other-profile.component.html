@@ -1,0 +1,29 @@
+<!-- the profile should contain:
+the username
+the height and wheight of the user
+a possibility to change these data
+-->
+<html class="profile">
+<header class="header">
+  <div class = "BackSection">
+    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+    </a>
+  </div>
+  <div class = "searchSection">
+    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
+    </a>
+  </div>
+</header>
+<body>
+<!-- section with user data-->
+<div class = "otherProfileSection">
+  <h2>Benutzerprofil</h2>
+  <div class="card">
+    <img id = "profile_img" src="https://img.icons8.com/doodle/96/000000/name.png">
+    <h1>{{userdata.u_name}}</h1>
+    <p class="height">Größe: <input type="height" class = "inputFields" id="height" value="{{userdata.height}}" disabled ></p>
+    <p class = "wheight">Gewicht: <input type="weight" class = "inputFields" id="weight" value="{{userdata.weight}}" disabled></p>
+  </div>
+</div>
+</body>
+</html>

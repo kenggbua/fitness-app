@@ -18,6 +18,7 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
 import { MaxRepComponent } from './max-rep/max-rep.component';
+import { OtherProfileComponent } from './other-profile/other-profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MaxRepComponent } from './max-rep/max-rep.component';
     TrainingszusammenfassungComponent,
     RegistrierenComponent,
     AuswahlComponent,
-    MaxRepComponent
+    MaxRepComponent,
+    OtherProfileComponent
   ],
   imports: [
     BrowserModule,
