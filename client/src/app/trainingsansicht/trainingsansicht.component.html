@@ -23,12 +23,13 @@ list of prepared exercises to do in the chosen workout
 <!-- section with list of exercises-->
 <div class="container">
   <div class="list">
-  <div class = "listElement"  *ngFor="let set of sets">
+  <div class = "listElement"> <!-- *ngFor="let set of sets"  -->
     <img src="https://img.icons8.com/doodle/64/000000/barbell.png">
     <div class = "data">
-    <p class = "label" id = "exerciseName">Übung: {{set.exercise_name}} ({{set.setnumber}}) </p>
+    <p class = "label" id = "exerciseName">Übung: {{currentExercise.exercise_name}} ({{currentExercise.setnumber}}) </p>
     <p class = "label" id = "weight">Gewicht: <input type="number" min=0 max=500> </p>
     <p class = "label" id = "repeat">Wiederholungen:<input type="number" min=0 max=100> </p>
+    <button type="button" id = "nextSet_btn" (click)= "nextSet()">Click Me!</button>
     </div>
   </div>
   </div>
