@@ -35,6 +35,8 @@ body{
   height: 100%;
   background: rgba(20, 40, 40, .8);
   transition: .2s;
+  display: flex;
+  flex-direction: column;
 }
 
 h2{
@@ -71,9 +73,20 @@ h2{
   font-size: 18px;
   color: white;
   margin-top: 15px;
-  padding: 10px 30px;
+  padding: 10px;
   cursor: pointer;
   transition: .4s;
   margin-left: 50%;
   visibility: hidden;
+}
+
+#maxRep-btn{
+  border: 1px solid rgba(10, 180, 180, 1);
+  background: rgba(20, 20, 20, .6);
+  font-size: 18px;
+  color: white;
+  padding: 10px 30px;
+  cursor: pointer;
+  transition: .4s;
+  margin-left: 41%;
 }
