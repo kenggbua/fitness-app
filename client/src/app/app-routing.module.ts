@@ -10,7 +10,11 @@ import { EinstellungenComponent } from './einstellungen/einstellungen.component'
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 import {AuswahlComponent} from './auswahl/auswahl.component';
+import {MaxRepComponent} from './max-rep/max-rep.component';
+import {OtherProfileComponent} from './other-profile/other-profile.component';
+import {RankingComponent} from './ranking/ranking.component';
 import {AuthGuard} from './service/auth-guard.service';
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,6 +27,9 @@ const routes: Routes = [
   {path: 'trainingszusammenfassung', component: TrainingszusammenfassungComponent, canActivate: [AuthGuard]},
   {path: 'registrieren', component: RegistrierenComponent},
   {path: 'auswahl', component: AuswahlComponent, canActivate: [AuthGuard]},
+  {path: 'maxRep', component: MaxRepComponent, canActivate: [AuthGuard]},
+  {path: 'other-profile', component: OtherProfileComponent, canActivate: [AuthGuard]},
+  {path: 'ranking', component: RankingComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
