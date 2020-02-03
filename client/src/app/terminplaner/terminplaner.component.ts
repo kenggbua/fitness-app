@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-terminplaner',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TerminplanerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
+  showToastr(){
+  this.toastr.info("Training um 15 Uhr", "Kalendereintrag");
+  }
 }
