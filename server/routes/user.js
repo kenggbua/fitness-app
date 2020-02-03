@@ -11,8 +11,8 @@ router.patch('/:username', (req, res) => {
   console.log(username + " update userdata");
 
   db.query({
-    text: `Update public.users SET weight = $1, height = $2 WHERE u_name = $3;`,
-    values: [req.body.weight, req.body.height, username]
+    text: `Update public.users SET weight = $1, height = $2, visible = $3 WHERE u_name = $4;`,
+    values: [req.body.weight, req.body.height, req.body.visible, username]
   })
   .then((result) => {
     // no results

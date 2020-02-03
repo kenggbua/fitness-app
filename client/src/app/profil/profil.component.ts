@@ -26,10 +26,8 @@ export class ProfilComponent implements OnInit {
    height.removeAttribute('disabled');
    const weight = document.getElementById('weight');
    weight.removeAttribute('disabled');
-
-   //TODO show visibility settings
-   const visibility = document.getElementsByClassName('visibility');
-
+   const visibility = document.getElementById('visibility');
+   visibility.removeAttribute('disabled');
 
    // show save button
    const save = document.getElementById('save-btn');
@@ -41,19 +39,19 @@ export class ProfilComponent implements OnInit {
     const save = document.getElementById('save-btn');
     save.style.visibility = 'hidden';
 
-    // TODO hide visibility settings
-    const visibility = document.getElementsByClassName('visibility');
-    //TODO: save settings
-
     // make text non editable
     const height = document.getElementById('height') as HTMLInputElement;
     height.setAttribute('disabled', String(true));
     const weight = document.getElementById('weight') as HTMLInputElement;
     weight.setAttribute('disabled', String(true));
+    const visibility = document.getElementById('visibility') as HTMLInputElement;
+    visibility.setAttribute('disabled', String(true));
 
     this.userdata.weight = weight.value;
     this.userdata.height = height.value;
+    this.userdata.visible = visibility.value;
 
+    // save settings
     this.dataservice.saveUserData(this.userdata).subscribe((data) => {
       if (data) {
         console.log('saving data succeeded');
@@ -71,6 +69,7 @@ export class ProfilComponent implements OnInit {
       this.userdata = data.data;
       if(this.userdata.u_name === localStorage.getItem("u_name")) {
         this.myUser = true;
+        let visibility = (<HTMLInputElement>document.getElementById('visibility')).value = this.userdata.visible;
       }
     });
   }

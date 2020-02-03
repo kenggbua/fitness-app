@@ -10,7 +10,6 @@ import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/tr
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {MaxRepComponent} from './max-rep/max-rep.component';
-import {OtherProfileComponent} from './other-profile/other-profile.component';
 import {RankingComponent} from './ranking/ranking.component';
 import {AuthGuard} from './service/auth-guard.service';
 

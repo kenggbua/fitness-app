@@ -6,44 +6,41 @@ possibility to change visibility of my profile from private to public
 -->
 <html class="profile">
 <header class="header">
-  <div class = "BackSection">
-    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+  <div class="BackSection">
+    <a routerLink="/startseite"><img type="button" id="home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
     </a>
   </div>
-  <div class = "searchSection">
-    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
+  <div class="searchSection">
+    <a routerLink="/andere-user"> <img type="button" id="search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
     </a>
   </div>
-  <div *ngIf="myUser" class = "settingsSection">
-    <img type = "button" id = "settings_btn" src="https://img.icons8.com/doodle/48/000000/security-configuration.png" (click)="settings()">
+  <div *ngIf="myUser" class="settingsSection">
+    <img type="button" id="settings_btn" src="https://img.icons8.com/doodle/48/000000/security-configuration.png" (click)="settings()">
 
   </div>
 </header>
+
 <body>
-<!-- section with user data-->
-<div class = "profileSection">
-<h2>Benutzerprofil</h2>
-<div class="card">
-  <img id = "profile_img" src="https://img.icons8.com/doodle/96/000000/name.png">
-  <h1>{{userdata.u_name}}</h1>
-  <p class="height">Größe: <input type="height" class = "inputFields" id="height" value="{{userdata.height}}" disabled ></p>
-  <p class = "wheight">Gewicht: <input type="weight" class = "inputFields" id="weight" value="{{userdata.weight}}" disabled></p>
+  <!-- section with user data-->
+  <div class="profileSection">
+    <h2>Benutzerprofil</h2>
+    <div class="card">
+      <img id="profile_img" src="https://img.icons8.com/doodle/96/000000/name.png">
+      <h1>{{userdata.u_name}}</h1>
+      <p class="height">Größe: <input type="number" class="inputFields" id="height" value="{{userdata.height}}" disabled></p>
+      <p class="wheight">Gewicht: <input type="number" class="inputFields" id="weight" value="{{userdata.weight}}" disabled></p>
+      <p class="visibility">Sichtbarkeit:
+        <select id="visibility" disabled>
+          <option value="null" disabled selected></option>
+          <option value="true">öffenlich</option>
+          <option value="false">privat</option>
+        </select>
+      </p>
 
-  <div class="visibility" *ngIf="myUser">
-  <form>
-    <p>Wählen Sie die Sichtbarkeit Ihres Profils:</p>
-    <fieldset>
-      <input type="radio" id="private" name="Sichtbarkeit" value="Privat">
-      <label for="private"> Privat</label>
-      <input type="radio" id="public" name="Sichtbarkeit" value="Public">
-      <label for="public"> Öffentlich</label>
-    </fieldset>
-  </form>
+    </div>
+    <a routerLink="/maxRep"><input type="button" id="maxRep-btn" value="Auswertungen"></a>
+    <p><input type="button" id="save-btn" (click)="saveSettings()" value="Speichern"></p>
   </div>
-
-</div>
-  <a routerLink="/maxRep"><input type="button" id = "maxRep-btn" value="Auswertungen"></a>
-  <p><input type="button" id = "save-btn" (click) = "saveSettings()" value="Speichern"></p>
-</div>
 </body>
+
 </html>
