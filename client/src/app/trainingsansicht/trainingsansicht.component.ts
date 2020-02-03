@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Stopwatch } from "ts-stopwatch";
 import {WorkoutService} from '../service/workout.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -18,8 +17,6 @@ export class ConfigService {
 
 
 export class TrainingsansichtComponent implements OnInit {
-  private timer: any;
-  private stopwatch: Stopwatch;
   private timeLeft: number = 3;
   private interval;
 
