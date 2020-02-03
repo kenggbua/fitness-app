@@ -18,7 +18,6 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
 import { MaxRepComponent } from './max-rep/max-rep.component';
-import { OtherProfileComponent } from './other-profile/other-profile.component';
 import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { RankingComponent } from './ranking/ranking.component';
     RegistrierenComponent,
     AuswahlComponent,
     MaxRepComponent,
-    OtherProfileComponent,
     RankingComponent
   ],
   imports: [
