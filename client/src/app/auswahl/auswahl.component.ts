@@ -16,8 +16,6 @@ export class AuswahlComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
     this.workout.getWorkouts().subscribe((data) => {
       this.db = data;
     });

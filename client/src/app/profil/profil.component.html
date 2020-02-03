@@ -29,7 +29,7 @@ possibility to change visibility of my profile from private to public
   <p class="height">Größe: <input type="height" class = "inputFields" id="height" value="{{userdata.height}}" disabled ></p>
   <p class = "wheight">Gewicht: <input type="weight" class = "inputFields" id="weight" value="{{userdata.weight}}" disabled></p>
 
-  <div class="visibility">
+  <div class="visibility" *ngIf="myUser">
   <form>
     <p>Wählen Sie die Sichtbarkeit Ihres Profils:</p>
     <fieldset>
@@ -42,7 +42,7 @@ possibility to change visibility of my profile from private to public
   </div>
 
 </div>
-  <a routerLink="/maxRep"><input type="button" id = "maxRep-btn" value="Meine Auswertungen"></a>
+  <a routerLink="/maxRep"><input type="button" id = "maxRep-btn" value="Auswertungen"></a>
   <p><input type="button" id = "save-btn" (click) = "saveSettings()" value="Speichern"></p>
 </div>
 </body>

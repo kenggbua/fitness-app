@@ -10,7 +10,6 @@ import { TrainingsansichtComponent } from './trainingsansicht/trainingsansicht.c
 import { TerminplanerComponent } from './terminplaner/terminplaner.component';
 import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
-import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 // tslint:disable-next-line:max-line-length
@@ -29,7 +28,6 @@ import { RankingComponent } from './ranking/ranking.component';
     TerminplanerComponent,
     AndereUserComponent,
     ProfilComponent,
-    EinstellungenComponent,
     TrainingszusammenfassungComponent,
     RegistrierenComponent,
     AuswahlComponent,
