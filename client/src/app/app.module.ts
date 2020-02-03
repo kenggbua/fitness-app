@@ -17,9 +17,8 @@ import { RegistrierenComponent } from './registrieren/registrieren.component';
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {ToastrModule} from "ngx-toastr";
-import {reverse} from "dns";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [

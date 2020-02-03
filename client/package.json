@@ -26,6 +26,7 @@
     "rxjs": "~6.4.0",
     "ts-stopwatch": "0.0.4",
     "tslib": "^1.10.0",
+    "tui-calendar": "^1.12.10",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
