@@ -11,14 +11,15 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private router: Router
-   ) { }
+  ) { }
 
   canActivate() {
-    if(this.helper.isTokenExpired(document.cookie)) {
-      this.router.navigate(['/login']);
-      return false;
-    }
-
-    return true;
+    try {
+      if (!this.helper.isTokenExpired(localStorage.getItem("token"))) {
+        return true;
+      }
+    } catch (error) { }
+    this.router.navigate(['/login']);
+    return false;
   }
 }

@@ -11,8 +11,8 @@ router.patch('/:username', (req, res) => {
   console.log(username + " update userdata");
 
   db.query({
-    text: `Update public.users SET weight = $1, height = $2 WHERE u_name = $3;`,
-    values: [req.body.weight, req.body.height, username]
+    text: `Update public.users SET weight = $1, height = $2, visible = $3 WHERE u_name = $4;`,
+    values: [req.body.weight, req.body.height, req.body.visible, username]
   })
   .then((result) => {
     // no results
@@ -40,10 +40,10 @@ router.patch('/:username', (req, res) => {
   });
 });
 
-router.get('/', (req, res) => {
+router.get('/:username', (req, res) => {
   const db = getDb();
   let username;
-  let user;
+  let requestedUser;
   try {
     username = jwt.verify(req.headers.authorization, cfg.auth.jwt_key).data;
   } catch (err) {
@@ -52,28 +52,29 @@ router.get('/', (req, res) => {
     });
   }
 
-  console.log(username + " request userdata");
+  console.log(username + " request userdata about " + req.params.username);
 
+//TODO: check if requesting userdata is allowed (friend or public)
   db.query({
     text: `SELECT * FROM public.users WHERE u_name = $1;`,
-    values: [username]
+    values: [req.params.username]
   })
 
   .then((result) => {
-    user = result.rows[0];
+    requestedUser = result.rows[0];
 
     // no results
-    if (!user) {
-      console.log(username + " not found");
+    if (!requestedUser) {
+      console.log(req.params.username + " not found");
       res.status(401).json({
         "message": "user not found"
       });
       return;
     }
 
-    console.log(username + " found");
+    console.log(req.params.username + " found");
     res.status(200).json({
-      data: user
+      data: requestedUser
     });
   })
 

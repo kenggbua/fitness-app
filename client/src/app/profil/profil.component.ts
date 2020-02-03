@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../service/data.service';
 
 @Component({
@@ -8,8 +9,12 @@ import { DataService } from '../service/data.service';
 })
 export class ProfilComponent implements OnInit {
   private userdata;
+  private myUser;
 
-  constructor(private dataservice: DataService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private dataservice: DataService
+  ) { }
 
   ngOnInit() {
     this.loadUserData();
@@ -21,6 +26,8 @@ export class ProfilComponent implements OnInit {
    height.removeAttribute('disabled');
    const weight = document.getElementById('weight');
    weight.removeAttribute('disabled');
+   const visibility = document.getElementById('visibility');
+   visibility.removeAttribute('disabled');
 
    // show save button
    const save = document.getElementById('save-btn');
@@ -33,19 +40,23 @@ export class ProfilComponent implements OnInit {
     save.style.visibility = 'hidden';
 
     // make text non editable
-    const height =<HTMLInputElement> document.getElementById('height');
+    const height = document.getElementById('height') as HTMLInputElement;
     height.setAttribute('disabled', String(true));
-    const weight = <HTMLInputElement>document.getElementById('weight');
+    const weight = document.getElementById('weight') as HTMLInputElement;
     weight.setAttribute('disabled', String(true));
+    const visibility = document.getElementById('visibility') as HTMLInputElement;
+    visibility.setAttribute('disabled', String(true));
 
     this.userdata.weight = weight.value;
     this.userdata.height = height.value;
+    this.userdata.visible = visibility.value;
 
+    // save settings
     this.dataservice.saveUserData(this.userdata).subscribe((data) => {
-      if(data) {
-        console.log("saving data succeeded");
+      if (data) {
+        console.log('saving data succeeded');
       } else {
-        console.log("saving data failed");
+        console.log('saving data failed');
 
       }
 
@@ -53,8 +64,13 @@ export class ProfilComponent implements OnInit {
   }
 
   loadUserData() {
-    this.dataservice.getUserData().subscribe((data) => {
+    let username = this.route.snapshot.paramMap.get('username');
+    this.dataservice.getUserData(username).subscribe((data) => {
       this.userdata = data.data;
-    })
+      if(this.userdata.u_name === localStorage.getItem("u_name")) {
+        this.myUser = true;
+        let visibility = (<HTMLInputElement>document.getElementById('visibility')).value = this.userdata.visible;
+      }
+    });
   }
 }
