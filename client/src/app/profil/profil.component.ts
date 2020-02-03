@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../service/data.service';
 
 @Component({
@@ -8,8 +9,12 @@ import { DataService } from '../service/data.service';
 })
 export class ProfilComponent implements OnInit {
   private userdata;
+  private myUser;
 
-  constructor(private dataservice: DataService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private dataservice: DataService
+  ) { }
 
   ngOnInit() {
     this.loadUserData();
@@ -61,8 +66,12 @@ export class ProfilComponent implements OnInit {
   }
 
   loadUserData() {
-    this.dataservice.getUserData().subscribe((data) => {
+    let username = this.route.snapshot.paramMap.get('username');
+    this.dataservice.getUserData(username).subscribe((data) => {
       this.userdata = data.data;
+      if(this.userdata.u_name === localStorage.getItem("u_name")) {
+        this.myUser = true;
+      }
     });
   }
 }

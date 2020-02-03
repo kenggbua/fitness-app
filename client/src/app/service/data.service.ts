@@ -25,8 +25,8 @@ export class DataService {
     return this.http.post<any>(this.registerURL, data, this.httpOptions).pipe(
       map((data) => {
         if (data && data.token) {
-          document.cookie = data.token;
-          this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("u_name", username);
           return true;
         }
         return data.message;
@@ -42,8 +42,8 @@ export class DataService {
     return this.http.post<any>(this.loginURL, body, this.httpOptions).pipe(
       map((data) => {
         if (data && data.token) {
-          document.cookie = data.token;
-          this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("u_name", username);
           return true;
         }
         return false;
@@ -51,40 +51,23 @@ export class DataService {
     );
   }
 
-  getUserData() {
-    let data = document.cookie;
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
-    return this.http.get<any>(this.userURL, this.httpOptions).pipe(
+  getUserData(username: string) {
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', localStorage.getItem("token"));
+    return this.http.get<any>(this.userURL + "/" + username, this.httpOptions).pipe(
       catchError((error) => { return of(undefined); })
     );
   }
 
   saveUserData(user) {
-    let data = document.cookie;
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', localStorage.getItem("token"));
     let url = this.userURL + "/" + user.u_name;
     return this.http.patch<any>(url, user, this.httpOptions).pipe(
       catchError((error) => { return of(undefined); })
     );
   }
 
-  checkCookie(): any {
-    let data = document.cookie;
-    if(data === '') return of(false);
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
-
-    return this.http.get<any>(this.loginURL + '/tok', this.httpOptions).pipe(
-      map((data) => {
-        if (data && data.token) {
-          return true;
-        }
-        return false;
-      }), catchError((error) => { return of(false); })
-      );
-  }
-
-  deleteCookie(): void {
-    document.cookie = '';
+  logout(): void {
+    localStorage.clear();
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', '');
   }
 }

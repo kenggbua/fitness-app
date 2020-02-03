@@ -14,7 +14,7 @@ possibility to change visibility of my profile from private to public
     <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
     </a>
   </div>
-  <div class = "settingsSection">
+  <div *ngIf="myUser" class = "settingsSection">
     <img type = "button" id = "settings_btn" src="https://img.icons8.com/doodle/48/000000/security-configuration.png" (click)="settings()">
 
   </div>
