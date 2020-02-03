@@ -15,11 +15,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataservice.checkCookie().subscribe((data) => {
-      if(data == true) {
-        this.router.navigate(['/login']);
-      }
-    });
   }
 
   checkLogin() {

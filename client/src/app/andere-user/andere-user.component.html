@@ -13,7 +13,7 @@ possibility to add user to may friends
     </a>
   </div>
   <div class = "profileSection">
-    <a routerLink="/profil"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
+    <a routerLink="/profile/{{user}}"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
     </a>
   </div>
 </header>
@@ -23,7 +23,7 @@ possibility to add user to may friends
 <div class="container">
   <div class = 'friendList'>
   <div class = "listElement">
-    <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png">
+    <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
     <p id = "userName">username</p>
     <!-- add user to my friends-->
     <img type = "button" id = "add_btn" src="https://img.icons8.com/doodle/48/000000/handshake--v1.png" (click)="addFriend();">

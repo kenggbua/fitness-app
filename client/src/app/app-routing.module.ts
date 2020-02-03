@@ -6,11 +6,13 @@ import { TrainingsansichtComponent } from './trainingsansicht/trainingsansicht.c
 import { TerminplanerComponent } from './terminplaner/terminplaner.component';
 import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
-import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 import {AuswahlComponent} from './auswahl/auswahl.component';
+import {MaxRepComponent} from './max-rep/max-rep.component';
+import {RankingComponent} from './ranking/ranking.component';
 import {AuthGuard} from './service/auth-guard.service';
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -18,11 +20,12 @@ const routes: Routes = [
   {path: 'trainingsansicht', component: TrainingsansichtComponent, canActivate: [AuthGuard]},
   {path: 'terminplaner', component: TerminplanerComponent, canActivate: [AuthGuard]},
   {path: 'andere-user', component: AndereUserComponent, canActivate: [AuthGuard]},
-  {path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
-  {path: 'einstellungen', component: EinstellungenComponent, canActivate: [AuthGuard]},
+  {path: 'profile/:username', component: ProfilComponent, canActivate: [AuthGuard]},
   {path: 'trainingszusammenfassung', component: TrainingszusammenfassungComponent, canActivate: [AuthGuard]},
   {path: 'registrieren', component: RegistrierenComponent},
   {path: 'auswahl', component: AuswahlComponent, canActivate: [AuthGuard]},
+  {path: 'maxRep', component: MaxRepComponent, canActivate: [AuthGuard]},
+  {path: 'ranking', component: RankingComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 

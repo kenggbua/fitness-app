@@ -10,13 +10,14 @@ import { TrainingsansichtComponent } from './trainingsansicht/trainingsansicht.c
 import { TerminplanerComponent } from './terminplaner/terminplaner.component';
 import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
-import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 // tslint:disable-next-line:max-line-length
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
+import { MaxRepComponent } from './max-rep/max-rep.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,11 @@ import {AuthGuard} from './service/auth-guard.service';
     TerminplanerComponent,
     AndereUserComponent,
     ProfilComponent,
-    EinstellungenComponent,
     TrainingszusammenfassungComponent,
     RegistrierenComponent,
-    AuswahlComponent
+    AuswahlComponent,
+    MaxRepComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
