@@ -6,7 +6,6 @@ import { TrainingsansichtComponent } from './trainingsansicht/trainingsansicht.c
 import { TerminplanerComponent } from './terminplaner/terminplaner.component';
 import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
-import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 import {AuswahlComponent} from './auswahl/auswahl.component';
@@ -23,7 +22,6 @@ const routes: Routes = [
   {path: 'terminplaner', component: TerminplanerComponent, canActivate: [AuthGuard]},
   {path: 'andere-user', component: AndereUserComponent, canActivate: [AuthGuard]},
   {path: 'profile/:username', component: ProfilComponent, canActivate: [AuthGuard]},
-  {path: 'einstellungen', component: EinstellungenComponent, canActivate: [AuthGuard]},
   {path: 'trainingszusammenfassung', component: TrainingszusammenfassungComponent, canActivate: [AuthGuard]},
   {path: 'registrieren', component: RegistrierenComponent},
   {path: 'auswahl', component: AuswahlComponent, canActivate: [AuthGuard]},
