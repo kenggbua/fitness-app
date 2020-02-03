@@ -11,6 +11,7 @@ export class DataService {
   private loginURL = this.serverURL + "login";
   private registerURL = this.serverURL + "register";
   private userURL = this.serverURL + "user";
+  private insertLogURL = this.serverURL + "saveLogEntry"
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -87,4 +88,26 @@ export class DataService {
     document.cookie = '';
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', '');
   }
+
+  insertLogEntry(username, exercisename, iscardio, setnumber,weight, reps):any{
+
+    
+
+    //this.http.post<any>('http://localhost:3000/saveLogEntry', { title: 'Angular POST Request Example' }).subscribe(data => {
+    
+//})
+
+    console.log("in fucking logentry dataService")
+    console.log(this.insertLogURL)
+    console.log("iscardio: " + iscardio)
+   
+
+
+    let body = { user: username, exercise: exercisename, iscardio: iscardio,setnumber: setnumber, weight:weight,reps:reps };
+    return this.http.post<any>(this.insertLogURL, body, this.httpOptions).pipe(map((data) => {
+      this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+          return true;
+    })
+    );
+    }
 }
