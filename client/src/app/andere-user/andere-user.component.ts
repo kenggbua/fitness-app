@@ -35,9 +35,9 @@ export class AndereUserComponent implements OnInit {
 
         for (let j = 0; j < this.allFriendRequests.length; j++) {
           this.allusers = this.allusers.filter( x => {
-            return x.u_name !== this.allFriendRequests[j].u_name2;
+            return x.u_name !== this.allFriendRequests[j].u_name2 && x.u_name !== this.allFriendRequests[j].u_name1;
           })
-         
+
 
         }
 
@@ -66,11 +66,12 @@ export class AndereUserComponent implements OnInit {
     if(!bool){
       // @ts-ignore
       this.dataservice.beFriend(localStorage.getItem("u_name"),user2.u_name).subscribe((data) => {return});
+      const icon = document.getElementById('add_btn');
+      icon.style.visibility = 'hidden';
     }
 
 
-    const icon = document.getElementById('add_btn');
-    icon.style.visibility = 'hidden';
+
 
   }
 
