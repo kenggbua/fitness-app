@@ -88,4 +88,22 @@ router.get('/', (req, res) => {
 
 });
 
+router.get('/allusers',(req, res) => {
+  let db = getDb();
+  db.query({
+  text: `SELECT u_name FROM public.users`}).then(results => {res.send(results.rows)})
+});
+
+router.post("/addfriend", (req, res) => {
+  let db = getDb();
+  let user1 = req.body.user1;
+  let user2 = req.body.user2;
+
+
+  db.query({
+    text: `INSERT INTO public.isFriend (u_name1, u_name2) VALUES ($1, $2);`,
+    values: [user1, user2]
+  })
+})
+
 module.exports = router;
