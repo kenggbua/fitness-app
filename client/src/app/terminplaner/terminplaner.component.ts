@@ -23,48 +23,48 @@ export class TerminplanerComponent implements OnInit {
 
   showToastr(subject, start) {
     this.notifyService.showToast('Beginnt um ' + start, subject);
-    //TODO remove eventFrom list
+    // TODO remove eventFrom list
   }
 
   addEvent() {
-    let subjectElem = <HTMLInputElement>document.getElementById("aSubject");
-    let dateElem = <HTMLInputElement>document.getElementById("aDate");
-    let startElem = <HTMLInputElement>document.getElementById("aStart");
-    let subject = subjectElem.value;
-    let date = dateElem.value;
-    let start = startElem.value;
+    const subjectElem = document.getElementById('aSubject') as HTMLInputElement;
+    const dateElem = document.getElementById('aDate') as HTMLInputElement;
+    const startElem = document.getElementById('aStart') as HTMLInputElement;
+    const subject = subjectElem.value;
+    const date = dateElem.value;
+    const start = startElem.value;
 
     // save data in db
-    this.db.push({subject: subject, date: date, start:start});
+    this.db.push({subject, date, start});
 
-    //start timer for trigger toast
+    // start timer for trigger toast
     console.log(date);
     console.log(start);
-    let dateString = date + ' ' +start;
+    const dateString = date + ' ' + start;
     console.log(dateString);
-    let timeToShow = Date.parse(dateString) - 300000; //show toast 5min before event
+    const timeToShow = Date.parse(dateString) - 300000 - Date.now(); // show toast 5min before event
     setTimeout(() => this.showToastr(subject, start), timeToShow);
 
-    (<HTMLInputElement>document.getElementById("aSubject")).value = "";
-    (<HTMLInputElement>document.getElementById("aDate")).value = "";
-    (<HTMLInputElement>document.getElementById("aStart")).value = "";
-    document.getElementById("addDate").style.visibility = "hidden";
+    (document.getElementById('aSubject') as HTMLInputElement).value = '';
+    (document.getElementById('aDate') as HTMLInputElement).value = '';
+    (document.getElementById('aStart') as HTMLInputElement).value = '';
+    document.getElementById('addDate').style.visibility = 'hidden';
 
     console.log('Event hinzugefügt');
 
   }
 
   private abort() {
-    (<HTMLInputElement>document.getElementById("aSubject")).value = "";
-    (<HTMLInputElement>document.getElementById("aDate")).value = "";
-    (<HTMLInputElement>document.getElementById("aStart")).value = "";
+    (document.getElementById('aSubject') as HTMLInputElement).value = '';
+    (document.getElementById('aDate') as HTMLInputElement).value = '';
+    (document.getElementById('aStart') as HTMLInputElement).value = '';
 
-    document.getElementById("addDate").style.visibility = "hidden";
+    document.getElementById('addDate').style.visibility = 'hidden';
     console.log('element entfernt');
   }
 
   createListElement() {
-    document.getElementById("addDate").style.visibility = "visible";
+    document.getElementById('addDate').style.visibility = 'visible';
   }
 
 
