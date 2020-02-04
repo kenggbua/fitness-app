@@ -1,3 +1,19 @@
+# First steps
+Run db_script.sql 
+Run inserts.sql
+
+run npm install in client
+run npm install in server
+
+start server + client
+
+Testusers
+username: testuser1
+pwd: Testuser1!
+
+username: testuser2
+pwd: Testuser2!
+
 # FitnessApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
