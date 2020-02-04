@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@auth0/angular-jwt": "^3.0.1",
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
     "@syncfusion/ej2-angular-schedule": "^17.4.43",
     "@syncfusion/ej2-material-theme": "^17.4.44",
     "ngx-toastr": "^11.3.3",

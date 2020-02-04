@@ -2,8 +2,18 @@
 <body>
 <div id = "plannerDiv">
   <button (click)="showToastr()">Show Toast</button>
-  <p><a routerLink = "/startseite"><img type = "button" id = "back-btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png"></a></p>
-  <ejs-schedule id = "schedule" [eventSettings]="eventData"></ejs-schedule>
+  <div class="schedulerSection">
+    <p><a routerLink = "/startseite"><img type = "button" id = "back-btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png"></a></p>
+
+    <div id="list">
+      <h1>Deine geplanten Trainingseinheiten</h1> <p><img type = "button" id = "add-btn" (click)="createListElement()" src="https://img.icons8.com/doodle/48/000000/add.png"></p>
+      <div class="listElement">
+        <p class="subject">Titel: <input type="subject" class = "inputFields" id="subject" value="{{calenderdata.subject}}" disabled ></p>
+        <p class = "date">Datum: <input type="date" class = "inputFields" id="date" value="{{calenderdata.date}}" disabled></p>
+        <p class="start">Uhrzeit: <input type="start" class = "inputFields" id="start" value="{{calenderdata.start}}" disabled ></p>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>
