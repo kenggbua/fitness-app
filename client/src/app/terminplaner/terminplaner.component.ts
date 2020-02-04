@@ -22,31 +22,33 @@ export class TerminplanerComponent implements OnInit {
   }
 
   showToastr(subject, start) {
-    this.notifyService.showToast('Beginnt um ' + start.innerHTML, subject.innerHTML);
+    this.notifyService.showToast('Beginnt um ' + start, subject);
     //TODO remove eventFrom list
   }
 
-  getDatetime(): number {
-    return Date.now();
-  }
-
   addEvent() {
-    let subject = <HTMLInputElement>document.getElementById("aSubject");
-    let date = <HTMLInputElement>document.getElementById("aDate");
-    let start = <HTMLInputElement>document.getElementById("aStart");
+    let subjectElem = <HTMLInputElement>document.getElementById("aSubject");
+    let dateElem = <HTMLInputElement>document.getElementById("aDate");
+    let startElem = <HTMLInputElement>document.getElementById("aStart");
+    let subject = subjectElem.value;
+    let date = dateElem.value;
+    let start = startElem.value;
 
     // save data in db
-    this.db.push({subject: subject.value, date: date.value, start:start.value});
+    this.db.push({subject: subject, date: date, start:start});
+
+    //start timer for trigger toast
+    console.log(date);
+    console.log(start);
+    let dateString = date + ' ' +start;
+    console.log(dateString);
+    let timeToShow = Date.parse(dateString) - 300000; //show toast 5min before event
+    setTimeout(() => this.showToastr(subject, start), timeToShow);
 
     (<HTMLInputElement>document.getElementById("aSubject")).value = "";
     (<HTMLInputElement>document.getElementById("aDate")).value = "";
     (<HTMLInputElement>document.getElementById("aStart")).value = "";
     document.getElementById("addDate").style.visibility = "hidden";
-
-    //start timer for trigger toast
-    let dateString = date.innerHTML + start.innerHTML;
-    let timeToShow = Date.parse(dateString) - 300000; //show toast 5min before event
-    setTimeout(() => this.showToastr(subject, start), timeToShow);
 
     console.log('Event hinzugefügt');
 
