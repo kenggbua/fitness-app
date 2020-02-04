@@ -1,0 +1,18 @@
+<header class="header">
+  <div class = "logoutSection" *ngIf="this.router.url === '/startseite'">
+    <a routerLink="/login" (click)="logout();"><img type = "button" id = "logout_btn" src="https://img.icons8.com/doodle/48/000000/shutdown.png">
+    </a>
+  </div>
+  <div class = "backSection" *ngIf="this.router.url !== '/startseite'">
+    <a (click)="back();"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+    </a>
+  </div>
+  <div class = "searchSection">
+    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
+    </a>
+  </div>
+  <div class = "profileSection">
+   <a routerLink="/profile/{{user}}"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
+   </a>
+  </div>
+</header>
