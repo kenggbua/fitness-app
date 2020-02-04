@@ -20,7 +20,7 @@ export class ConfigService {
 export class TrainingsansichtComponent implements OnInit {
   private timeLeft: number = 3;
   private interval;
-  private userdata;
+  private username = localStorage.getItem("u_name");
 
 
 
@@ -45,9 +45,9 @@ export class TrainingsansichtComponent implements OnInit {
     })
     this.initializeSets();
 
-    this.loadUserData();
 
-    console.log(this.userdata)
+
+    console.log(this.username)
 
   }
 
@@ -114,17 +114,10 @@ export class TrainingsansichtComponent implements OnInit {
     this.router.navigate(['/startseite']);
   }
   }
-  loadUserData() {
-    this.dataservice.getUserData().subscribe((data) => {
-      this.userdata = data.data;
-      console.log(this.userdata);
-      console.log(this.userdata.u_name);
-    })
-  }
 
   insertLogEntry(){
     //username, exercisename, setnumber, date
-    let username = this.userdata.u_name;
+    let username = this.username;
     let exercisename = this.currentExercise.exercise_name;
     let iscardio = this.currentExercise.iscardio;
     let setnumber = this.currentExercise.setnumber
