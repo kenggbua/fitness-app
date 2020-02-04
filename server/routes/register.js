@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
 
             } else {
                 console.log("db error adding " + req.body.user);
-                res.status(400).json({
+                res.status(500).json({
                     "message": "error ocurred"
                 });
             }

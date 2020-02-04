@@ -52,7 +52,7 @@ export class ProfilComponent implements OnInit {
     this.userdata.visible = visibility.value;
 
     // save settings
-    this.dataservice.saveUserData(this.userdata).subscribe((data) => {
+    this.dataservice.saveUserData({weight: weight.value, height: height.value, visible: visibility.value}).subscribe((data) => {
       if (data) {
         console.log('saving data succeeded');
       } else {

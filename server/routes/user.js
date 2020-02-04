@@ -33,7 +33,7 @@ router.patch('/:username', (req, res) => {
   .catch(error => {
     console.log("error accessing db");
     if (error) {
-      res.status(400).json({
+      res.status(500).json({
         "message": "error ocurred"
       });
     }
@@ -43,6 +43,7 @@ router.patch('/:username', (req, res) => {
 router.get('/:username', (req, res) => {
   const db = getDb();
   let username;
+  let reqUsername = req.params.username;
   let requestedUser;
   try {
     username = jwt.verify(req.headers.authorization, cfg.auth.jwt_key).data;
@@ -52,12 +53,12 @@ router.get('/:username', (req, res) => {
     });
   }
 
-  console.log(username + " request userdata about " + req.params.username);
+  console.log(username + " request userdata about " + reqUsername);
 
 //TODO: check if requesting userdata is allowed (friend or public)
   db.query({
     text: `SELECT * FROM public.users WHERE u_name = $1;`,
-    values: [req.params.username]
+    values: [reqUsername]
   })
 
   .then((result) => {
@@ -65,14 +66,14 @@ router.get('/:username', (req, res) => {
 
     // no results
     if (!requestedUser) {
-      console.log(req.params.username + " not found");
+      console.log(reqUsername + " not found");
       res.status(401).json({
         "message": "user not found"
       });
       return;
     }
 
-    console.log(req.params.username + " found");
+    console.log(reqUsername + " found");
     res.status(200).json({
       data: requestedUser
     });
@@ -81,7 +82,7 @@ router.get('/:username', (req, res) => {
   .catch(error => {
     console.log("error accessing db");
     if (error) {
-      res.status(400).json({
+      res.status(500).json({
         "message": "error ocurred"
       });
     }
