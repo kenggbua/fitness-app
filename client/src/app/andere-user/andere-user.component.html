@@ -13,7 +13,7 @@ possibility to add user to may friends
     </a>
   </div>
   <div class = "profileSection">
-    <a routerLink="/profile/{{user}}"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
+    <a routerLink="/profile/{{userdata}}"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
     </a>
   </div>
 </header>
@@ -22,11 +22,19 @@ possibility to add user to may friends
 <!-- section with list of users-->
 <div class="container">
   <div class = 'friendList'>
-  <div class = "listElement">
-    <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
-    <p id = "userName">username</p>
-    <!-- add user to my friends-->
-    <img type = "button" id = "add_btn" src="https://img.icons8.com/doodle/48/000000/handshake--v1.png" (click)="addFriend();">
+    <h2>Friends</h2>
+    <div class = "listElement" *ngFor="let user of friends">
+      <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
+      <p id = "userName">{{user}}</p>
+    </div>
+  </div>
+  <div class = 'friendList'>
+    <h2>Other Users</h2>
+  <div class = "listElement" *ngFor="let user of allusers">
+      <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
+      <p id = "userName">{{user.u_name}}</p>
+      <!-- add user to my friends-->
+      <img type = "button" id = "add_btn" src="https://img.icons8.com/doodle/48/000000/handshake--v1.png" (click)="addFriend(user);">
   </div>
   </div>
 </div>
