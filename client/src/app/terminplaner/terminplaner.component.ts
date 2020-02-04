@@ -8,7 +8,7 @@ import {CalenderService} from '../service/calender.service';
   styleUrls: ['./terminplaner.component.css']
 })
 export class TerminplanerComponent implements OnInit {
-  private db : any[];
+  private db: any[];
   constructor(private notifyService: NotificationService, private calenderdata: CalenderService) {
   }
 
@@ -16,7 +16,7 @@ export class TerminplanerComponent implements OnInit {
   // if(Date.now = dateFromEvent - 300000) showToastr(subject, startTime)
 
   ngOnInit() {
-    //show all appointments for this user
+    // show all appointments for this user
     this.calenderdata.getSchedules().subscribe((data) => {
       this.db = data;
     });
@@ -30,16 +30,31 @@ export class TerminplanerComponent implements OnInit {
     return Date.now();
   }
 
-  addEvent() {
-  console.log('Event hinzugefügt');
+  addEvent(subjectElem, dateElem, startElem, save, abort) {
+    // get Data from Elements and disable them
+    subjectElem.setAttribute('disabled', true);
+    const subject = subjectElem.innerHTML;
+    dateElem.setAttribute('disabled', true);
+    const date = dateElem.innerHTML;
+    startElem.setAttribute('disabled', true);
+    const start = startElem.innerHTML;
+
+    // remove buttons
+    save.parentNode.removeChild(save);
+    abort.parentNode.removeChild(abort);
+
+    // save data in db
+    // TODO: get Data from elements and save it in DB
+    console.log('Event hinzugefügt');
 
   }
 
-  private abort() {
-
+  private abort(elementToRemove) {
+    elementToRemove.parentNode.removeChild(elementToRemove);
+    console.log('element entfernt');
   }
 
-  createListElement(){
+  createListElement() {
     const listElement = document.createElement('div');
     listElement.setAttribute('class', 'listElement');
     listElement.style.backgroundColor = 'gray';
@@ -67,17 +82,19 @@ export class TerminplanerComponent implements OnInit {
     const saveBtn = document.createElement('button');
     saveBtn.setAttribute('id', 'save-btn');
     saveBtn.innerText = 'Hinzufügen';
-    saveBtn.addEventListener('click', (e) => this.addEvent());
+    saveBtn.addEventListener('click', (e) => this.addEvent(subjectInput, dateInput, startInput, saveBtn, abortBtn));
 
     const abortBtn = document.createElement('button');
     abortBtn.setAttribute('id', 'abort-btn');
     abortBtn.innerText = 'Abbrechen';
-    abortBtn.addEventListener('click', (e) => this.abort());
 
     listElement.appendChild(subjectP);
     listElement.appendChild(dateP);
     listElement.appendChild(startP);
     listElement.appendChild(saveBtn);
+    listElement.appendChild(abortBtn);
+
+    abortBtn.addEventListener('click', (e) => this.abort(listElement));
 
     const list = document.getElementById('list');
     list.appendChild(listElement);
