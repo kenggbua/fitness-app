@@ -35,26 +35,25 @@ export class TrainingsansichtComponent implements OnInit {
   private currentExercise;
   private exerciseCounter;
   private workout_id;
+  private buttonDisabled : boolean = false;
+  private iscardio : boolean = false;
+  private weight;
+  private reps;
+  private duration;
 
   ngOnInit() {
 
     this.route.queryParams.subscribe(params=>{
-      //workout id aus params auslesen
-    console.log(params[0])
-    this.workout_id = params[0];
+         this.workout_id = params[0];
     })
     this.initializeSets();
-
-
-
-    console.log(this.username)
-
+   
   }
 
 
-  //zeug das den Timer startet //soll eher log übergeben
+  
   startWorkout(): void{
-
+    this.buttonDisabled = true; 
 
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
@@ -62,6 +61,7 @@ export class TrainingsansichtComponent implements OnInit {
       } else {
         this.timeLeft = 3;
         clearInterval(this.interval);
+        this.buttonDisabled = false;      
       }
     },1000)
 
@@ -91,32 +91,31 @@ export class TrainingsansichtComponent implements OnInit {
       console.log(this.sets);
 
       this.currentExercise = this.sets[0];
+      this.iscardio = this.currentExercise.iscardio;
       console.log(this.currentExercise.exercise_name);
       console.log(this.currentExercise.setnumber);
+      console.log(this.currentExercise.iscardio)
 
     });
   }
   nextSet(): void{
-    this.startWorkout();
-    //hier noch log anlage adden
-    this.insertLogEntry();
+       
     if(this.exerciseCounter <this.sets.length-1){
+    this.startWorkout(); 
+    this.insertLogEntry();
     this.exerciseCounter = this.exerciseCounter+1;
     this.currentExercise = this.sets[this.exerciseCounter];
-    //console.log(this.currentExercise);
-
-
+    this.iscardio = this.currentExercise.iscardio;
 
   } else{
     //hier noch route ändern
     this.insertLogEntry();
-    console.log("out of bound");
+    console.log("last Exercise");
     this.router.navigate(['/startseite']);
   }
   }
 
   insertLogEntry(){
-    //username, exercisename, setnumber, date
     let username = this.username;
     let exercisename = this.currentExercise.exercise_name;
     let iscardio = this.currentExercise.iscardio;
@@ -127,15 +126,20 @@ export class TrainingsansichtComponent implements OnInit {
     let formattedDate = today.toLocaleDateString("zh-Hans-CN", options).replace(/[/:.-]+/gi, '-')
     console.log(formattedDate);
      //reps and weight
-    let weight =(<HTMLInputElement>document.getElementById("weightInput")).value;
-    let reps = (<HTMLInputElement>document.getElementById("repInput")).value;
-    console.log("weight: " + weight)
-    console.log("reps: " +reps)
-
-
-    this.dataservice.insertLogEntry(username,exercisename,iscardio,setnumber,weight,reps).subscribe(data=>{
-
+    if(!this.iscardio){
+      this.weight =(<HTMLInputElement>document.getElementById("weightInput")).value;
+      this.reps = (<HTMLInputElement>document.getElementById("repInput")).value;
+      this.duration = null;
+      console.log("weight: " + this.weight)
+      console.log("reps: " +this.reps)}
+    else{
+      this.weight = null;
+      this.reps = null;
+      this.duration = (<HTMLInputElement>document.getElementById("durationInput")).value;
+      console.log("duration: " + this.duration)
+    }
+        
+    this.dataservice.insertLogEntry(username,exercisename,iscardio,setnumber,this.weight,this.reps,this.workout_id, this.duration).subscribe(data=>{
     });
-
   }
 }

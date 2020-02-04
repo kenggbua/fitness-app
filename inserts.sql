@@ -16,6 +16,7 @@ INSERT INTO public.exercise (name, description, iscardio) VALUES ('Row', 'kein',
 INSERT INTO public.workout (id, name) VALUES (1, 'Starting Strength 1');
 INSERT INTO public.workout (id, name) VALUES (2, 'Starting Strength 2');
 INSERT INTO public.workout (id, name) VALUES (3, 'Just a Test');
+INSERT INTO public.workout (id, name) VALUES (4, 'Cardio');
 
 --ex_wo_junction
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (1, 'Squat', 1, 3, 1);
@@ -27,6 +28,7 @@ INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (7, 'Squat', 3, 3, 1);
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (8, 'Deadlift', 3, 3, 2);
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (9, 'Pull Up', 3, 3, 3);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (10, 'Jogging', 4, 1, 1);
 
 --log_entries
 INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Jogging', true, 1, '2020-01-10', null, null, 30);
