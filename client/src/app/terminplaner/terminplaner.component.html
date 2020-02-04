@@ -6,16 +6,22 @@
     <p><a routerLink = "/startseite"><img type = "button" id = "back-btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png"></a></p>
 
     <div id="list">
-      <h1>Deine geplanten Trainingseinheiten</h1> <p><img type = "button" id = "add-btn" (click)="createListElement()" src="https://img.icons8.com/doodle/48/000000/add.png"></p>
-      <div class="listElement">
-        <p class="subject">Titel: <input type="subject" class = "inputFields" id="subject" value="{{calenderdata.subject}}" disabled ></p>
-        <p class = "date">Datum: <input type="date" class = "inputFields" id="date" value="{{calenderdata.date}}" disabled></p>
-        <p class="start">Uhrzeit: <input type="start" class = "inputFields" id="start" value="{{calenderdata.start}}" disabled ></p>
+      <h1>Deine geplanten Trainingseinheiten</h1>
+      <p><img type = "button" id = "add-btn" (click)="createListElement()" src="https://img.icons8.com/doodle/48/000000/add.png"></p>
+
+      <div class="listElement" *ngFor="let date of db">
+        <p class="subject">Titel: <input type="subject" class = "inputFields" id="subject" value="{{date.subject}}" disabled ></p>
+        <p class = "date">Datum: <input type="date" class = "inputFields" id="date" value="{{date.date}}" disabled></p>
+        <p class="start">Uhrzeit: <input type="start" class = "inputFields" id="start" value="{{date.start}}" disabled ></p>
+      </div>
+      <div class="listElement" id="addDate">
+        <p class="subject">Titel: <input type="text" class = "inputFields" id="aSubject" ></p>
+        <p class = "date">Datum: <input type="text" class = "inputFields" id="aDate" pattern="[0-9]{2,2}.[0-9]{2,2}.[0-9]{4,4}"></p>
+        <p class="start">Uhrzeit: <input type="text" class = "inputFields" id="aStart" pattern="[0-9]{2,2}:[0-9]{2,2}"></p>
+        <p><button id="save-btn" (click)="addEvent()">Hinzufügen</button><button id="abort-btn" (click)="abort()">Abbrechen</button></p>
       </div>
     </div>
   </div>
 </div>
 </body>
 </html>
-
-

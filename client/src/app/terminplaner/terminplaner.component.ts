@@ -9,10 +9,9 @@ import {CalenderService} from '../service/calender.service';
 })
 export class TerminplanerComponent implements OnInit {
   private db: any[];
+
   constructor(private notifyService: NotificationService, private calenderdata: CalenderService) {
   }
-
-
   // if(Date.now = dateFromEvent - 300000) showToastr(subject, startTime)
 
   ngOnInit() {
@@ -30,74 +29,34 @@ export class TerminplanerComponent implements OnInit {
     return Date.now();
   }
 
-  addEvent(subjectElem, dateElem, startElem, save, abort) {
-    // get Data from Elements and disable them
-    subjectElem.setAttribute('disabled', true);
-    const subject = subjectElem.innerHTML;
-    dateElem.setAttribute('disabled', true);
-    const date = dateElem.innerHTML;
-    startElem.setAttribute('disabled', true);
-    const start = startElem.innerHTML;
+  addEvent() {
+    let subject = <HTMLInputElement>document.getElementById("aSubject");
+    let date = <HTMLInputElement>document.getElementById("aDate");
+    let start = <HTMLInputElement>document.getElementById("aStart");
 
-    // remove buttons
-    save.parentNode.removeChild(save);
-    abort.parentNode.removeChild(abort);
+    this.db.push({subject: subject.value, date: date.value, start:start.value});
 
+    (<HTMLInputElement>document.getElementById("aSubject")).value = "";
+    (<HTMLInputElement>document.getElementById("aDate")).value = "";
+    (<HTMLInputElement>document.getElementById("aStart")).value = "";
+    document.getElementById("addDate").style.visibility = "hidden";
     // save data in db
     // TODO: get Data from elements and save it in DB
     console.log('Event hinzugefügt');
 
   }
 
-  private abort(elementToRemove) {
-    elementToRemove.parentNode.removeChild(elementToRemove);
+  private abort() {
+    (<HTMLInputElement>document.getElementById("aSubject")).value = "";
+    (<HTMLInputElement>document.getElementById("aDate")).value = "";
+    (<HTMLInputElement>document.getElementById("aStart")).value = "";
+
+    document.getElementById("addDate").style.visibility = "hidden";
     console.log('element entfernt');
   }
 
   createListElement() {
-    const listElement = document.createElement('div');
-    listElement.setAttribute('class', 'listElement');
-    listElement.style.backgroundColor = 'gray';
-    listElement.style.borderRadius = '3px';
-    listElement.style.width = '300px';
-
-    const subjectP = document.createElement('p');
-    subjectP.innerText = 'Titel: ';
-    const subjectInput = document.createElement('input');
-    subjectInput.setAttribute('class', 'inputFields');
-    subjectP.appendChild(subjectInput);
-
-    const dateP = document.createElement('p');
-    dateP.innerText = 'Datum: ';
-    const dateInput = document.createElement('input');
-    dateInput.setAttribute('class', 'inputFields');
-    dateP.appendChild(dateInput);
-
-    const startP = document.createElement('p');
-    startP.innerText = 'Uhrzeit: ';
-    const startInput = document.createElement('input');
-    startInput.setAttribute('class', 'inputFields');
-    startP.appendChild(startInput);
-
-    const saveBtn = document.createElement('button');
-    saveBtn.setAttribute('id', 'save-btn');
-    saveBtn.innerText = 'Hinzufügen';
-    saveBtn.addEventListener('click', (e) => this.addEvent(subjectInput, dateInput, startInput, saveBtn, abortBtn));
-
-    const abortBtn = document.createElement('button');
-    abortBtn.setAttribute('id', 'abort-btn');
-    abortBtn.innerText = 'Abbrechen';
-
-    listElement.appendChild(subjectP);
-    listElement.appendChild(dateP);
-    listElement.appendChild(startP);
-    listElement.appendChild(saveBtn);
-    listElement.appendChild(abortBtn);
-
-    abortBtn.addEventListener('click', (e) => this.abort(listElement));
-
-    const list = document.getElementById('list');
-    list.appendChild(listElement);
+    document.getElementById("addDate").style.visibility = "visible";
   }
 
 
