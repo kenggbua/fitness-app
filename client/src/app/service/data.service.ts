@@ -60,7 +60,7 @@ export class DataService {
 
   saveUserData(user) {
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', localStorage.getItem("token"));
-    let url = this.userURL + "/" + user.u_name;
+    let url = this.userURL + "/" + localStorage.getItem("u_name");
     return this.http.patch<any>(url, user, this.httpOptions).pipe(
       catchError((error) => { return of(undefined); })
     );

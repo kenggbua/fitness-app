@@ -42,26 +42,11 @@ router.post('/', (req, res) => {
             // error accessing db
             if (error) {
               console.log(user + " login. DB Error occured");
-                res.status(400).json({
+                res.status(500).json({
                     "message": "error ocurred"
                 });
             }
         });
-});
-
-router.get('/tok', (req, res) => {
-  try {
-    req.username = jwt.verify(req.headers.authorization, cfg.auth.jwt_key).data;
-    console.log(req.username + " automatic login success");
-    res.status(200).json({
-        token: req.headers.authorization
-    });
-  } catch (err) {
-    console.log(req.username + " automatic login fail");
-    return res.status(401).json({
-      message: "Authentication failed"
-    });
-  }
 });
 
 module.exports = router;
