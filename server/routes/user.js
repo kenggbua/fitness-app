@@ -4,6 +4,51 @@ const getDb = require('../queries').getDb;
 const jwt = require('jsonwebtoken');
 const cfg = require('../config.json');
 
+
+router.get('/allusers',(req, res) => {
+  let db = getDb();
+  db.query({
+    text: `SELECT u_name FROM public.users;`}).then(results => {res.send(results.rows)})
+});
+
+router.get('/getfriends/:username', (req,res) => {
+  let db = getDb();
+  let user = req.params.username;
+  db.query({
+        text: `SELECT * from public.isFriend where (u_name1 = $1 OR u_name2 = $1);`,
+        values:  [user]
+  }
+  ).then(results => {res.send(results.rows)})
+    }
+)
+
+router.post("/addfriend", (req, res) => {
+  let db = getDb();
+  let user1 = req.body.user1;
+  let user2 = req.body.user2;
+
+
+
+  db.query({
+    text: `INSERT INTO public.isFriend (u_name1, u_name2) VALUES ($1, $2);`,
+    values: [user1, user2]
+  })
+})
+
+router.patch('/confirmfriend', (req,res) => {
+  const db = getDb();
+  let user1 = req.body.user1;
+  let user2 = req.body.user2;
+
+  console.log(user1 + " " + user2);
+  db.query (
+      {
+        text: `Update public.isFriend set isConfirmed = true where (u_name1 = $1 AND u_name2 = $2)`,
+        values: [user1, user2]
+      }
+  )
+})
+
 router.patch('/:username', (req, res) => {
   const db = getDb();
   let username = req.params.username;
@@ -89,5 +134,9 @@ router.get('/:username', (req, res) => {
   });
 
 });
+
+
+
+
 
 module.exports = router;

@@ -70,4 +70,39 @@ export class DataService {
     localStorage.clear();
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', '');
   }
+
+  getAllUser(): any{
+    let getallUrl = "http://localhost:3000/user/allusers";
+    return this.http.get(getallUrl, this.httpOptions).pipe(
+      catchError((error) => { return of(undefined); })
+    );
+  }
+
+  confirmFriend(user1: string, user2: string): any{
+    let confirm = "http://localhost:3000/user/confirmfriend"
+    let data = {user1: user1, user2:user2}
+    return this.http.patch<any>(confirm, data, this.httpOptions).pipe(
+      catchError((error) => { return of(undefined); })
+    );
+  }
+
+  getFriends(user: string): any {
+
+    let body = {user: user};
+    let getfriendsURL= "http://localhost:3000/user/getfriends/" + user;
+    return this.http.get<any>(getfriendsURL, this.httpOptions).pipe (
+      catchError((error) => { return of(undefined); })
+    );
+  }
+
+  beFriend(user1: string, user2: string): any {
+    let insertFriend = "http://localhost:3000/user/addfriend";
+    let data = {user1: user1, user2:user2}
+    return this.http.post<any>(insertFriend,data, this.httpOptions).pipe(
+      map((data) => {
+        this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+        return true;
+      })
+    );
+  }
 }

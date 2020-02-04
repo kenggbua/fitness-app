@@ -3,6 +3,7 @@ const router = express.Router();
 const getDb = require('../queries').getDb;
 const jwt = require('jsonwebtoken');
 const cfg = require('../config.json');
+const bcrypt = require('bcrypt');
 
 router.post('/', (req, res) => {
   const db = getDb();
@@ -10,15 +11,18 @@ router.post('/', (req, res) => {
   let user = req.body.user;
   let pass = req.body.pass;
 
+
   db.query({
-    text: `SELECT * FROM public.users WHERE u_name = $1 AND u_encrypted_password = $2;`,
-    values: [user, pass]
+    text: `SELECT u_encrypted_password FROM public.users WHERE u_name = $1;`,
+    values: [user]
   })
 
-  .then(result => {resultUser = result.rows[0];
+  .then(result => {
+    hash = result.rows[0].u_encrypted_password;
 
     // no results
-    if (!resultUser) {
+
+    if (!bcrypt.compareSync(pass, hash)) {
       console.log(user + " wrong username or password");
         res.status(401).json({
           "message": "login failed"

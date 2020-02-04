@@ -43,10 +43,7 @@ console.log("hello");
   res.send('Hello World!');
 });
 
-app.get('/users',function(req,res){ db.getDb().query({
-  text: `SELECT * FROM public.users`
-}).then(results => {res.send(results.rows)})
-});
+
 
 app.get('/workout',function(req,res){ db.getDb().query({
   text: `SELECT * from ex_wo_junction where workout_id = 1;`
