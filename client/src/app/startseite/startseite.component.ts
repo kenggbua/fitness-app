@@ -7,13 +7,15 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./startseite.component.css']
 })
 export class StartseiteComponent implements OnInit {
+  private user;
 
   constructor(private dataservice: DataService) { }
 
   ngOnInit() {
+    this.user = localStorage.getItem("u_name");
   }
 
   logout(): void {
-    this.dataservice.deleteCookie();
+    this.dataservice.logout();
   }
 }

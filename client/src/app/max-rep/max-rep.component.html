@@ -1,0 +1,44 @@
+<!-- the max-rep should contain:
+a table with an overview of all implemented workouts
+the max-rep value for every individual workout type
+(max-rep Wert der jeweils für dieses Workout am höchsten war)
+-->
+<html class="max-rep">
+<header class="header">
+  <div class = "BackSection">
+    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
+    </a>
+  </div>
+  <div class = "searchSection">
+    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
+    </a>
+  </div>
+  <div class = "settingsSection">
+    <img type = "button" id = "settings_btn" src="https://img.icons8.com/doodle/48/000000/security-configuration.png" (click)="settings()">
+
+  </div>
+</header>
+<body>
+<!-- section with user data-->
+<div class = "max-repSection">
+  <h2>Benutzerprofil</h2>
+  <!--In this table, the max rep value for every workout-type is represented -->
+  <table>
+    <!--the name of the workout is left. On the right side you can see the individual max-rep value -->
+    <!--TODO: Load workout names and max-rep value from database
+    when no max-rep value is given because user has not done this workout jet, show 0
+    if necessary add more table rows -->
+    <thead><tr><th>Workout</th><th>Max-Rep</th></tr></thead>
+    <tr>
+      <td>MondaMood</td><td>3840 kg</td>
+    </tr>
+    <tr>
+      <td>BBP</td><td>3900 kg</td>
+    </tr>
+    <tr>
+      <td>Arms&Core</td><td>3950 kg</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

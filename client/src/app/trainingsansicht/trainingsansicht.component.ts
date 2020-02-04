@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Stopwatch } from "ts-stopwatch";
 import {WorkoutService} from '../service/workout.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../service/data.service';
@@ -19,15 +18,15 @@ export class ConfigService {
 
 
 export class TrainingsansichtComponent implements OnInit {
-  private timer: any;
-  private stopwatch: Stopwatch;
+  private timeLeft: number = 3;
+  private interval;
   private userdata;
 
 
 
   constructor(
     private workout: WorkoutService,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private router : Router,
     private dataservice: DataService) { }
 
@@ -39,13 +38,8 @@ export class TrainingsansichtComponent implements OnInit {
 
   ngOnInit() {
 
-    
-
-    this.stopwatch = new Stopwatch();
-    this.timer = document.getElementById("timer");
-
     this.route.queryParams.subscribe(params=>{
-      //workout id aus params auslesen   
+      //workout id aus params auslesen
     console.log(params[0])
     this.workout_id = params[0];
     })
@@ -57,36 +51,21 @@ export class TrainingsansichtComponent implements OnInit {
 
   }
 
-   millisToMinutesAndSeconds(millis) : any {
-    var minutes = Math.floor(millis / 60000);
-    var seconds = ((millis % 60000) / 1000).toFixed(0);
-    // @ts-ignore
-     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-  }
 
   //zeug das den Timer startet //soll eher log übergeben
   startWorkout(): void{
-    let interval;
-    const icon = document.getElementById('play_btn');
-    if(!this.stopwatch.isRunning()){
-      icon.setAttribute('src', 'https://img.icons8.com/doodle/48/000000/circled-pause.png');
-      this.stopwatch.start();
-       interval = setInterval(() => {this.startTimer()}, 10);
-    }else{
-      icon.setAttribute('src', 'https://img.icons8.com/doodle/48/000000/circled-play.png');
-      this.stopwatch.stop();
-      clearInterval(interval);
-    }
 
+
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 3;
+        clearInterval(this.interval);
+      }
+    },1000)
 
   }
-
-  startTimer(): void {
-
-      this.timer.innerHTML = this.millisToMinutesAndSeconds(this.stopwatch.getTime());
-
-  }
-
 
   initializeSets() {
     this.workout.getSets(this.workout_id).subscribe((data) => {
@@ -110,7 +89,7 @@ export class TrainingsansichtComponent implements OnInit {
 
       }
       console.log(this.sets);
-      
+
       this.currentExercise = this.sets[0];
       console.log(this.currentExercise.exercise_name);
       console.log(this.currentExercise.setnumber);
@@ -118,6 +97,7 @@ export class TrainingsansichtComponent implements OnInit {
     });
   }
   nextSet(): void{
+    this.startWorkout();
     //hier noch log anlage adden
     this.insertLogEntry();
     if(this.exerciseCounter <this.sets.length-1){
@@ -125,7 +105,7 @@ export class TrainingsansichtComponent implements OnInit {
     this.currentExercise = this.sets[this.exerciseCounter];
     //console.log(this.currentExercise);
 
-    
+
 
   } else{
     //hier noch route ändern
@@ -141,7 +121,7 @@ export class TrainingsansichtComponent implements OnInit {
       console.log(this.userdata.u_name);
     })
   }
-  
+
   insertLogEntry(){
     //username, exercisename, setnumber, date
     let username = this.userdata.u_name;
@@ -158,7 +138,7 @@ export class TrainingsansichtComponent implements OnInit {
     let reps = (<HTMLInputElement>document.getElementById("repInput")).value;
     console.log("weight: " + weight)
     console.log("reps: " +reps)
-  
+
 
     this.dataservice.insertLogEntry(username,exercisename,iscardio,setnumber,weight,reps).subscribe(data=>{
 
@@ -166,5 +146,3 @@ export class TrainingsansichtComponent implements OnInit {
 
   }
 }
-
-
