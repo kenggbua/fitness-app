@@ -7,13 +7,9 @@ import {WorkoutService} from '../service/workout.service';
   styleUrls: ['./auswahl.component.css']
 })
 export class AuswahlComponent implements OnInit {
-
   private db : any[];
 
-
-  constructor(  private workout: WorkoutService) {
-
-  }
+  constructor(  private workout: WorkoutService) { }
 
   ngOnInit() {
     this.workout.getWorkouts().subscribe((data) => {

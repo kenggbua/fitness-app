@@ -36,6 +36,7 @@ app.use("/plans",require('./routes/getPlans'));
 app.use("/workout",require('./routes/getWorkout'));
 app.use("/saveLogEntry",require('./routes/saveLogEntry'));
 app.use("/user", require('./routes/user'));
+app.use("/history", require('./routes/history'));
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {
