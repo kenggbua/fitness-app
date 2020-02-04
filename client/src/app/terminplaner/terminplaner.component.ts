@@ -21,7 +21,7 @@ export class TerminplanerComponent implements OnInit {
     }]
   };
 
-  //if(Date.now = dateFromEvent - 300000) showToastr(subject, startTime)
+  // if(Date.now = dateFromEvent - 300000) showToastr(subject, startTime)
 
   ngOnInit() {}
 
