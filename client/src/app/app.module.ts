@@ -13,8 +13,6 @@ import { ProfilComponent } from './profil/profil.component';
 import { EinstellungenComponent } from './einstellungen/einstellungen.component';
 import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
-// tslint:disable-next-line:max-line-length
-import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -38,8 +36,6 @@ import {ToastrModule} from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ScheduleModule,
-    RecurrenceEditorModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
@@ -49,11 +45,6 @@ import {ToastrModule} from 'ngx-toastr';
   ],
   providers: [
     AuthGuard,
-    DayService,
-    WeekService,
-    WorkWeekService,
-    MonthService,
-    MonthAgendaService
   ],
   bootstrap: [AppComponent]
 })
