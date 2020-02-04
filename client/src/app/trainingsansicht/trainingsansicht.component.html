@@ -3,20 +3,7 @@ possibility to visit profile, search for other users and logout in the header
 list of prepared exercises to do in the chosen workout
 -->
 <html class="workoutOverview">
-<header class="header">
-  <div class = "BackSection">
-    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
-    </a>
-  </div>
-  <div class = "searchSection">
-    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
-    </a>
-  </div>
-  <div class = "profileSection">
-    <a routerLink="/profil"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
-    </a>
-  </div>
-</header>
+<app-header></app-header>
 <body>
 
 
@@ -27,14 +14,14 @@ list of prepared exercises to do in the chosen workout
     <img src="https://img.icons8.com/doodle/64/000000/barbell.png">
     <div class = "data">
     <p class = "label" id = "exerciseName">Übung: {{currentExercise.exercise_name}} ({{currentExercise.setnumber}}) </p>
-    <p class = "label" id = "weight">Gewicht: <input type="number" min=0 max=500> </p>
-    <p class = "label" id = "repeat">Wiederholungen:<input type="number" min=0 max=100> </p>
+    <p class = "label" id = "weight">Gewicht: <input type="number" id = "weightInput" min=0 max=500> </p>
+    <p class = "label" id = "repeat">Wiederholungen:<input type="number" id = "repInput" min=0 max=100> </p>
     <button type="button" id = "nextSet_btn" (click)= "nextSet()">Click Me!</button>
     </div>
   </div>
   </div>
   <div class="timeSettings">
-  <div id="timer">00:00:000</div>
+  <div id="timer">{{timeLeft}}</div>
   <!-- play button will start the stopwatch-->
   <img type = "button" id = "play_btn" (click)="startWorkout()" src="https://img.icons8.com/doodle/48/000000/circled-play.png">
   </div>

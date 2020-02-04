@@ -3,27 +3,14 @@ possibility to visit profile, search for other users and logout in the header
 list of prepared workouts to choose from
 -->
 <html class="workoutOverview">
-<header class="header">
-  <div class = "BackSection">
-    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
-    </a>
-  </div>
-  <div class = "searchSection">
-    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
-    </a>
-  </div>
-  <div class = "profileSection">
-    <a routerLink="/profil"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
-    </a>
-  </div>
-</header>
+<app-header></app-header>
 <body>
 
 
 <!-- section with list of workouts-->
 <div class="container">
   <div class = "list">
-  <div routerLink="/trainingsansicht" queryParams="{workout.id: {{workout.id}}}" class = "listElement" *ngFor="let workout of db" >
+  <div routerLink="/trainingsansicht" queryParams="{{workout.id}}" class = "listElement" *ngFor="let workout of db" >
     <img src="https://img.icons8.com/doodle/64/000000/barbell.png">
   <div >
     <p class = "label" id = "{{workout.id}}">{{workout.name}}</p>

@@ -10,13 +10,15 @@ import { TrainingsansichtComponent } from './trainingsansicht/trainingsansicht.c
 import { TerminplanerComponent } from './terminplaner/terminplaner.component';
 import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
-import { EinstellungenComponent } from './einstellungen/einstellungen.component';
-import { TrainingszusammenfassungComponent } from './trainingszusammenfassung/trainingszusammenfassung.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import { MaxRepComponent } from './max-rep/max-rep.component';
+import { RankingComponent } from './ranking/ranking.component';
+import { HeaderComponent } from './header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -27,10 +29,11 @@ import {ToastrModule} from 'ngx-toastr';
     TerminplanerComponent,
     AndereUserComponent,
     ProfilComponent,
-    EinstellungenComponent,
-    TrainingszusammenfassungComponent,
     RegistrierenComponent,
-    AuswahlComponent
+    AuswahlComponent,
+    MaxRepComponent,
+    RankingComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-startseite',
@@ -8,12 +7,9 @@ import { DataService } from '../service/data.service';
 })
 export class StartseiteComponent implements OnInit {
 
-  constructor(private dataservice: DataService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  logout(): void {
-    this.dataservice.deleteCookie();
-  }
 }

@@ -5,20 +5,7 @@ and possibility to visit planner for creating a workout appointment
 at the end of the page should be a table with past 3 workout results
 -->
 <html class="homepage">
-<header class="header">
-  <div class = "logoutSection">
-    <a routerLink="/login" (click)="logout();"><img type = "button" id = "logout_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
-    </a>
-  </div>
-  <div class = "searchSection">
-    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
-    </a>
-  </div>
-  <div class = "profileSection">
-   <a routerLink="/profil"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
-   </a>
-  </div>
-</header>
+<app-header></app-header>
 <body>
 <!-- section with buttons for planner and choosing workout-->
 <div class="container">
