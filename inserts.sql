@@ -31,16 +31,16 @@ INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (10, 'Jogging', 4, 1, 1);
 
 --log_entries
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Jogging', true, 1, '2020-01-10', null, null, 30);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Bench Press', false, 3, '2020-01-10', 5, 80, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Row', false, 1, '2020-01-10', 5, 60, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Bench Press', false, 1, '2020-01-10', 5, 80, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Bench Press', false, 2, '2020-01-10', 5, 80, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Row', false, 2, '2020-01-10', 5, 60, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Row', false, 3, '2020-01-10', 5, 60, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Squat', false, 2, '2020-01-10', 5, 100, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Squat', false, 3, '2020-01-10', 5, 100, null);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration) VALUES ('testuser1', 'Squat', false, 1, '2020-01-10', 5, 100, null);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Jogging', true, 1, '2020-01-10', null, null, 30, 4);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Bench Press', false, 3, '2020-01-10', 5, 80, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Row', false, 1, '2020-01-10', 5, 60, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Bench Press', false, 1, '2020-01-10', 5, 80, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Bench Press', false, 2, '2020-01-10', 5, 80, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Row', false, 2, '2020-01-10', 5, 60, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Row', false, 3, '2020-01-10', 5, 60, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Squat', false, 2, '2020-01-10', 5, 100, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Squat', false, 3, '2020-01-10', 5, 100, null, 1);
+INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Squat', false, 1, '2020-01-10', 5, 100, null, 1);
 
 
 --one_rep_max
