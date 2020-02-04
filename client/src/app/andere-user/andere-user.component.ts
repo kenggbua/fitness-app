@@ -33,6 +33,12 @@ export class AndereUserComponent implements OnInit {
     this.dataservice.getAllUser().subscribe((data) => {
       this.allusers = data;
 
+      if(this.allFriendRequests.length === 0){
+        this.allusers = this.allusers.filter(x => {
+          return x.u_name !== this.userdata;
+        })
+      }
+
         for (let j = 0; j < this.allFriendRequests.length; j++) {
           this.allusers = this.allusers.filter( x => {
             return x.u_name !== this.allFriendRequests[j].u_name2 && x.u_name !== this.allFriendRequests[j].u_name1;
