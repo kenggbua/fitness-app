@@ -3,20 +3,7 @@ a list of users who are using the app
 possibility to add user to may friends
 -->
 <html class="userOverview">
-<header class="header">
-  <div class = "BackSection">
-    <a routerLink="/startseite"><img type = "button" id = "home_btn" src="https://img.icons8.com/flat_round/64/000000/back--v1.png">
-    </a>
-  </div>
-  <div class = "searchSection">
-    <a routerLink="/andere-user"> <img type = "button" id = "search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
-    </a>
-  </div>
-  <div class = "profileSection">
-    <a routerLink="/profile/{{user}}"><img type = "button" id = "profile_btn"  src="https://img.icons8.com/doodle/48/000000/name.png">
-    </a>
-  </div>
-</header>
+<app-header></app-header>
 <body>
 
 <!-- section with list of users-->
