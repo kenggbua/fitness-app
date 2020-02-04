@@ -1,3 +1,15 @@
+drop table if exists one_rep_max cascade;
+drop table if exists entry_cardio cascade;
+drop table if exists entry_strength cascade;
+drop table if exists log_entry cascade;
+drop table if exists isFriend cascade;
+drop table if exists ex_wo_junction cascade;
+drop table if exists workout cascade;
+drop table if exists exercise cascade;
+drop table if exists users cascade;
+drop table if exists termin cascade;
+
+
 create table users
 (
     u_email              varchar(128) not null
@@ -74,50 +86,53 @@ create table one_rep_max
 alter table one_rep_max
     owner to postgres;
 
+
+
 create table log_entry
 (
-    id            integer not null
-        constraint log_entry_pk
-            primary key,
-    u_name        varchar(64)
-        constraint log_entry_user_u_name_fk
-            references users (u_name),
-    exercise_name varchar(64)
-        constraint log_entry_exercise_name_fk
-            references exercise,
-    iscardio      boolean,
-    setnumber     integer,
-    date          date
+	id serial not null
+		constraint log_entry_pk
+			primary key,
+	u_name varchar(64)
+		constraint log_entry_user_u_name_fk
+			references users (u_name),
+	exercise_name varchar(64)
+		constraint log_entry_exercise_name_fk
+			references exercise,
+	iscardio boolean,
+	setnumber integer,
+	date date,
+	repetitions double precision,
+	weight double precision,
+	duration double precision
 );
 
-alter table log_entry
-    owner to postgres;
+alter table log_entry owner to postgres;
 
-create table entry_cardio
+
+
+create table isFriend(
+    u_name1 varchar(128) ,
+    u_name2 varchar(128) ,
+    isConfirmed boolean,
+    primary key (u_name1, u_name2)
+);
+
+alter table isFriend
+    owner to postgres;
+	
+create table termin
 (
-    log_id   integer          not null
-        constraint entry_cardio_pk
-            primary key
-        constraint entry_cardio_log_entry_id_fk
-            references log_entry,
-    duration double precision not null
+	id serial not null
+		constraint termin_pk
+			primary key,
+	u_name varchar(128)
+		constraint termin_users_u_name_fk
+			references users (u_name),
+	timestamp timestamp not null
 );
 
-alter table entry_cardio
-    owner to postgres;
+alter table termin owner to postgres;
 
-create table entry_strength
-(
-    log_id      integer not null
-        constraint entry_strength_pk
-            primary key
-        constraint entry_strength_log_entry_id_fk
-            references log_entry,
-    repetitions integer,
-    weight      double precision
-);
-
-alter table entry_strength
-    owner to postgres;
 
 

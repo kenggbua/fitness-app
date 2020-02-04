@@ -14,8 +14,8 @@ router.get("/:id",(req,res)=>{
     console.log("id: "+ id);
 
     
-    db.query({
-        text: `Select * from ex_wo_junction where workout_id = $1 order by position;`,
+    db.query({//join on exercise on ex_wo_junction.exercise_name=exercise.name
+        text: `Select * from ex_wo_junction join exercise on ex_wo_junction.exercise_name = exercise.name where workout_id = $1 order by position;`,
         values: [id]},(error,results)=>{
     if(error){
         res.status(500).json({message: "an error occured"});
