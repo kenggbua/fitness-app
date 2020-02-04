@@ -21,8 +21,9 @@ export class TerminplanerComponent implements OnInit {
     });
   }
 
-  showToastr() {
-    this.notifyService.showToast('startTime', 'subject');
+  showToastr(subject, start) {
+    this.notifyService.showToast('Beginnt um ' + start.innerHTML, subject.innerHTML);
+    //TODO remove eventFrom list
   }
 
   getDatetime(): number {
@@ -34,14 +35,19 @@ export class TerminplanerComponent implements OnInit {
     let date = <HTMLInputElement>document.getElementById("aDate");
     let start = <HTMLInputElement>document.getElementById("aStart");
 
+    // save data in db
     this.db.push({subject: subject.value, date: date.value, start:start.value});
 
     (<HTMLInputElement>document.getElementById("aSubject")).value = "";
     (<HTMLInputElement>document.getElementById("aDate")).value = "";
     (<HTMLInputElement>document.getElementById("aStart")).value = "";
     document.getElementById("addDate").style.visibility = "hidden";
-    // save data in db
-    // TODO: get Data from elements and save it in DB
+
+    //start timer for trigger toast
+    let dateString = date.innerHTML + start.innerHTML;
+    let timeToShow = Date.parse(dateString) - 300000; //show toast 5min before event
+    setTimeout(() => this.showToastr(subject, start), timeToShow);
+
     console.log('Event hinzugefügt');
 
   }
