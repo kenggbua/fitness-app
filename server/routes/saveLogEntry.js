@@ -18,6 +18,7 @@ router.post("/",(req,res)=>{
     let reps = req.body.reps;
     let duration = req.body.duration;
     let date = new Date().toISOString().slice(0, 10).replace('T', ' '); //initializes date and converts to sql format
+    let workout_id = req.body.workout_id;
     console.log("username: "+ u_name);
     console.log("exersicename: " + exersice_name);
     console.log("setnumber: " + setnumber);
@@ -25,11 +26,12 @@ router.post("/",(req,res)=>{
     console.log("iscardio: " + iscardio)
     console.log("weight: " + weight)
     console.log("reps: " + reps)
+    console.log("duration: " + duration)
 
     
     db.query({        
-        text: `INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber,date,repetitions,weight,duration) VALUES ($1, $2, $3, $4, $5,$6,$7,$8)`,
-        values: [u_name,exersice_name,iscardio,setnumber,date,reps,weight,duration]},(error,results)=>{
+        text: `INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber,date,repetitions,weight,duration,workout_id) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9)`,
+        values: [u_name,exersice_name,iscardio,setnumber,date,reps,weight,duration,workout_id]},(error,results)=>{
     if(error){
         res.status(500).json({message: error});
         } else {
