@@ -41,7 +41,7 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 5000,
       progressBar: true,
       progressAnimation: 'increasing'
     })
