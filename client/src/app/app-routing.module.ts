@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'auswahl', component: AuswahlComponent, canActivate: [AuthGuard]},
   {path: 'maxRep', component: MaxRepComponent, canActivate: [AuthGuard]},
   {path: 'ranking', component: RankingComponent, canActivate: [AuthGuard]},
-  {path: 'zusammenfassung:id', component: ZusammenfassungComponent, canActivate: [AuthGuard]},
+  {path: 'zusammenfassung/:id', component: ZusammenfassungComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 

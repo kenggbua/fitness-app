@@ -1,1 +1,18 @@
-<p>zusammenfassung works!</p>
+<!-- the summary shold show all completed sets from a workout-->
+<html class="zusammenfassung">
+<app-header></app-header>
+<body>
+
+  <div class="container">
+  <!--table with the ranking of the best 20 public users depending on their maxrep Value -->
+  <div class = "summarySection">
+    <table>
+      <thead><tr><th>Übung</th><th>Satz</th><th>Gewicht</th><th>Wdh. / Dauer</th></tr></thead>
+      <tr *ngFor="let entry of workouts">
+        <td>{{entry.exercise_name}}</td><td>{{entry.setnumber}}</td><td>{{entry.weight || 0}} kg</td><td>{{entry.repetitions || entry.duration + " s"}}</td>
+      </tr>
+    </table>
+  </div>
+  </div>
+</body>
+</html>

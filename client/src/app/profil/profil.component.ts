@@ -67,9 +67,9 @@ export class ProfilComponent implements OnInit {
     let username = this.route.snapshot.paramMap.get('username');
     this.dataservice.getUserData(username).subscribe((data) => {
       this.userdata = data.data;
+      let visibility = (<HTMLInputElement>document.getElementById('visibility')).value = this.userdata.visible;
       if(this.userdata.u_name === localStorage.getItem("u_name")) {
         this.myUser = true;
-        let visibility = (<HTMLInputElement>document.getElementById('visibility')).value = this.userdata.visible;
       }
     });
   }
