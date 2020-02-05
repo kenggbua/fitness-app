@@ -20,7 +20,7 @@ at the end of the page should be a table with past 3 workout results
   <table>
     <thead><tr><th>Datum</th><th>Workout</th><th>Gesamtgewicht</th></tr></thead>
     <tr *ngFor="let entry of history">
-      <td>{{entry.date}}</td><td>{{entry.workout_id}}</td><td>{{entry.sumweight||0}} kg</td>
+      <td>{{entry.date}}</td><td>{{entry.workout_name}}</td><td>{{entry.sumweight||0}} kg</td>
     </tr>
   </table>
 </div>
