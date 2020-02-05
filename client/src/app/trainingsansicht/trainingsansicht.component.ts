@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {WorkoutService} from '../service/workout.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../service/data.service';
+import { OneRepMaxService } from '../service/onerepmax.service';
 
 @Injectable()
 export class ConfigService {
@@ -29,7 +30,8 @@ export class TrainingsansichtComponent implements OnInit {
     private workout: WorkoutService,
     private route: ActivatedRoute,
     private router : Router,
-    private dataservice: DataService) { }
+    private dataservice: DataService,
+    private onerepmaxservice : OneRepMaxService) { }
 
 
   private sets :any[];
@@ -106,7 +108,7 @@ export class TrainingsansichtComponent implements OnInit {
   }
 
   insertLogEntry(){ 
-    
+       
     // Datum wird in Node.js erstellt
     //let options = { day: '2-digit', year: 'numeric', month: '2-digit' };
     //let today  = new Date();
@@ -119,8 +121,10 @@ export class TrainingsansichtComponent implements OnInit {
       this.reps = (<HTMLInputElement>document.getElementById("repInput")).value;
       this.duration = null;
       console.log("weight: " + this.weight)
-      console.log("reps: " +this.reps)}
-    else{
+      console.log("reps: " +this.reps)
+      let oneRepMax = this.onerepmaxservice.calculateOneRepMax(this.reps,this.weight);
+      console.log("One REP MAX: "+ oneRepMax)
+    } else {
       this.weight = null;
       this.reps = null;
       this.duration = (this.timeLeft/60).toFixed(2)
