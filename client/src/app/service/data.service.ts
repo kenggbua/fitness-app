@@ -11,8 +11,8 @@ export class DataService {
   private loginURL = this.serverURL + "login";
   private registerURL = this.serverURL + "register";
   private userURL = this.serverURL + "user";
-  private insertLogURL = this.serverURL + "saveLogEntry"
-  httpOptions = {
+  private insertLogURL = this.serverURL + "saveLogEntry";
+  private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': ''
