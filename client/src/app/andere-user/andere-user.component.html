@@ -13,15 +13,29 @@ possibility to add user to may friends
     <div class = "listElement" *ngFor="let user of friends">
       <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
       <p id = "userName">{{user}}</p>
+      <img type = "button" id = "rmv_btn" src="https://img.icons8.com/x" (click)="removeFriend(user);">
+
     </div>
   </div>
+
+  <div class = 'friendList'>
+    <h2>Friend requests</h2>
+    <div class = "listElement" *ngFor="let user of friendRequests">
+      <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
+      <p id = "userName">{{user.u_name1}}</p>
+      <img type = "button" id = "add_btn" src="https://img.icons8.com/doodle/48/000000/handshake--v1.png" (click)="addFriend(user.u_name1);">
+    </div>
+  </div>
+
+
+
   <div class = 'friendList'>
     <h2>Other Users</h2>
   <div class = "listElement" *ngFor="let user of allusers">
       <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
       <p id = "userName">{{user.u_name}}</p>
       <!-- add user to my friends-->
-      <img type = "button" id = "add_btn" src="https://img.icons8.com/doodle/48/000000/handshake--v1.png" (click)="addFriend(user);">
+      <img type = "button" id = "add_btn" src="https://img.icons8.com/doodle/48/000000/handshake--v1.png" (click)="addFriend(user.u_name);">
   </div>
   </div>
 </div>

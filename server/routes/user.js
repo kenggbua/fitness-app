@@ -11,6 +11,22 @@ router.get('/allusers',(req, res) => {
     text: `SELECT u_name FROM public.users;`}).then(results => {res.send(results.rows)})
 });
 
+router.delete('/removefriend/:users', (req,res) => {
+  let db = getDb();
+  let users = req.params.users;
+  let tmp = users.split("+");
+  let user1 = tmp[0];
+  let user2 = tmp[1];
+
+  console.log(user1)
+  console.log(user2)
+
+  db.query({
+    text: `DELETE FROM public.isFriend where (u_name1 = $1 AND u_name2 = $2) OR (u_name1 = $2 AND u_name2 = $1);`,
+    values: [user1, user2]
+  })
+})
+
 router.get('/getfriends/:username', (req,res) => {
   let db = getDb();
   let user = req.params.username;
@@ -40,7 +56,6 @@ router.patch('/confirmfriend', (req,res) => {
   let user1 = req.body.user1;
   let user2 = req.body.user2;
 
-  console.log(user1 + " " + user2);
   db.query (
       {
         text: `Update public.isFriend set isConfirmed = true where (u_name1 = $1 AND u_name2 = $2)`,
