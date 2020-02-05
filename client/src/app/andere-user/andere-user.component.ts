@@ -57,7 +57,6 @@ export class AndereUserComponent implements OnInit {
 
         for (let t of this.allFriendRequests){
           if(!this.userdata.localeCompare(t.u_name2)){
-            console.log("test")
             this.allusers = this.allusers.filter( x => {
               return x.u_name.localeCompare(t.u_name1);
             })
@@ -95,6 +94,15 @@ export class AndereUserComponent implements OnInit {
       this.updateLists();
       const icon = document.getElementById('add_btn');
       icon.style.visibility = 'hidden';
+    }
+
+  }
+
+  removeFriend(user2: string): void{
+
+    if(confirm("Freund "+ user2 +" entfernen?")){
+      this.dataservice.removefriend(this.userdata,user2).subscribe((data) => {return});
+      this.updateLists();
     }
 
   }

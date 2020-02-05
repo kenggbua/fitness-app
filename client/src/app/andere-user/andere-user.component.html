@@ -13,6 +13,8 @@ possibility to add user to may friends
     <div class = "listElement" *ngFor="let user of friends">
       <a routerLink="/other_profile"> <img id = "profile_img" src="https://img.icons8.com/doodle/48/000000/name.png"></a>
       <p id = "userName">{{user}}</p>
+      <img type = "button" id = "rmv_btn" src="https://img.icons8.com/x" (click)="removeFriend(user);">
+
     </div>
   </div>
 

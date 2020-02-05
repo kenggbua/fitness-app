@@ -54,3 +54,8 @@ body{
   cursor: pointer;
   padding: 5px;
 }
+
+#rmv_btn{
+  cursor: pointer;
+  padding: 5px;
+}
