@@ -11,13 +11,14 @@ import { TerminplanerComponent } from './terminplaner/terminplaner.component';
 import { AndereUserComponent } from './andere-user/andere-user.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegistrierenComponent } from './registrieren/registrieren.component';
-// tslint:disable-next-line:max-line-length
-import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {AuthGuard} from './service/auth-guard.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 import { MaxRepComponent } from './max-rep/max-rep.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { HeaderComponent } from './header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -38,16 +39,15 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ScheduleModule,
-    RecurrenceEditorModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      progressBar: true,
+      progressAnimation: 'increasing'
+    })
   ],
   providers: [
     AuthGuard,
-    DayService,
-    WeekService,
-    WorkWeekService,
-    MonthService,
-    MonthAgendaService
   ],
   bootstrap: [AppComponent]
 })

@@ -54,3 +54,13 @@ body{
   cursor: pointer;
   padding: 5px;
 }
+
+h2{
+  color: mediumseagreen;
+  padding-left: 88px;
+}
+
+#rmv_btn{
+  cursor: pointer;
+  padding: 5px;
+}

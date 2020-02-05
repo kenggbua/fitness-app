@@ -1,7 +1,74 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+  background-image: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
+  background-size: cover;
+  background-repeat: repeat-y;
+}
+
+h1{
+  color: white;
+  font-size: medium;
+}
 #plannerDiv{
   display: flex;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 40, 40, .8);
 }
-#schedule{
+
+.schedulerSection{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  transition: .2s;
+  display: flex;
+}
+
+#list{
+  margin: auto;
   width: 70%;
-  height: 80%;
+  height: 100%;
+  transition: .2s;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: auto;
+  flex-wrap: wrap;
 }
+
+.listElement{
+  width: 300px;
+  height: auto;
+  background-color: gray;
+  border-radius: 3px;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#addDate{
+  visibility: hidden;
+}
+
+#add-btn{
+  cursor: pointer;
+  margin: auto;
+}
+
+/* #save-btn{
+  border: 1px solid rgba(10, 180, 180, 1);
+  background: rgba(20, 20, 20, .6);
+  font-size: 12px;
+  color: white;
+  margin-top: 5px;
+  padding: 5px 3px;
+  cursor: pointer;
+  transition: .4s;
+  margin-left: 50%;
+  visibility: hidden;
+} */

@@ -104,7 +104,10 @@ create table log_entry
 	date date,
 	repetitions double precision,
 	weight double precision,
-	duration double precision
+	duration double precision,
+	workout_id integer
+		constraint log_entry_workout_id_fk
+			references workout
 );
 
 alter table log_entry owner to postgres;

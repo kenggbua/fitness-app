@@ -89,7 +89,6 @@ export class DataService {
 
   getFriends(user: string): any {
 
-    let body = {user: user};
     let getfriendsURL= "http://localhost:3000/user/getfriends/" + user;
     return this.http.get<any>(getfriendsURL, this.httpOptions).pipe (
       catchError((error) => { return of(undefined); })
@@ -98,7 +97,7 @@ export class DataService {
 
   beFriend(user1: string, user2: string): any {
     let insertFriend = "http://localhost:3000/user/addfriend";
-    let data = {user1: user1, user2:user2}
+    let data = {user1: user1, user2:user2};
     return this.http.post<any>(insertFriend,data, this.httpOptions).pipe(
       map((data) => {
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
@@ -107,21 +106,25 @@ export class DataService {
     );
   }
 
-  insertLogEntry(username, exercisename, iscardio, setnumber,weight, reps):any{
+  removefriend(user1: string, user2: string) : any {
+    let deleteFriend = "http://localhost:3000/user/removefriend/"+user1+"+"+user2;
+
+    return this.http.delete<any>(deleteFriend,this.httpOptions).pipe(
+      map((data) => {
+        this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+        return true;
+      })
+    )
+  }
+
+  insertLogEntry(username, exercisename, iscardio, setnumber,weight, reps, workout_id, duration):any{
+
+    console.log("in fucking logentry dataService");
+    console.log("iscardio: " + iscardio);
+    console.log("duration: " + duration);
 
 
-
-    //this.http.post<any>('http://localhost:3000/saveLogEntry', { title: 'Angular POST Request Example' }).subscribe(data => {
-
-//})
-
-    console.log("in fucking logentry dataService")
-    console.log(this.insertLogURL)
-    console.log("iscardio: " + iscardio)
-
-
-
-    let body = { user: username, exercise: exercisename, iscardio: iscardio,setnumber: setnumber, weight:weight,reps:reps };
+    let body = { user: username, exercise: exercisename, iscardio: iscardio,setnumber: setnumber, weight:weight,reps:reps, workout_id:workout_id, duration:duration };
     return this.http.post<any>(this.insertLogURL, body, this.httpOptions).pipe(map((data) => {
       this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
           return true;
