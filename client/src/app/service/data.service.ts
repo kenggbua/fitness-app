@@ -107,21 +107,14 @@ export class DataService {
     );
   }
 
-  insertLogEntry(username, exercisename, iscardio, setnumber,weight, reps):any{
-
-    
-
-    //this.http.post<any>('http://localhost:3000/saveLogEntry', { title: 'Angular POST Request Example' }).subscribe(data => {
-    
-//})
+  insertLogEntry(username, exercisename, iscardio, setnumber,weight, reps, workout_id, duration):any{
 
     console.log("in fucking logentry dataService")
-    console.log(this.insertLogURL)
-    console.log("iscardio: " + iscardio)
-   
+    console.log("iscardio: " + iscardio) 
+    console.log("duration: " + duration)
 
 
-    let body = { user: username, exercise: exercisename, iscardio: iscardio,setnumber: setnumber, weight:weight,reps:reps };
+    let body = { user: username, exercise: exercisename, iscardio: iscardio,setnumber: setnumber, weight:weight,reps:reps, workout_id:workout_id, duration:duration };
     return this.http.post<any>(this.insertLogURL, body, this.httpOptions).pipe(map((data) => {
       this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
           return true;
