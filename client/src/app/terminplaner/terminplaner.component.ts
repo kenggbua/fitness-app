@@ -17,6 +17,10 @@ export class TerminplanerComponent implements OnInit {
 
   ngOnInit() {
     // show all appointments for this user
+    this.updateLists();
+  }
+
+  updateLists(): void{
     this.calenderdata.getSchedules(this.username).subscribe((data) => {
       console.log(data);
       this.allTermins = data.data;
@@ -25,7 +29,6 @@ export class TerminplanerComponent implements OnInit {
 
   showToastr(subject, start) {
     this.notifyService.showToast('Beginnt um ' + start, subject);
-    // TODO remove eventFrom list
   }
 
   addEvent() {
@@ -43,11 +46,9 @@ export class TerminplanerComponent implements OnInit {
       } else {
         console.log('saving termin failed');
       }
-      this.calenderdata.getSchedules(this.username).subscribe((data) => {
-        console.log(data.data);
-        this.allTermins = data.data;
-      });
+      this.updateLists();
     });
+    
     // start timer for trigger toast
     console.log(date);
     console.log(start);
