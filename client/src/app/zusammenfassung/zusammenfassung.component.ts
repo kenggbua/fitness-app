@@ -18,37 +18,9 @@ export class ZusammenfassungComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
     this.workoutservice.getFinishedWorkout(id).subscribe((data) => {
+      console.log(data.data);
+
       this.workouts = data.data;
-      this.workouts = [
-        {
-          exercise_name: 'Kniebeugen',
-          setnumber: 1,
-          weight: 13,
-          repetitions: 5,
-          duration: null
-        },
-        {
-          exercise_name: 'Kniebeugen',
-          setnumber: 2,
-          weight: 13,
-          repetitions: 5,
-          duration: null
-        },
-        {
-          exercise_name: 'Kniebeugen',
-          setnumber: 3,
-          weight: 13,
-          repetitions: 5,
-          duration: null
-        },
-        {
-          exercise_name: 'Jogging',
-          setnumber: 1,
-          weight: null,
-          repetitions: null,
-          duration: 60
-        },
-      ]
     });
   }
 

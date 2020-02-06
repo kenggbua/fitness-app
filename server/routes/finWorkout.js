@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
 
 //TODO: check if user is allowed to read this info
   db.query({
-    text: `SELECT e.name as exercise_name, l.setnumber, l.weight, l.repetitions, l.duration FROM public.log_entry l, exercise e WHERE l.exercise_id = e.id and l.workout_fin_id = $1 order by l.id;`,
+    text: `SELECT exercise_name, setnumber, weight, repetitions, duration FROM public.log_entry WHERE workout_fin_id = $1 order by id;`,
     values: [id]
   })
 
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
 
     console.log("Workout " + id + " found");
     res.status(200).json({
-      data: result
+      data: result.rows
     });
   })
 
