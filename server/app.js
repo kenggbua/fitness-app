@@ -38,6 +38,7 @@ app.use("/saveLogEntry",require('./routes/saveLogEntry'));
 app.use("/user", require('./routes/user'));
 app.use("/saveWorkoutFin",require('./routes/saveWorkoutFin'));
 app.use("/getWorkoutFinId",require('./routes/getWorkoutFinId'));
+app.use("/history", require('./routes/history'));
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {

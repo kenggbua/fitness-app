@@ -144,10 +144,10 @@ export class DataService {
     );
     }
     getWorkoutFinId(username): any {
-      
+
       console.log("im get workoutFinId");
       console.log("username: " + username);
-      
+
       return this.http.get<any>(this.getWorkoutFinIdUrl+username, this.httpOptions).pipe(map((data) => {
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
             return data;

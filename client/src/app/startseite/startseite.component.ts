@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogService } from '../service/log.service'
 
 @Component({
   selector: 'app-startseite',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./startseite.component.css']
 })
 export class StartseiteComponent implements OnInit {
+  private history: any[];
 
-  constructor() { }
+  constructor(private logservice: LogService) { }
 
   ngOnInit() {
+    this.logservice.loadLastHistory(3).subscribe((data) => {
+      console.log(data.data);
+
+      this.history = data.data;
+    });
   }
 
 }

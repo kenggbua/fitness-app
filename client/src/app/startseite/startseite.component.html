@@ -19,14 +19,8 @@ at the end of the page should be a table with past 3 workout results
 <div class = "historySection">
   <table>
     <thead><tr><th>Datum</th><th>Gesamtgewicht</th></tr></thead>
-    <tr>
-      <td>01.01.2020</td><td>3840 kg</td>
-    </tr>
-    <tr>
-      <td>10.01.2020</td><td>3900 kg</td>
-    </tr>
-    <tr>
-      <td>18.01.2020</td><td>3950 kg</td>
+    <tr *ngFor="let entry of history">
+      <td>{{entry.date}}</td><td>{{entry.sumweight}} kg</td>
     </tr>
   </table>
 </div>
