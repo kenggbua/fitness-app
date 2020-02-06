@@ -22,7 +22,6 @@ export class TerminplanerComponent implements OnInit {
     // show all appointments for this user
     this.calenderdata.getSchedules(this.username).subscribe((data) => {
       console.log(data.data);
-
       this.allTermins = data.data;
     });
   }

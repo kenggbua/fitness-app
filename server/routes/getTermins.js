@@ -6,7 +6,7 @@ const cfg = require('../config.json');
 
 //load all termins from db
 
-router.get("/:termin",(req,res)=>{
+router.get("/terminplaner",(req,res)=>{
     const db = getDb();
 
     let username;
@@ -21,7 +21,7 @@ router.get("/:termin",(req,res)=>{
     console.log(username + "requested termins");
 
     db.query({
-        text: `Select * from  termin where u_name = username order by date, time;`,
+        text: `Select * from  termin where u_name = $1 order by date, time;`,
         values: [username]
     })
 
