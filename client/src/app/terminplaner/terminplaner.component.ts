@@ -21,13 +21,9 @@ export class TerminplanerComponent implements OnInit {
   ngOnInit() {
     // show all appointments for this user
     this.calenderdata.getSchedules(this.username).subscribe((data) => {
-      for(let termin of data){
-        this.allTermins.push({"subject" : termin.subject,
-          "date" : termin.date,
-          "startTime" : termin.startTime
-        });
-      }
-      console.log(this.allTermins);
+      console.log(data.data);
+
+      this.allTermins = data.data;
     });
   }
 

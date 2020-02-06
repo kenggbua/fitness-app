@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {throwError} from 'rxjs';
+import {of, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 @Injectable({
@@ -9,31 +9,21 @@ import {catchError, map} from 'rxjs/operators';
 export class CalenderService {
   private serverURL = 'http://localhost:3000/';
   private calenderURL = this.serverURL + 'terminplaner';
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: ''
+      'Authorization': ''
     })
   };
 
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    return throwError(
-      'Something bad happened; please try again later.');
-  }
   constructor(private http: HttpClient) {}
 
 
   getSchedules(user: string): any {
-    const getallUrl = `http://localhost:3000/user/getTermins` + user;
-    return this.http.get(getallUrl, this.httpOptions).pipe(catchError(this.handleError));
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', localStorage.getItem('token'));
+    return this.http.get<any>(this.calenderURL + '/' + user, this.httpOptions).pipe(
+      catchError((error) => { return of(undefined); })
+    );
   }
 
   insertCalenderEntry(username, subject, date, start): any {
