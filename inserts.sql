@@ -30,27 +30,42 @@ INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (9, 'Pull Up', 3, 3, 3);
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (10, 'Jogging', 4, 1, 1);
 
---log_entries
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Jogging', true, 1, '2020-01-10', null, null, 30, 4);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Bench Press', false, 3, '2020-01-10', 5, 80, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Row', false, 1, '2020-01-10', 5, 60, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Bench Press', false, 1, '2020-01-10', 5, 80, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Bench Press', false, 2, '2020-01-10', 5, 80, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Row', false, 2, '2020-01-10', 5, 60, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Row', false, 3, '2020-01-10', 5, 60, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Squat', false, 2, '2020-01-10', 5, 100, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Squat', false, 3, '2020-01-10', 5, 100, null, 1);
-INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber, date, repetitions, weight, duration, workout_id) VALUES ('testuser1', 'Squat', false, 1, '2020-01-10', 5, 100, null, 1);
+--workout_fin
+INSERT INTO public.workout_fin (id, u_name, workout_id, sumweight, date) VALUES (1, 'testuser1', 1, null, '2020-02-06');
+INSERT INTO public.workout_fin (id, u_name, workout_id, sumweight, date) VALUES (2, 'testuser2', 2, null, '2020-02-06');
+INSERT INTO public.workout_fin (id, u_name, workout_id, sumweight, date) VALUES (3, 'testuser1', 4, null, '2020-02-06');
 
+
+--log_entry
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (1, 1, 'Squat', 5, 1, 100, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (2, 1, 'Squat', 5, 2, 100, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (3, 1, 'Squat', 5, 3, 100, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (4, 1, 'Bench Press', 5, 1, 80, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (5, 1, 'Bench Press', 5, 1, 80, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (6, 1, 'Bench Press', 5, 1, 80, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (7, 1, 'Row', 5, 1, 60, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (8, 1, 'Row', 5, 1, 60, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (9, 1, 'Row', 5, 1, 60, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (10, 2, 'Deadlift', 5, 1, 120, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (11, 2, 'Deadlift', 5, 1, 120, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (12, 2, 'Deadlift', 5, 1, 120, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (13, 2, 'Military Press', 5, 1, 120, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (14, 2, 'Military Press', 5, 1, 120, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (15, 2, 'Military Press', 5, 1, 120, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (16, 2, 'Pull Up', 5, 1, 20, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (17, 2, 'Pull Up', 5, 1, 20, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (18, 2, 'Pull Up', 5, 1, 20, null, false);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (18, 3, 'Jogging', null, 1, null, 30, true);
+INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (19, 3, 'Cycling', null, 1, null, 60, true);
 
 --one_rep_max
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Squat', 200);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Bench Press', 150);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Row', 100);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Deadlift', 250);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Military Press', 100);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Squat', 50);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Bench Press', 30);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Row', 30);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Deadlift', 60);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Military Press', 20);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Squat', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Bench Press', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Row', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Deadlift', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Military Press', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Squat', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Bench Press', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Row', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Deadlift', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Military Press', 0);

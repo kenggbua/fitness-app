@@ -43,6 +43,7 @@ export class TrainingsansichtComponent implements OnInit {
   private weight;
   private reps;
   private duration;
+  private workoutFin_id;
 
   ngOnInit() {
 
@@ -50,6 +51,14 @@ export class TrainingsansichtComponent implements OnInit {
          this.workout_id = params[0];
     })
     this.initializeSets();
+    console.log("Username: "+this.username)
+    this.dataservice.insertWorkoutFin(this.username,this.workout_id).subscribe(data=>{});
+
+    this.dataservice.getWorkoutFinId(this.username).subscribe(data=>{
+      this.workoutFin_id = parseInt(data[0].max,0) ;
+      console.log("workoutfinid" + this.workoutFin_id)
+      
+    })
    
   }  
   startTimer(): void{
@@ -130,7 +139,7 @@ export class TrainingsansichtComponent implements OnInit {
       this.duration = (this.timeLeft/60).toFixed(2)
       console.log("duration: " + this.duration)
     }        
-    this.dataservice.insertLogEntry(this.username,this.currentExercise.exercise_name,this.currentExercise.iscardio,this.currentExercise.setnumber,this.weight,this.reps,this.workout_id, this.duration).subscribe(data=>{
+    this.dataservice.insertLogEntry(this.workoutFin_id, this.currentExercise.exercise_name,this.currentExercise.iscardio, this.currentExercise.setnumber, this.weight, this.reps,this.duration).subscribe(data=>{
     });
   }
 
