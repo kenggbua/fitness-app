@@ -20,10 +20,6 @@ router.get("/:termin",(req,res)=>{
 
     console.log(username + "requested termins");
 
-    console.log("subject: "+ subject);
-    console.log("date: " + date);
-    console.log("start: " + startTime);
-
     db.query({
         text: `Select * from  termin where u_name = username order by date, time;`,
         values: [username]
