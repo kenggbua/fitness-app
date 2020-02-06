@@ -39,6 +39,7 @@ app.use("/user", require('./routes/user'));
 app.use("/saveWorkoutFin",require('./routes/saveWorkoutFin'));
 app.use("/getWorkoutFinId",require('./routes/getWorkoutFinId'));
 app.use("/history", require('./routes/history'));
+app.use("/finWorkout", require('./routes/finWorkout'));
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {

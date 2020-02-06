@@ -9,7 +9,7 @@ import {WorkoutService} from '../service/workout.service';
 export class AuswahlComponent implements OnInit {
   private db : any[];
 
-  constructor(  private workout: WorkoutService) { }
+  constructor(private workout: WorkoutService) { }
 
   ngOnInit() {
     this.workout.getWorkouts().subscribe((data) => {

@@ -10,6 +10,7 @@ import { RegistrierenComponent } from './registrieren/registrieren.component';
 import {AuswahlComponent} from './auswahl/auswahl.component';
 import {MaxRepComponent} from './max-rep/max-rep.component';
 import {RankingComponent} from './ranking/ranking.component';
+import {ZusammenfassungComponent} from './zusammenfassung/zusammenfassung.component';
 import {AuthGuard} from './service/auth-guard.service';
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'auswahl', component: AuswahlComponent, canActivate: [AuthGuard]},
   {path: 'maxRep', component: MaxRepComponent, canActivate: [AuthGuard]},
   {path: 'ranking', component: RankingComponent, canActivate: [AuthGuard]},
+  {path: 'zusammenfassung/:id', component: ZusammenfassungComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 

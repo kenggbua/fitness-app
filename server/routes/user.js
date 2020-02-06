@@ -117,8 +117,8 @@ router.get('/:username', (req, res) => {
 
 //TODO: check if requesting userdata is allowed (friend or public)
   db.query({
-    text: `SELECT * FROM public.users WHERE u_name = $1;`,
-    values: [reqUsername]
+    text: `SELECT * FROM public.users WHERE u_name = $1 and (visible = true or $1 = $2);`,
+    values: [reqUsername, username]
   })
 
   .then((result) => {
