@@ -9,29 +9,28 @@ const cfg = require('../config.json');
 router.post("/",(req,res)=>{
     const db = getDb();
 
-
-    let u_name = req.body.user;
+    let workout_fin_id = req.body.workout_fin_id
     let exersice_name = req.body.exercise;
-    let iscardio = req.body.iscardio;
+    let reps = req.body.reps;
     let setnumber = req.body.setnumber;
     let weight = req.body.weight;
-    let reps = req.body.reps;
     let duration = req.body.duration;
-    let date = new Date().toISOString().slice(0, 10).replace('T', ' '); //initializes date and converts to sql format
-    let workout_id = req.body.workout_id;
-    console.log("username: "+ u_name);
+    let iscardio = req.body.iscardio;
+ 
+
+    console.log("workout_fin_id: " + workout_fin_id)
     console.log("exersicename: " + exersice_name);
     console.log("setnumber: " + setnumber);
-    console.log("Date: "+ date);
     console.log("iscardio: " + iscardio)
     console.log("weight: " + weight)
     console.log("reps: " + reps)
     console.log("duration: " + duration)
 
-    
+    //INSERT INTO public.log_entry (workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (1, 'Squat', 5, 1, 100, null, false);
+
     db.query({        
-        text: `INSERT INTO public.log_entry (u_name, exercise_name, iscardio, setnumber,date,repetitions,weight,duration,workout_id) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9)`,
-        values: [u_name,exersice_name,iscardio,setnumber,date,reps,weight,duration,workout_id]},(error,results)=>{
+        text: `INSERT INTO public.log_entry (workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        values: [workout_fin_id, exersice_name, reps, setnumber, weight, duration, iscardio]},(error,results)=>{
     if(error){
         res.status(500).json({message: error});
         } else {

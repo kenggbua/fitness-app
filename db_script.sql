@@ -8,7 +8,7 @@ drop table if exists workout cascade;
 drop table if exists exercise cascade;
 drop table if exists users cascade;
 drop table if exists termin cascade;
-
+drop table if exists workout_fin cascade;
 
 create table users
 (
@@ -86,31 +86,45 @@ create table one_rep_max
 alter table one_rep_max
     owner to postgres;
 
+create table workout_fin
+(
+	id serial not null
+		constraint table_name_pk
+			primary key,
+	u_name varchar(64)
+		constraint workout_fin_users_u_name_fk
+			references users (u_name),
+	workout_id integer
+		constraint workout_fin_workout_id_fk
+			references workout,
+	sumweight double precision,
+	date date
+);
+
+alter table workout_fin owner to postgres;
+
+
 
 
 create table log_entry
 (
-	id serial not null
-		constraint log_entry_pk
-			primary key,
-	u_name varchar(64)
-		constraint log_entry_user_u_name_fk
-			references users (u_name),
+	id serial not null,
+	workout_fin_id integer
+		constraint log_entry_workout_fin_id_fk
+			references workout_fin,
 	exercise_name varchar(64)
 		constraint log_entry_exercise_name_fk
 			references exercise,
-	iscardio boolean,
+	repetitions integer,
 	setnumber integer,
-	date date,
-	repetitions double precision,
 	weight double precision,
 	duration double precision,
-	workout_id integer
-		constraint log_entry_workout_id_fk
-			references workout
+	iscardio boolean
 );
 
 alter table log_entry owner to postgres;
+
+
 
 
 
@@ -123,7 +137,7 @@ create table isFriend(
 
 alter table isFriend
     owner to postgres;
-	
+
 create table termin
 (
 	id serial not null
@@ -132,10 +146,14 @@ create table termin
 	u_name varchar(128)
 		constraint termin_users_u_name_fk
 			references users (u_name),
-	timestamp timestamp not null
+	subject varchar(128),
+	date date,
+	time time
 );
 
 alter table termin owner to postgres;
+
+
 
 
 
