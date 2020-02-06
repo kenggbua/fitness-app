@@ -37,7 +37,8 @@ app.use("/workout",require('./routes/getWorkout'));
 app.use("/saveLogEntry",require('./routes/saveLogEntry'));
 app.use("/user", require('./routes/user'));
 app.use("/history", require('./routes/history'));
-app.use("/terminplaner", require('./routes/getTermins'));
+app.use("/terminplaner", require('./routes/termins'));
+app.use("/insertTermin", require('./routes/termins'));
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {

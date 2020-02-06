@@ -9,6 +9,7 @@ import {catchError, map} from 'rxjs/operators';
 export class CalenderService {
   private serverURL = 'http://localhost:3000/';
   private calenderURL = this.serverURL + 'terminplaner';
+  private insertCalenderURL = this.serverURL + 'insertTermin';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -41,8 +42,8 @@ export class CalenderService {
     console.log('date: ' + date);
     console.log('starttime: ' + start);
 
-    let body = {user: username, subject, date, start};
-    return this.http.post<any>(this.calenderURL, body, this.httpOptions).pipe(map((data) => {
+    let body = {user: username, subject: subject, date: date, start: start};
+    return this.http.post<any>(this.insertCalenderURL, body, this.httpOptions).pipe(map((data) => {
           this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
           return true;
         })

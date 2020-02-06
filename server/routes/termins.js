@@ -41,6 +41,24 @@ router.get("/:user",(req,res)=>{
             }
         });
 
-});
+})
+
+router.post("/", (req, res) => {
+    let db = getDb();
+    let username = req.body.user;
+    let subject = req.body.subject;
+    let date = req.body.date;
+    let start = req.body.start;
+
+    console.log(username);
+    console.log(subject);
+    console.log(date);
+    console.log(start);
+
+    db.query({
+        text: `INSERT INTO public.termin (u_name, subject, date, time) VALUES ($1, $2, $3, $4);`,
+        values: [username, subject, date, start]
+    })
+})
 
 module.exports = router;
