@@ -119,7 +119,7 @@ export class DataService {
 
   insertLogEntry(username, exercisename, iscardio, setnumber,weight, reps, workout_id, duration):any{
 
-    console.log("in fucking logentry dataService");
+    console.log("in logentry dataService");
     console.log("iscardio: " + iscardio);
     console.log("duration: " + duration);
 

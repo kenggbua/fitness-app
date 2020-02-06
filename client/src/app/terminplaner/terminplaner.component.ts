@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationService} from '../service/notification.service';
 import {CalenderService} from '../service/calender.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-terminplaner',
@@ -22,9 +23,9 @@ export class TerminplanerComponent implements OnInit {
     // show all appointments for this user
     this.calenderdata.getSchedules(this.username).subscribe((data) => {
       for(let termin of data){
-        this.allTermins.push({"subject" : data.subject,
-          "date" : data.date,
-          "startTime" : data.startTime
+        this.allTermins.push({"subject" : termin.subject,
+          "date" : termin.date,
+          "startTime" : termin.startTime
         });
       }
       console.log(this.allTermins);
