@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationService} from '../service/notification.service';
 import {CalenderService} from '../service/calender.service';
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-terminplaner',

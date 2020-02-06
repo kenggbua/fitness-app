@@ -15,3 +15,7 @@
 .settingsSection{
   visibility: hidden;
 }
+
+#home_btn{
+  cursor: pointer;
+}
