@@ -22,7 +22,7 @@ router.get("/:user",(req,res)=>{
     console.log(username + "requested termins");
 
     db.query({
-        text: `Select * from  termin where u_name = $1 order by date, time;`,
+        text: `Select * from  termin where u_name = $1;`,
         values: [username]
     })
 
@@ -57,8 +57,14 @@ router.post("/", (req, res) => {
 
     db.query({
         text: `INSERT INTO public.termin (u_name, subject, date, time) VALUES ($1, $2, $3, $4);`,
-        values: [username, subject, date, start]
-    })
-})
+        values: [username, subject, date, start]},(error,results)=>{
+        if(error){
+            res.status(500).json({message: error});
+        } else {
+            res.status(200).json('insert successful');
+        }
+    });
+
+});
 
 module.exports = router;

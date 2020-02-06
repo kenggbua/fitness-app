@@ -44,8 +44,8 @@ export class CalenderService {
 
     let body = {user: username, subject: subject, date: date, start: start};
     return this.http.post<any>(this.insertCalenderURL, body, this.httpOptions).pipe(map((data) => {
-          this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
-          return true;
+          console.log(data);
+          return of(true);
         })
       );
   }
