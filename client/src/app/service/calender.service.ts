@@ -8,7 +8,7 @@ import {catchError, map} from 'rxjs/operators';
 })
 export class CalenderService {
   private serverURL = 'http://localhost:3000/';
-  private calenderURL = this.serverURL + 'user/terminplaner';
+  private calenderURL = this.serverURL + 'terminplaner';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -18,12 +18,21 @@ export class CalenderService {
 
   constructor(private http: HttpClient) {}
 
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
 
   getSchedules(user: string): any {
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', localStorage.getItem('token'));
-    return this.http.get<any>(this.calenderURL, this.httpOptions).pipe(
-      catchError((error) => { return of(undefined); })
-    );
+    console.log('in getSchedules');
+    return this.http.get(this.calenderURL + '/' + user, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   insertCalenderEntry(username, subject, date, start): any {

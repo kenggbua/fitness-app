@@ -6,12 +6,13 @@ const cfg = require('../config.json');
 
 //load all termins from db
 
-router.get("/terminplaner",(req,res)=>{
+router.get("/:user",(req,res)=>{
+    console.log('in getTermin');
     const db = getDb();
-
     let username;
     try {
-        username = jwt.verify(req.headers.authorization, cfg.auth.jwt_key).data;
+        username = req.params.user;
+        console.log(username);
     } catch (err) {
         return res.status(401).json({
             message: "Authentication failed"
