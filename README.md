@@ -1,11 +1,13 @@
 # First steps
-Run db_script.sql 
-Run inserts.sql
+1. Run db_script.sql
 
-run npm install in client
-run npm install in server
+2. Run inserts.sql
 
-start server + client
+3. run npm install in client
+
+4. run npm install in server
+
+5. start server + client
 
 Testusers
 username: testuser1
@@ -13,6 +15,15 @@ pwd: Testuser1!
 
 username: testuser2
 pwd: Testuser2!
+
+# For testing
+
+fitness-app\client\src\app\trainingsansicht\trainingsansicht.component.ts
+
+uncomment code and outcomment other code in rows (68,69), (74,75), (104,105)
+
+to set the restTime to 3 Seconds between the sets
+
 
 # FitnessApp
 
