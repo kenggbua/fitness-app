@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '../service/data.service';
 
+
 @Component({
   selector: 'app-registrieren',
   templateUrl: './registrieren.component.html',
@@ -47,6 +48,7 @@ export class RegistrierenComponent implements OnInit {
     if (email.checkValidity() && username.checkValidity() && password.checkValidity()) {
       //Todo: check if email or username is already used
       //Todo: create new accout
+
       this.dataservice.registerUser(email.value, username.value, password.value)
         .subscribe((data) => {
           if (data == true) {
@@ -61,6 +63,8 @@ export class RegistrierenComponent implements OnInit {
           }
           out.style.display = "block";
         });
+
+        
     return;
   }
 }

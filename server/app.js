@@ -42,6 +42,7 @@ app.use("/history", require('./routes/history'));
 app.use("/terminplaner", require('./routes/termins'));
 app.use("/insertTermin", require('./routes/termins'));
 app.use("/finWorkout", require('./routes/finWorkout'));
+app.use("/oneRepMax", require('./routes/oneRepMax'));
 
 
 //muss noch nach routes verschoben werden

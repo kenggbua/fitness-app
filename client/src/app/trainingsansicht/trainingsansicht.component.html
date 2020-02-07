@@ -17,6 +17,7 @@ list of prepared exercises to do in the chosen workout
     <p class = "label" id = "weight"*ngIf="iscardio===false" >Gewicht: <input type="number" id = "weightInput" min=0 max=500> </p>
     <p class = "label" id = "repeat" *ngIf="iscardio===false">Wiederholungen:<input type="number" id = "repInput" min=0 max=100> </p>
     <button type="button" id = "nextSet_btn" (click)= "nextSet()" [disabled]="buttonDisabled" *ngIf="iscardio===false">Satz speichern!</button>
+    <button type="button" id = "abort_btn" (click)= "finishTraining()" [disabled]="buttonDisabled" *ngIf="iscardio===false">Training abbrechen</button>
     <button type="button" id = "timer_btn" (click)= "startStopwatch()" [disabled]="buttonDisabled" *ngIf="iscardio">Stoppuhr starten</button>
     </div>
   </div>

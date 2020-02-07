@@ -5,6 +5,7 @@ import {WorkoutService} from '../service/workout.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../service/data.service';
 import { OneRepMaxService } from '../service/onerepmax.service';
+import {NotificationService} from '../service/notification.service';
 
 @Injectable()
 export class ConfigService {
@@ -31,7 +32,8 @@ export class TrainingsansichtComponent implements OnInit {
     private route: ActivatedRoute,
     private router : Router,
     private dataservice: DataService,
-    private onerepmaxservice : OneRepMaxService) { }
+    private onerepmaxservice : OneRepMaxService,
+    private notificationservice : NotificationService) { }
 
 
   private sets :any[];
@@ -44,9 +46,9 @@ export class TrainingsansichtComponent implements OnInit {
   private reps;
   private duration;
   private workoutFin_id;
+  private oneRepMax;
 
   ngOnInit() {
-
     this.route.queryParams.subscribe(params=>{
          this.workout_id = params[0];
     })
@@ -57,9 +59,8 @@ export class TrainingsansichtComponent implements OnInit {
     this.dataservice.getWorkoutFinId(this.username).subscribe(data=>{
       this.workoutFin_id = parseInt(data[0].max,0) ;
       console.log("workoutfinid" + this.workoutFin_id)
-      
-    })
-   
+      }) 
+    this.getOneRepMax();
   }  
   startTimer(): void{
     this.buttonDisabled = true; 
@@ -73,8 +74,14 @@ export class TrainingsansichtComponent implements OnInit {
         this.buttonDisabled = false;      
       }
     },1000)
-
   }
+
+  getOneRepMax() {
+    this.onerepmaxservice.getOneRepMax(this.username).subscribe(data=>{
+      this.oneRepMax = data;
+    })
+  }
+
   initializeSets() {
     this.workout.getSets(this.workout_id).subscribe((workout) => {
 
@@ -98,8 +105,7 @@ export class TrainingsansichtComponent implements OnInit {
       }
     });
   }
-  nextSet(): void{   
-
+  nextSet(): void{ 
     if(this.exerciseCounter <this.sets.length-1){
       if(!this.currentExercise.iscardio){
         this.startTimer();
@@ -112,19 +118,16 @@ export class TrainingsansichtComponent implements OnInit {
     //hier noch route ändern
     this.insertLogEntry();
     console.log("last Exercise");
-    this.router.navigate(['/startseite']);
+    //this.router.navigate(['/startseite']);
+    this.finishTraining();
   }
   }
 
+  finishTraining(){
+    this.router.navigate(['/zusammenfassung/'+ this.workoutFin_id])
+  }
+
   insertLogEntry(){ 
-       
-    // Datum wird in Node.js erstellt
-    //let options = { day: '2-digit', year: 'numeric', month: '2-digit' };
-    //let today  = new Date();
-    //Chinesische Reihenfolge, weil sie zum Postgres Format passt
-    //let formattedDate = today.toLocaleDateString("zh-Hans-CN", options).replace(/[/:.-]+/gi, '-')
-    //console.log(formattedDate);
-     //reps, weight, duration
     if(!this.iscardio){
       this.weight =(<HTMLInputElement>document.getElementById("weightInput")).value;
       this.reps = (<HTMLInputElement>document.getElementById("repInput")).value;
@@ -132,17 +135,25 @@ export class TrainingsansichtComponent implements OnInit {
       console.log("weight: " + this.weight)
       console.log("reps: " +this.reps)
       let oneRepMax = this.onerepmaxservice.calculateOneRepMax(this.reps,this.weight);
-      console.log("One REP MAX: "+ oneRepMax)
+      // hier noch abfragen, ob die alten höher sind 
+      for(let entry of this.oneRepMax){
+        if(entry.exercise_name == this.currentExercise.exercise_name && entry.max_weight < oneRepMax){
+          this.notificationservice.showToast(this.currentExercise.exercise_name + " : " +oneRepMax + "kg","ONE-REP-MAX erhöht")
+          console.log("CurrentExercise: " + this.currentExercise.exercise_name)
+          console.log("onerepmax für: " + this.currentExercise.exercise_name + "erhöht")
+          this.onerepmaxservice.updateOneRepMax(this.username,this.currentExercise.exercise_name,oneRepMax).subscribe();
+          this.getOneRepMax();
+        }
+      }     
     } else {
       this.weight = null;
       this.reps = null;
       this.duration = (this.timeLeft/60).toFixed(2)
       console.log("duration: " + this.duration)
-    }        
+    }       
     this.dataservice.insertLogEntry(this.workoutFin_id, this.currentExercise.exercise_name,this.currentExercise.iscardio, this.currentExercise.setnumber, this.weight, this.reps,this.duration).subscribe(data=>{
     });
   }
-
 
   startStopwatch():void{
     console.log("in stoppwatch")
@@ -173,5 +184,4 @@ export class TrainingsansichtComponent implements OnInit {
       //nächster satz
     }    
   }
-
 }

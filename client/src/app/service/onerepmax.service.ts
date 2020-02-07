@@ -1,12 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BrowserStack } from 'protractor/built/driverProviders';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OneRepMaxService {
+  private serverURL = 'http://localhost:3000/';
+  private OneRepMaxURL = this.serverURL + 'oneRepMax'
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': ''
+    })
+  };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   calculateOneRepMax(reps,weight): any {
     let newMaxRep;
@@ -65,5 +75,19 @@ export class OneRepMaxService {
     console.log("Percent of max: " + percentOfMax)
     return newMaxRep = ((weight*100)/percentOfMax).toFixed(2)
   }
+    
+    updateOneRepMax(user,exercise,weight) {
+      console.log("in updateOneRepMax")
+      let body = {u_name: user, exercise: exercise, weight: weight}
+      return this.http.patch<any>(this.OneRepMaxURL, body, this.httpOptions).pipe(
+        catchError((error) => { return of(undefined); })
+      );
+    }
+    
+    getOneRepMax(username) {
+      return this.http.get<any>(this.OneRepMaxURL + "/" + username, this.httpOptions).pipe(
+        catchError((error) => { return of(undefined); })
+      );
+    }
 }
 
