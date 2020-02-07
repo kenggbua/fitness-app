@@ -18,7 +18,7 @@ router.get('/:num', (req, res) => {
   console.log(username + " requested history");
 
   db.query({
-      text: `Select TO_CHAR(f.date, 'dd.mm.yyyy') as date, w.name as workout_name, f.sumweight, f.id from public.workout_fin f, public.workout w where f.u_name = $1 and f.workout_id = w.id order by f.date desc limit $2;`,
+      text: `Select TO_CHAR(f.date, 'dd.mm.yyyy') as date, w.name as workout_name, sum(l.weight) as sumweight, f.id from public.workout_fin f, public.workout w, public.log_entry l where f.u_name = $1 and f.workout_id = w.id and l.workout_fin_id = f.id group by f.date, w.name, f.id order by f.date desc limit $2;`,
       values: [username, req.params.num]
     })
 
