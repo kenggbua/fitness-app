@@ -1,14 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .userOverview{
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
-  background-repeat: no-repeat;
 }
 
 body{
   height: 100%;
   margin: 0;
+  background: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
+  background-repeat: repeat-y;
 }
 
 .container{
@@ -19,7 +24,7 @@ body{
   display: flex;
 }
 
-.friendList{
+.friendList, .requestList, .allUsers{
   margin: auto;
   width: 70%;
   height:70%;
@@ -42,6 +47,7 @@ body{
   display: flex;
   flex-direction: row;
 }
+
 #profile_img{
   padding: 5px;
 }

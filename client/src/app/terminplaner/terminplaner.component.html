@@ -8,10 +8,10 @@
       <h1>Deine geplanten Trainingseinheiten</h1>
       <p><img type = "button" id = "add-btn" (click)="createListElement()" src="https://img.icons8.com/doodle/48/000000/add.png"></p>
 
-      <div class="listElement" *ngFor="let date of db">
-        <p class="subject">Titel: <input type="text" class = "inputFields" id="subject" value="{{date.subject}}" disabled ></p>
-        <p class = "date">Datum: <input type="date" class = "inputFields" id="date" value="{{date.date}}" disabled></p>
-        <p class="start">Uhrzeit: <input type="time" class = "inputFields" id="start" value="{{date.start}}" disabled ></p>
+      <div class="listElement" *ngFor="let data of allTermins">
+        <p class="subject">Titel: <input type="text" class = "inputFields" id="subject" value="{{data.subject}}" disabled ></p>
+        <p class = "date">Datum: <input type="date" class = "inputFields" id="date" value="{{data.date.slice(0,10)}}" disabled></p>
+        <p class="start">Uhrzeit: <input type="time" class = "inputFields" id="start" value="{{data.time}}" disabled ></p>
       </div>
       <div class="listElement" id="addDate">
         <p class="subject">Titel: <input type="text" class = "inputFields" id="aSubject" ></p>

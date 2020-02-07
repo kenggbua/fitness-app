@@ -12,6 +12,24 @@
   flex: 1;
 }
 
+#search_btn{
+  margin-left: 20px;
+}
+
 .settingsSection{
   visibility: hidden;
+}
+
+#home_btn{
+  cursor: pointer;
+  width: 50px;
+  margin-left: 5px;
+}
+
+#profile_btn{
+  margin-right: 5px;
+}
+
+#logout_btn{
+  margin-left: 5px;
 }

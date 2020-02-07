@@ -8,22 +8,27 @@ import {CalenderService} from '../service/calender.service';
   styleUrls: ['./terminplaner.component.css']
 })
 export class TerminplanerComponent implements OnInit {
-  private db: any[];
+  private allTermins: any[];
+  private username = localStorage.getItem("u_name");
 
-  constructor(private notifyService: NotificationService, private calenderdata: CalenderService) {
-  }
-  // if(Date.now = dateFromEvent - 300000) showToastr(subject, startTime)
+  constructor(
+    private notifyService: NotificationService,
+    private calenderdata: CalenderService) { }
 
   ngOnInit() {
     // show all appointments for this user
-    this.calenderdata.getSchedules().subscribe((data) => {
-      this.db = data;
+    this.updateLists();
+  }
+
+  updateLists(): void{
+    this.calenderdata.getSchedules(this.username).subscribe((data) => {
+      console.log(data);
+      this.allTermins = data.data;
     });
   }
 
   showToastr(subject, start) {
     this.notifyService.showToast('Beginnt um ' + start, subject);
-    // TODO remove eventFrom list
   }
 
   addEvent() {
@@ -35,8 +40,15 @@ export class TerminplanerComponent implements OnInit {
     const start = startElem.value;
 
     // save data in db
-    this.db.push({subject, date, start});
-
+    this.calenderdata.insertCalenderEntry(this.username, subject, date, start).subscribe((data) => {
+      if (data) {
+        console.log('saving termin succeeded');
+      } else {
+        console.log('saving termin failed');
+      }
+      this.updateLists();
+    });
+    
     // start timer for trigger toast
     console.log(date);
     console.log(start);
