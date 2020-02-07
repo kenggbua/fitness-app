@@ -49,7 +49,6 @@ export class TrainingsansichtComponent implements OnInit {
   private oneRepMax;
 
   ngOnInit() {
-
     this.route.queryParams.subscribe(params=>{
          this.workout_id = params[0];
     })
@@ -75,11 +74,9 @@ export class TrainingsansichtComponent implements OnInit {
         this.buttonDisabled = false;      
       }
     },1000)
-
   }
 
   getOneRepMax() {
-
     this.onerepmaxservice.getOneRepMax(this.username).subscribe(data=>{
       this.oneRepMax = data;
     })
@@ -108,8 +105,7 @@ export class TrainingsansichtComponent implements OnInit {
       }
     });
   }
-  nextSet(): void{   
-
+  nextSet(): void{ 
     if(this.exerciseCounter <this.sets.length-1){
       if(!this.currentExercise.iscardio){
         this.startTimer();
@@ -123,8 +119,12 @@ export class TrainingsansichtComponent implements OnInit {
     this.insertLogEntry();
     console.log("last Exercise");
     //this.router.navigate(['/startseite']);
-    this.router.navigate(['/zusammenfassung/'+ this.workoutFin_id])
+    this.finishTraining();
   }
+  }
+
+  finishTraining(){
+    this.router.navigate(['/zusammenfassung/'+ this.workoutFin_id])
   }
 
   insertLogEntry(){ 
@@ -144,19 +144,16 @@ export class TrainingsansichtComponent implements OnInit {
           this.onerepmaxservice.updateOneRepMax(this.username,this.currentExercise.exercise_name,oneRepMax).subscribe();
           this.getOneRepMax();
         }
-      }  
-    
+      }     
     } else {
       this.weight = null;
       this.reps = null;
       this.duration = (this.timeLeft/60).toFixed(2)
       console.log("duration: " + this.duration)
-    }  
-      
+    }       
     this.dataservice.insertLogEntry(this.workoutFin_id, this.currentExercise.exercise_name,this.currentExercise.iscardio, this.currentExercise.setnumber, this.weight, this.reps,this.duration).subscribe(data=>{
     });
   }
-
 
   startStopwatch():void{
     console.log("in stoppwatch")
@@ -187,5 +184,4 @@ export class TrainingsansichtComponent implements OnInit {
       //nächster satz
     }    
   }
-
 }
