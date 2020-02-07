@@ -36,6 +36,11 @@ body{
   height: 100%;
 }
 
+h1{
+  margin: auto;
+  color: white;
+}
+
 .list{
   margin: auto;
   width: 70%;
