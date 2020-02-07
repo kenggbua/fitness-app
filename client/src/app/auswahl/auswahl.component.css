@@ -13,7 +13,7 @@
 body{
   background-image: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
   background-size: cover;
-  background-repeat: repeat-y;
+  background-repeat: repeat;
   margin: 0;
   height: 100%;
 }
@@ -38,7 +38,7 @@ body{
 
 h1{
   margin: auto;
-  color: white;
+  color: white
 }
 
 .list{
