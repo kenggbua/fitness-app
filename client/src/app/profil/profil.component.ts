@@ -22,29 +22,24 @@ export class ProfilComponent implements OnInit {
 
   settings(): void {
     // set text editable
-   const height = document.getElementById('height');
-   height.removeAttribute('disabled');
-   const weight = document.getElementById('weight');
-   weight.removeAttribute('disabled');
-   const visibility = document.getElementById('visibility');
-   visibility.removeAttribute('disabled');
+   document.getElementById('height').removeAttribute('disabled');
+   document.getElementById('weight').removeAttribute('disabled');
+   document.getElementById('visibility').removeAttribute('disabled');
 
    // show save button
-   const save = document.getElementById('save-btn');
-   save.style.visibility = 'visible';
+   document.getElementById('save-btn').style.visibility = 'visible';
   }
 
   saveSettings(): void {
     // hide button
-    const save = document.getElementById('save-btn');
-    save.style.visibility = 'hidden';
+    document.getElementById('save-btn').style.visibility = 'hidden';
 
     // make text non editable
-    const height = document.getElementById('height') as HTMLInputElement;
+    let height = document.getElementById('height') as HTMLInputElement;
     height.setAttribute('disabled', String(true));
-    const weight = document.getElementById('weight') as HTMLInputElement;
+    let weight = document.getElementById('weight') as HTMLInputElement;
     weight.setAttribute('disabled', String(true));
-    const visibility = document.getElementById('visibility') as HTMLInputElement;
+    let visibility = document.getElementById('visibility') as HTMLInputElement;
     visibility.setAttribute('disabled', String(true));
 
     this.userdata.weight = weight.value;
@@ -57,9 +52,7 @@ export class ProfilComponent implements OnInit {
         console.log('saving data succeeded');
       } else {
         console.log('saving data failed');
-
       }
-
     });
   }
 
