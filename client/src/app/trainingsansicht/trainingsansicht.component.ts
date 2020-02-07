@@ -54,10 +54,14 @@ export class TrainingsansichtComponent implements OnInit {
          this.workout_id = params[0];
     })
     this.initializeSets();
-    this.dataservice.insertWorkoutFin(this.username,this.workout_id).subscribe(data=>{});
-    this.dataservice.getWorkoutFinId(this.username).subscribe(data=>{
-      this.workoutFin_id = parseInt(data[0].max,0) ;
-      }) 
+    this.dataservice.insertWorkoutFin(this.username,this.workout_id).subscribe(()=>{
+      this.dataservice.getWorkoutFinId(this.username).subscribe(data=>{
+        this.workoutFin_id = parseInt(data[0].max,0);
+        console.log("Workoutfin_id-----------" + this.workoutFin_id)
+        }) 
+    });
+
+    
     this.getOneRepMax();
   }  
   startTimer(): void{
