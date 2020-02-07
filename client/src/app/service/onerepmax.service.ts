@@ -75,18 +75,6 @@ export class OneRepMaxService {
     console.log("Percent of max: " + percentOfMax)
     return newMaxRep = ((weight*100)/percentOfMax).toFixed(2)
   }
-  initializeOneRepMax(username):any{
-
-    console.log("in initialzie ");
-    console.log("username: " + username);
-
-    let body = { u_name: username };
-    return this.http.post<any>(this.OneRepMaxURL, body, this.httpOptions).pipe(map((data) => {
-      this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
-          return true;
-    })
-    );
-    }
     
     updateOneRepMax(user,exercise,weight) {
       console.log("in updateOneRepMax")

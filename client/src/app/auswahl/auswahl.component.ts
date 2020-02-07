@@ -17,9 +17,6 @@ export class AuswahlComponent implements OnInit {
     this.workout.getWorkouts().subscribe((data) => {
       this.db = data;
     });
-    let username = localStorage.getItem('u_name')
-    console.log("username vom local storage" + username)
-    this.onerepmaxservice.initializeOneRepMax(username).subscribe();
   }
 
 }

@@ -24,28 +24,6 @@ router.get("/:username",(req,res)=>{
 });
 
 
-router.post("/",(req,res)=>{
-    console.log("in onerepmax initialize")
-    const db = getDb();    
-
-    
-    let u_name = req.body.u_name;    
-    console.log("username: "+ u_name);
-    
-    db.query({        
-        text: `INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ($1, $2, $3), ($4, $5, $6), ($7, $8, $9), ($10, $11, $12), ($13, $14, $15);`,
-        values: [u_name, 'Squat', 0, u_name, 'Bench Press', 0, u_name, 'Deadlift', 0, u_name, 'Military Press', 0, u_name, 'Row', 0]
-                
-    },(error,results)=>{
-    if(error){
-        res.status(500).json({message: error});
-        } else {
-            res.status(200).json(results.rows);
-        }
-    });
-    
-});
-
 router.patch("/",(req,res)=>{
     console.log("in patch")
     const db = getDb();    

@@ -122,7 +122,8 @@ export class TrainingsansichtComponent implements OnInit {
     //hier noch route ändern
     this.insertLogEntry();
     console.log("last Exercise");
-    this.router.navigate(['/startseite']);
+    //this.router.navigate(['/startseite']);
+    this.router.navigate(['/zusammenfassung/'+ this.workoutFin_id])
   }
   }
 

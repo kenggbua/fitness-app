@@ -18,9 +18,13 @@ router.post('/', (req, res) => {
         db.query({
             text: `INSERT INTO public.users (u_email, u_name, u_encrypted_password, visible) VALUES ($1, $2, $3, false);`,
             values: [mail, user, hash]
-        })
-
-            .then(result => {
+        }).then(
+            db.query({        
+                text: `INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ($1, $2, $3), ($4, $5, $6), ($7, $8, $9), ($10, $11, $12), ($13, $14, $15);`,
+                values: [user, 'Squat', 0, user, 'Bench Press', 0, user, 'Deadlift', 0, user, 'Military Press', 0, user, 'Row', 0]
+                        
+            })
+        ).then(result => {
                 //insert succsessful
                 const token = jwt.sign({data: user}, cfg.auth.jwt_key, {expiresIn: cfg.auth.expiration});
                 console.log(req.body.user + " added to db");
@@ -28,7 +32,6 @@ router.post('/', (req, res) => {
                     token: token
                 });
             })
-
             .catch(error => {
                 // insert failed
                 let detail = error.detail;
@@ -52,7 +55,7 @@ router.post('/', (req, res) => {
                         "message": "error ocurred"
                     });
                 }
-            });
+            })
     });
 
 });
