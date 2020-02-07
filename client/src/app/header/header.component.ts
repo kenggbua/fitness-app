@@ -21,10 +21,6 @@ export class HeaderComponent implements OnInit {
     this.user = localStorage.getItem("u_name");
   }
 
-  back(): void {
-    this.location.back();
-  }
-
   logout(): void {
     this.dataservice.logout();
   }
