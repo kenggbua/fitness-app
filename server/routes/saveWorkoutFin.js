@@ -23,8 +23,8 @@ router.post("/",(req,res)=>{
 
     
     db.query({        
-        text: `INSERT INTO public.workout_fin (u_name, workout_id, sumweight, date) VALUES ($1, $2, $3, $4);`,
-        values: [u_name, workout_id,null, date]},(error,results)=>{
+        text: `INSERT INTO public.workout_fin (u_name, workout_id, date) VALUES ($1, $2, $3);`,
+        values: [u_name, workout_id, date]},(error,results)=>{
     if(error){
         res.status(500).json({message: error});
         } else {

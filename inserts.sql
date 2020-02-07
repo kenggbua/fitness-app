@@ -31,9 +31,9 @@ INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position
 INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (10, 'Jogging', 4, 1, 1, null);
 
 --workout_fin
-INSERT INTO public.workout_fin (id, u_name, workout_id, sumweight, date) VALUES (1, 'testuser1', 1, null, '2020-02-06');
-INSERT INTO public.workout_fin (id, u_name, workout_id, sumweight, date) VALUES (2, 'testuser2', 2, null, '2020-02-06');
-INSERT INTO public.workout_fin (id, u_name, workout_id, sumweight, date) VALUES (3, 'testuser1', 4, null, '2020-02-06');
+INSERT INTO public.workout_fin (id, u_name, workout_id, date) VALUES (1, 'testuser1', 1, '2020-02-06');
+INSERT INTO public.workout_fin (id, u_name, workout_id, date) VALUES (2, 'testuser2', 2, '2020-02-06');
+INSERT INTO public.workout_fin (id, u_name, workout_id, date) VALUES (3, 'testuser1', 4, '2020-02-06');
 
 
 --log_entry

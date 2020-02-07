@@ -44,29 +44,11 @@ app.use("/insertTermin", require('./routes/termins'));
 app.use("/finWorkout", require('./routes/finWorkout'));
 app.use("/oneRepMax", require('./routes/oneRepMax'));
 
-
-//muss noch nach routes verschoben werden
+//just to test
 app.get('/', function (req, res) {
 console.log("hello");
   res.send('Hello World!');
 });
-
-
-
-app.get('/workout',function(req,res){ db.getDb().query({
-  text: `SELECT * from ex_wo_junction where workout_id = 1;`
-}).then(results => {res.send(results.rows)})
-});
-
-app.get('/log1',function(req,res){ db.getDb().query({
-  text: `SELECT * from log_entry  left join entry_cardio ec on log_entry.id = ec.log_id left join entry_strength es on log_entry.id = es.log_id
-  where log_entry.u_name= 'testuser' and date = '2020-01-10'
-  order by log_entry.id;`
-}).then(results => {res.send(results.rows)})
-});
-
-
-
 
 db.initDb.then(() => {
   app.listen(cfg.server.port, () => {

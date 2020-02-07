@@ -52,4 +52,24 @@ router.patch("/",(req,res)=>{
     
 });
 
+router.get("/ranking/ranks",(req,res)=>{
+    const db = getDb();
+    console.log("in ranking")
+    db.query({        
+        text: `select * from  ((select * from one_rep_max where exercise_name = 'Deadlift' order by max_weight desc limit 5) union all
+        (select * from one_rep_max where exercise_name = 'Squat' order by max_weight desc limit 5)union all
+        (select * from one_rep_max where exercise_name = 'Bench Press' order by max_weight desc limit 5) union all
+        (select * from one_rep_max where exercise_name = 'Military Press' order by max_weight desc limit 5) union all
+        (select * from one_rep_max where exercise_name = 'Row' order by max_weight desc limit 5)) t`,
+                
+    },(error,results)=>{
+    if(error){
+        res.status(500).json({message: "an error occured"});
+        } else {
+            res.status(200).json(results.rows);
+        }
+    });
+    
+});
+
 module.exports = router;
