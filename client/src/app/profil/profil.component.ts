@@ -8,7 +8,7 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  private userdata;
+  private userdata = {u_name: 'Placeholder', weight: 'placeholder', height: 'placeholder', visible: 'true'};
   private myUser;
 
   constructor(
