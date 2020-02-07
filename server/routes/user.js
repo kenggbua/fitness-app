@@ -117,11 +117,12 @@ router.get('/:username', (req, res) => {
 
 //TODO: check if requesting userdata is allowed (friend or public)
   db.query({
-    text: `SELECT * FROM public.users WHERE u_name = $1 and (visible = true or $1 = $2);`,
+    text: `SELECT * FROM public.users e, public.isFriend x where e.u_name = $1 and (($1 = $2 or e.visible = true) or (x.isConfirmed = true and e.u_name != $2 and ((x.u_name1 = $1 and x.u_name2 = $2) or (x.u_name2 = $1 and x.u_name1 = $2))))`,
     values: [reqUsername, username]
   })
 
   .then((result) => {
+    let x = result.rows.length;
     requestedUser = result.rows[0];
 
     // no results
