@@ -19,16 +19,16 @@ INSERT INTO public.workout (id, name) VALUES (3, 'Just a Test');
 INSERT INTO public.workout (id, name) VALUES (4, 'Cardio');
 
 --ex_wo_junction
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (1, 'Squat', 1, 3, 1);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (2, 'Bench Press', 1, 3, 2);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (3, 'Row', 1, 3, 3);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (4, 'Deadlift', 2, 3, 1);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (5, 'Military Press', 2, 3, 2);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (6, 'Pull Up', 2, 3, 3);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (7, 'Squat', 3, 3, 1);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (8, 'Deadlift', 3, 3, 2);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (9, 'Pull Up', 3, 3, 3);
-INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position) VALUES (10, 'Jogging', 4, 1, 1);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (1, 'Squat', 1, 3, 1, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (2, 'Bench Press', 1, 3, 2, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (3, 'Row', 1, 3, 3, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (4, 'Deadlift', 2, 3, 1, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (5, 'Military Press', 2, 3, 2, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (6, 'Pull Up', 2, 3, 3, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (7, 'Squat', 3, 3, 1, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (8, 'Deadlift', 3, 3, 2, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (9, 'Pull Up', 3, 3, 3, 90);
+INSERT INTO public.ex_wo_junction (id, exercise_name, workout_id, sets, position, rest) VALUES (10, 'Jogging', 4, 1, 1, null);
 
 --workout_fin
 INSERT INTO public.workout_fin (id, u_name, workout_id, sumweight, date) VALUES (1, 'testuser1', 1, null, '2020-02-06');
