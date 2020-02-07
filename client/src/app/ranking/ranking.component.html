@@ -8,21 +8,40 @@ best user gets on first place
 <body>
 
   <div class="container">
-  <!--table with the ranking of the best 20 public users depending on their maxrep Value -->
-  <div class = "rankingSection">
-    <table>
-      <thead><tr><th>Ranking</th><th>Benutzername</th><th>Max-rep</th></tr></thead>
-      <tr>
-        <td>#</td><td>01.01.2020</td><td>3840 kg</td>
-      </tr>
-      <tr>
-        <td>#</td><td>10.01.2020</td><td>3900 kg</td>
-      </tr>
-      <tr>
-        <td>#</td><td>18.01.2020</td><td>3950 kg</td>
-      </tr>
-    </table>
-  </div>
+
+    <div class = "rankingSection">
+      <h2>RANKING</h2>
+      <table>
+        <thead><tr><th>DEADLIFT</th><th>Username</th><th>Max-Rep</th></tr></thead>
+        <ng-container *ngFor="let item of deadlift">
+            <tr><td>{{item.exercise_name}}</td><td>{{item.u_name}}</td><td>{{item.weight}}</td></tr>
+        </ng-container>
+      </table>
+      <table>
+        <thead><tr><th>SQUAT</th><th>Username</th><th>Max-Rep</th></tr></thead>
+        <ng-container *ngFor="let item of squat">
+            <tr><td>{{item.exercise_name}}</td><td>{{item.u_name}}</td><td>{{item.weight}}</td></tr>
+        </ng-container>
+      </table>
+      <table>
+        <thead><tr><th>BENCHPRESS</th><th>Username</th><th>Max-Rep</th></tr></thead>
+        <ng-container *ngFor="let item of benchpress">
+            <tr><td>{{item.exercise_name}}</td><td>{{item.u_name}}</td><td>{{item.weight}}</td></tr>
+        </ng-container>
+      </table>
+      <table>
+        <thead><tr><th>MILITARY PRESS</th><th>Username</th><th>Max-Rep</th></tr></thead>
+        <ng-container *ngFor="let item of militarypress">
+            <tr><td>{{item.exercise_name}}</td><td>{{item.u_name}}</td><td>{{item.weight}}</td></tr>
+        </ng-container>
+      </table>
+      <table>
+        <thead><tr><th>ROW</th><th>Username</th><th>Max-Rep</th></tr></thead>
+        <ng-container *ngFor="let item of row">
+            <tr><td>{{item.exercise_name}}</td><td>{{item.u_name}}</td><td>{{item.weight}}</td></tr>
+        </ng-container>
+      </table>
+    </div>
   </div>
 </body>
 </html>

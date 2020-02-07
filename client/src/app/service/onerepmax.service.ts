@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 export class OneRepMaxService {
   private serverURL = 'http://localhost:3000/';
   private OneRepMaxURL = this.serverURL + 'oneRepMax'
+  private rankingUrl = this.serverURL + 'oneRepMax/ranking/ranks'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -86,6 +87,11 @@ export class OneRepMaxService {
     
     getOneRepMax(username) {
       return this.http.get<any>(this.OneRepMaxURL + "/" + username, this.httpOptions).pipe(
+        catchError((error) => { return of(undefined); })
+      );
+    }
+    getRanking() {
+      return this.http.get<any>(this.rankingUrl, this.httpOptions).pipe(
         catchError((error) => { return of(undefined); })
       );
     }
