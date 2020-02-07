@@ -62,14 +62,14 @@ export class TrainingsansichtComponent implements OnInit {
   }  
   startTimer(): void{
     this.buttonDisabled = true; 
-    this.timeString = this.timeLeft = this.restTime;
-    //this.timeString = this.timeLeft = 3;
+    //this.timeString = this.timeLeft = this.restTime;
+    this.timeString = this.timeLeft = 3;
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeString=this.timeLeft--;
       } else {
-        this.timeString = this.timeLeft = this.restTime;
-        //this.timeString = this.timeLeft = 3;
+        //this.timeString = this.timeLeft = this.restTime;
+        this.timeString = this.timeLeft = 3;
         clearInterval(this.interval);
         this.buttonDisabled = false;      
       }
@@ -101,8 +101,8 @@ export class TrainingsansichtComponent implements OnInit {
       this.iscardio = this.currentExercise.iscardio;
       this.restTime = this.currentExercise.rest;
       if(!this.iscardio){
-        this.timeString = this.timeLeft = this.restTime
-        //this.timeString = this.timeLeft = 3;
+        //this.timeString = this.timeLeft = this.restTime
+        this.timeString = this.timeLeft = 3;
       }else {
         this.timeString = this.timeLeft = 0
       }

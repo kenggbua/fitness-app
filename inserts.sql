@@ -59,13 +59,13 @@ INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, se
 INSERT INTO public.log_entry (id, workout_fin_id, exercise_name, repetitions, setnumber, weight, duration, iscardio) VALUES (19, 3, 'Cycling', null, 1, null, 60, true);
 
 --one_rep_max
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Squat', 0);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Bench Press', 0);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Row', 0);
 INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Deadlift', 0);
 INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Military Press', 0);
 INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Squat', 0);
 INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Bench Press', 0);
 INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Row', 0);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Deadlift', 0);
-INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Military Press', 0);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Squat', 116.28);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Bench Press', 93.02);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser1', 'Row', 69.77);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Deadlift', 139.53);
+INSERT INTO public.one_rep_max (u_name, exercise_name, max_weight) VALUES ('testuser2', 'Military Press', 139.53);
