@@ -99,11 +99,12 @@ create table workout_fin
 	workout_id integer
 		constraint workout_fin_workout_id_fk
 			references workout,
-	sumweight double precision,
 	date date
 );
 
 alter table workout_fin owner to postgres;
+
+
 
 
 
