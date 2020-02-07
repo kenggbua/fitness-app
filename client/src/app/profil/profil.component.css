@@ -11,9 +11,10 @@
 }
 
 body{
-  height: 100%;
+  background-image: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
+  background-size: cover;
+  background-repeat: repeat-y;
   margin: 0;
-  padding: 0;
 }
 
 .header{
@@ -89,5 +90,6 @@ h2{
   cursor: pointer;
   transition: .4s;
   margin-left: 41%;
+  margin-top: 5px;
 }
 
