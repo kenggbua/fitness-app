@@ -26,8 +26,6 @@ possibility to change visibility of my profile from private to public
 
     </div>
     <a routerLink="/maxRep" [queryParams]="[userdata.u_name]"><input type="button" id="maxRep-btn" value="Auswertungen"></a>
-    <p><input type="button" id="settings-btn" (click)="settings()" value="Einstellungen"></p>
-    <a routerLink="/maxRep"><input type="button" id="maxRep-btn" value="Auswertungen"></a>
     <p><input type="button" id="settings-btn" (click)="settings()" *ngIf="myUser == true" value="Einstellungen"></p>
   </div>
 </body>
