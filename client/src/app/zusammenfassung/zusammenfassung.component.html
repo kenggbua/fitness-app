@@ -9,7 +9,12 @@
     <table>
       <thead><tr><th>Übung</th><th>Satz</th><th>Gewicht</th><th>Wdh. / Dauer</th></tr></thead>
       <tr *ngFor="let entry of workouts">
-        <td>{{entry.exercise_name}}</td><td>{{entry.setnumber}}</td><td>{{entry.weight || 0}} kg</td><td>{{entry.repetitions || entry.duration + " s"}}</td>
+        <td>{{entry.exercise_name}}</td><td>{{entry.setnumber}}</td><td>{{entry.weight || 0}} kg</td><td *ngIf="entry.repetitions">{{entry.repetitions + " Wdh."}}</td><td *ngIf="entry.duration">{{entry.duration + " s"}}</td>
+      </tr>
+    </table>
+    <table>
+      <tr *ngIf="workouts">
+        <td>Gesammtgewicht</td><td></td><td>{{sumweight}} kg</td><td></td>
       </tr>
     </table>
   </div>

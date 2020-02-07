@@ -9,6 +9,7 @@ import {WorkoutService} from '../service/workout.service';
 })
 export class ZusammenfassungComponent implements OnInit {
   private workouts: any[];
+  private sumweight: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,10 +19,16 @@ export class ZusammenfassungComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
     this.workoutservice.getFinishedWorkout(id).subscribe((data) => {
-      console.log(data.data);
-
       this.workouts = data.data;
+      this.calculateSumweight();
     });
+  }
+
+  calculateSumweight() {
+    this.sumweight = 0;
+    for (let element of this.workouts) {
+      this.sumweight += element.weight;
+    }
   }
 
 }
