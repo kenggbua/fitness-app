@@ -54,21 +54,23 @@ alter table workout
 
 create table ex_wo_junction
 (
-    id            integer not null
-        constraint ex_wo_junction_pk
-            primary key,
-    exercise_name varchar(64)
-        constraint ex_wo_junction_exercise_name_fk
-            references exercise,
-    workout_id    integer
-        constraint ex_wo_junction_workout_id_fk
-            references workout,
-    sets          integer,
-    position      integer
+	id integer not null
+		constraint ex_wo_junction_pk
+			primary key,
+	exercise_name varchar(64)
+		constraint ex_wo_junction_exercise_name_fk
+			references exercise,
+	workout_id integer
+		constraint ex_wo_junction_workout_id_fk
+			references workout,
+	sets integer,
+	position integer,
+	rest integer
 );
 
-alter table ex_wo_junction
-    owner to postgres;
+alter table ex_wo_junction owner to postgres;
+
+
 
 create table one_rep_max
 (
@@ -152,8 +154,3 @@ create table termin
 );
 
 alter table termin owner to postgres;
-
-
-
-
-

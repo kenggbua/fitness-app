@@ -37,7 +37,7 @@ export class TrainingsansichtComponent implements OnInit {
 
 
   private sets :any[];
-  private currentExercise;
+  private currentExercise={exercise_name:'placeholder', iscardio: false, rest: 'placeholder', setnumber: 'placeholder'}
   private exerciseCounter;
   private workout_id;
   private buttonDisabled : boolean = false;
@@ -47,29 +47,29 @@ export class TrainingsansichtComponent implements OnInit {
   private duration;
   private workoutFin_id;
   private oneRepMax;
+  private restTime;
 
   ngOnInit() {
     this.route.queryParams.subscribe(params=>{
          this.workout_id = params[0];
     })
     this.initializeSets();
-    console.log("Username: "+this.username)
     this.dataservice.insertWorkoutFin(this.username,this.workout_id).subscribe(data=>{});
-
     this.dataservice.getWorkoutFinId(this.username).subscribe(data=>{
       this.workoutFin_id = parseInt(data[0].max,0) ;
-      console.log("workoutfinid" + this.workoutFin_id)
       }) 
     this.getOneRepMax();
   }  
   startTimer(): void{
     this.buttonDisabled = true; 
-    this.timeString = this.timeLeft = 3;
+    this.timeString = this.timeLeft = this.restTime;
+    //this.timeString = this.timeLeft = 3;
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeString=this.timeLeft--;
       } else {
-        this.timeString = this.timeLeft = 3;
+        this.timeString = this.timeLeft = this.restTime;
+        //this.timeString = this.timeLeft = 3;
         clearInterval(this.interval);
         this.buttonDisabled = false;      
       }
@@ -92,14 +92,17 @@ export class TrainingsansichtComponent implements OnInit {
         for (let i=1; i<=element;i++)
         this.sets.push({"exercise_name" : exercises.exercise_name,
                         "setnumber" : i,
-                        "iscardio" : exercises.iscardio
+                        "iscardio" : exercises.iscardio,
+                        "rest" : exercises.rest
         })
       }
       console.log(this.sets);
       this.currentExercise = this.sets[0];
       this.iscardio = this.currentExercise.iscardio;
+      this.restTime = this.currentExercise.rest;
       if(!this.iscardio){
-        this.timeString = this.timeLeft = 3
+        this.timeString = this.timeLeft = this.restTime
+        //this.timeString = this.timeLeft = 3;
       }else {
         this.timeString = this.timeLeft = 0
       }
@@ -115,10 +118,7 @@ export class TrainingsansichtComponent implements OnInit {
     this.currentExercise = this.sets[this.exerciseCounter];
     this.iscardio = this.currentExercise.iscardio;
   } else{
-    //hier noch route ändern
     this.insertLogEntry();
-    console.log("last Exercise");
-    //this.router.navigate(['/startseite']);
     this.finishTraining();
   }
   }
@@ -135,7 +135,7 @@ export class TrainingsansichtComponent implements OnInit {
       console.log("weight: " + this.weight)
       console.log("reps: " +this.reps)
       let oneRepMax = this.onerepmaxservice.calculateOneRepMax(this.reps,this.weight);
-      // hier noch abfragen, ob die alten höher sind 
+      //checks one rep max => changes value if new record
       for(let entry of this.oneRepMax){
         if(entry.exercise_name == this.currentExercise.exercise_name && entry.max_weight < oneRepMax){
           this.notificationservice.showToast(this.currentExercise.exercise_name + " : " +oneRepMax + "kg","ONE-REP-MAX erhöht")
@@ -176,12 +176,10 @@ export class TrainingsansichtComponent implements OnInit {
     }else if (timerButton.innerHTML == "Stoppuhr stoppen"){
       timerButton.innerHTML = "Cardio speichern"
       clearInterval(this.interval);
-      //timer stoppen
     }else {
       console.log("im speichern")
       timerButton.innerHTML ="Stoppuhr starten"
      this.nextSet();
-      //nächster satz
     }    
   }
 }

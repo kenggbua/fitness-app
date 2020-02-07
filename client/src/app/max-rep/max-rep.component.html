@@ -8,23 +8,12 @@ the max-rep value for every individual workout type
 <body>
 <!-- section with user data-->
 <div class = "max-repSection">
-  <h2>MaxRep Übersicht</h2>
-  <!--In this table, the max rep value for every workout-type is represented -->
+  <h2>{{username}} One-Rep-Max Übersicht</h2>
   <table>
-    <!--the name of the workout is left. On the right side you can see the individual max-rep value -->
-    <!--TODO: Load workout names and max-rep value from database
-    when no max-rep value is given because user has not done this workout jet, show 0
-    if necessary add more table rows -->
-    <thead><tr><th>Workout</th><th>Max-Rep</th></tr></thead>
-    <tr>
-      <td>MondaMood</td><td>3840 kg</td>
-    </tr>
-    <tr>
-      <td>BBP</td><td>3900 kg</td>
-    </tr>
-    <tr>
-      <td>Arms&Core</td><td>3950 kg</td>
-    </tr>
+    <thead><tr><th>Exercise</th><th>Max-Rep</th></tr></thead>
+    <ng-container *ngFor="let item of oneRepmax">
+        <tr><td>{{item.exercise_name}}</td><td>{{item.max_weight}}</td></tr>
+    </ng-container>
   </table>
 </div>
 </body>
