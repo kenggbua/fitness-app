@@ -21,19 +21,22 @@ export class ProfilComponent implements OnInit {
   }
 
   settings(): void {
-    // set text editable
-   document.getElementById('height').removeAttribute('disabled');
-   document.getElementById('weight').removeAttribute('disabled');
-   document.getElementById('visibility').removeAttribute('disabled');
+    let settingBtn = <HTMLInputElement>document.getElementById('settings-btn');
+    if (settingBtn.value === 'Einstellungen') {
+      // set text editable
+      document.getElementById('height').removeAttribute('disabled');
+      document.getElementById('weight').removeAttribute('disabled');
+      document.getElementById('visibility').removeAttribute('disabled');
 
-   // show save button
-   document.getElementById('save-btn').style.visibility = 'visible';
+      // show save button
+      settingBtn.value = 'Speichern';
+    } else {
+      this.saveSettings();
+      settingBtn.value = 'Einstellungen';
+    }
   }
 
   saveSettings(): void {
-    // hide button
-    document.getElementById('save-btn').style.visibility = 'hidden';
-
     // make text non editable
     let height = document.getElementById('height') as HTMLInputElement;
     height.setAttribute('disabled', String(true));
@@ -47,7 +50,7 @@ export class ProfilComponent implements OnInit {
     this.userdata.visible = visibility.value;
 
     // save settings
-    this.dataservice.saveUserData({weight: weight.value, height: height.value, visible: visibility.value}).subscribe((data) => {
+    this.dataservice.saveUserData({ weight: weight.value, height: height.value, visible: visibility.value }).subscribe((data) => {
       if (data) {
         console.log('saving data succeeded');
       } else {
@@ -61,7 +64,7 @@ export class ProfilComponent implements OnInit {
     this.dataservice.getUserData(username).subscribe((data) => {
       this.userdata = data.data;
       let visibility = (<HTMLInputElement>document.getElementById('visibility')).value = this.userdata.visible;
-      if(this.userdata.u_name === localStorage.getItem("u_name")) {
+      if (this.userdata.u_name === localStorage.getItem("u_name")) {
         this.myUser = true;
       }
     });

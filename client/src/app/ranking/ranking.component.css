@@ -8,14 +8,14 @@
   height: 100%;
   position: absolute;
   margin: 0;
-  background: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 body{
-  height: 100%;
+  background-image: url(https://source.unsplash.com/qZ-U9z4TQ6A/1400x600);
+  background-size: cover;
+  background-repeat: repeat-y;
   margin: 0;
+  height: 100%;
 }
 
 .container{

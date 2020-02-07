@@ -48,13 +48,7 @@ body{
   padding-right: 10px;
 }
 
-#planner_btn{
-  width: 80px;
-  height: 80px;
-  padding: 50px;
-}
-
-#startWorkout_btn{
+#planner_btn, #startWorkout_btn, #ranking_btn{
   width: 80px;
   height: 80px;
   padding: 50px;
