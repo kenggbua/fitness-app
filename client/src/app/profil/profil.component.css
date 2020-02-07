@@ -73,7 +73,7 @@ h2{
   width: 30%;
 }
 
-#save-btn{
+#settings-btn{
   border: 1px solid rgba(10, 180, 180, 1);
   background: rgba(20, 20, 20, .6);
   font-size: 18px;
@@ -83,7 +83,6 @@ h2{
   cursor: pointer;
   transition: .4s;
   margin-left: 50%;
-  visibility: hidden;
 }
 
 #maxRep-btn{
@@ -97,4 +96,3 @@ h2{
   margin-left: 41%;
   margin-top: 5px;
 }
-

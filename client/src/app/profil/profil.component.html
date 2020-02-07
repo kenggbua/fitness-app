@@ -5,20 +5,7 @@ a possibility to change these data
 possibility to change visibility of my profile from private to public
 -->
 <html class="profile">
-<header class="header">
-  <div class="BackSection">
-    <a routerLink="/startseite"><img type="button" id="home_btn" src="https://img.icons8.com/doodle/48/000000/home--v1.png">
-    </a>
-  </div>
-  <div class="searchSection">
-    <a routerLink="/andere-user"> <img type="button" id="search_btn" src="https://img.icons8.com/doodle/48/000000/search.png">
-    </a>
-  </div>
-  <div *ngIf="myUser" class="settingsSection">
-    <img type="button" id="settings_btn" src="https://img.icons8.com/doodle/48/000000/security-configuration.png" (click)="settings()">
-
-  </div>
-</header>
+<app-header></app-header>
 
 <body>
   <!-- section with user data-->
@@ -39,7 +26,7 @@ possibility to change visibility of my profile from private to public
 
     </div>
     <a routerLink="/maxRep"><input type="button" id="maxRep-btn" value="Auswertungen"></a>
-    <p><input type="button" id="save-btn" (click)="saveSettings()" value="Speichern"></p>
+    <p><input type="button" id="settings-btn" (click)="settings()" value="Einstellungen"></p>
   </div>
 </body>
 
