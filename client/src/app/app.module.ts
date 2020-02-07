@@ -35,7 +35,7 @@ import { ZusammenfassungComponent } from './zusammenfassung/zusammenfassung.comp
     MaxRepComponent,
     RankingComponent,
     HeaderComponent,
-    ZusammenfassungComponent
+    ZusammenfassungComponent,
   ],
   imports: [
     BrowserModule,
