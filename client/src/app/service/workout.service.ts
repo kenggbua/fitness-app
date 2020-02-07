@@ -47,4 +47,9 @@ export class WorkoutService {
     const getallUrl = `http://localhost:3000/workout/` + id;
     return this.http.get(getallUrl, this.httpOptions).pipe(catchError(this.handleError));
   }
+
+  getFinishedWorkout(id: number): any {
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', localStorage.getItem("token"));
+    return this.http.get(this.serverURL + "finWorkout/" + id, this.httpOptions).pipe(catchError(this.handleError));
+  }
 }

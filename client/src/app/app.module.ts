@@ -18,6 +18,7 @@ import {ToastrModule} from 'ngx-toastr';
 import { MaxRepComponent } from './max-rep/max-rep.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { HeaderComponent } from './header/header.component';
+import { ZusammenfassungComponent } from './zusammenfassung/zusammenfassung.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HeaderComponent } from './header/header.component';
     AuswahlComponent,
     MaxRepComponent,
     RankingComponent,
-    HeaderComponent
+    HeaderComponent,
+    ZusammenfassungComponent
   ],
   imports: [
     BrowserModule,

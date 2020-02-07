@@ -12,7 +12,9 @@ export class DataService {
   private registerURL = this.serverURL + "register";
   private userURL = this.serverURL + "user";
   private insertLogURL = this.serverURL + "saveLogEntry";
-  private httpOptions = {
+  private insertWorkoutFinURL = this.serverURL + "saveWorkoutFin";
+  private getWorkoutFinIdUrl = this.serverURL + "getWorkoutFinId/";
+  httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': ''
@@ -102,8 +104,7 @@ export class DataService {
       map((data) => {
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
         return true;
-      })
-    );
+      }));
   }
 
   removefriend(user1: string, user2: string) : any {
@@ -117,18 +118,39 @@ export class DataService {
     )
   }
 
-  insertLogEntry(username, exercisename, iscardio, setnumber,weight, reps, workout_id, duration):any{
+  insertLogEntry(workoutFin_id, exercisename, iscardio, setnumber,weight, reps, duration):any{
 
     console.log("in logentry dataService");
     console.log("iscardio: " + iscardio);
     console.log("duration: " + duration);
 
-
-    let body = { user: username, exercise: exercisename, iscardio: iscardio,setnumber: setnumber, weight:weight,reps:reps, workout_id:workout_id, duration:duration };
+    let body = {workout_fin_id : workoutFin_id, exercise: exercisename, iscardio: iscardio, setnumber: setnumber, weight:weight, reps:reps, duration:duration };
     return this.http.post<any>(this.insertLogURL, body, this.httpOptions).pipe(map((data) => {
+      this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+          return true;
+    }));
+  }
+  insertWorkoutFin(username,workout_id):any{
+
+    console.log("in insertWorkoutFin dataService");
+    console.log("username: " + username);
+    console.log("workout_id: " + workout_id);
+
+    let body = { u_name: username, workout_id : workout_id };
+    return this.http.post<any>(this.insertWorkoutFinURL, body, this.httpOptions).pipe(map((data) => {
       this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
           return true;
     })
     );
     }
+    getWorkoutFinId(username): any {
+
+      console.log("im get workoutFinId");
+      console.log("username: " + username);
+
+      return this.http.get<any>(this.getWorkoutFinIdUrl+username, this.httpOptions).pipe(map((data) => {
+        this.httpOptions.headers = this.httpOptions.headers.set('Authorization', data);
+            return data;
+    }));
+  }
 }

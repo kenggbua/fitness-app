@@ -36,9 +36,13 @@ app.use("/plans",require('./routes/getPlans'));
 app.use("/workout",require('./routes/getWorkout'));
 app.use("/saveLogEntry",require('./routes/saveLogEntry'));
 app.use("/user", require('./routes/user'));
+app.use("/saveWorkoutFin",require('./routes/saveWorkoutFin'));
+app.use("/getWorkoutFinId",require('./routes/getWorkoutFinId'));
 app.use("/history", require('./routes/history'));
 app.use("/terminplaner", require('./routes/termins'));
 app.use("/insertTermin", require('./routes/termins'));
+app.use("/finWorkout", require('./routes/finWorkout'));
+
 
 //muss noch nach routes verschoben werden
 app.get('/', function (req, res) {
