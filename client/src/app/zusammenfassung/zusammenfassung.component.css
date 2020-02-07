@@ -16,6 +16,7 @@ body{
   background-repeat: repeat-x;
   margin: 0;
   height: 100%;
+  overflow: auto;
 }
 
 
@@ -29,6 +30,7 @@ body{
   transition: .2s;
   justify-content: space-between;
   flex-direction: column;
+  overflow: auto;
 }
 
 .summarySection{
